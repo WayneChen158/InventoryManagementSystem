@@ -55,11 +55,11 @@ public class RawMaterials {
         this.materialId = materialId;
     }
 
-    public int getGroup() {
+    public int getGroupName() {
         return groupName;
     }
 
-    public void setGroup(int groupName) {
+    public void setGroupName(int groupName) {
         this.groupName = groupName;
     }
 

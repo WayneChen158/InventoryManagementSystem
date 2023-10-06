@@ -1,1 +1,12 @@
-1,1,B0538B,10X Mg free isothermal buffer,NEB,10.0,10/04/2023,1000,100000
+
+
+{
+    "groupName": 1,
+    "catalogNumber": "10977-015",
+    "description": "Invitrogen™ UltraPure™ DNase/RNase-Free Distilled Water",
+    "manufacturer": "FisherSci",
+    "concentration": 1.0,
+    "receiveDate": "03/04/2017",
+    "threshold": 24000,
+    "amountInStock": 4000000
+}
