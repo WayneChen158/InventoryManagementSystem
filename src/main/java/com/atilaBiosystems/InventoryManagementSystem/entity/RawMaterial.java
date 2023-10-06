@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 @Entity
 @Table(name = "raw_materials")
-public class RawMaterials {
+public class RawMaterial {
     // Define fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +29,13 @@ public class RawMaterials {
     private int amountInStock;
 
     // Define constructors
-    public RawMaterials() {
+    public RawMaterial() {
 
     }
 
-    public RawMaterials(int groupName, String catalogNumber, String description,
-                        String manufacturer, double concentration, Date receiveDate,
-                        int threshold, int amountInStock) {
+    public RawMaterial(int groupName, String catalogNumber, String description,
+                       String manufacturer, double concentration, Date receiveDate,
+                       int threshold, int amountInStock) {
         this.groupName = groupName;
         this.catalogNumber = catalogNumber;
         this.description = description;
