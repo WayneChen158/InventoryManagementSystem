@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class RawMaterialsServiceImpl implements RawMaterialsService{
     private RawMaterialsRepository rawMaterialsRepository;
@@ -22,17 +24,22 @@ public class RawMaterialsServiceImpl implements RawMaterialsService{
 
     @Override
     public RawMaterials findById(int id) {
-        return this.rawMaterialsRepository.findById(id);
+        Optional<RawMaterials> result = this.rawMaterialsRepository.findById(id);
+        RawMaterials theRawMaterial = null;
+        if(result.isPresent()){
+            theRawMaterial = result.get();
+        } else {
+            throw new RuntimeException("Cannot find the material id - " + id);
+        }
+        return theRawMaterial;
     }
 
     @Override
-    @Transactional
     public RawMaterials save(RawMaterials theRawMaterial) {
         return this.rawMaterialsRepository.save(theRawMaterial);
     }
 
     @Override
-    @Transactional
     public void deleteById(int id) {
         this.rawMaterialsRepository.deleteById(id);
     }
