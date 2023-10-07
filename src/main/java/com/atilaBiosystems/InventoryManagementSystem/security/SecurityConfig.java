@@ -27,8 +27,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/raw-materials").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET, "/api/raw-materials/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST, "/api/raw-materials").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PUT, "/api/raw-materials").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/raw-materials").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/raw-materials/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/raw-materials/**").hasRole("ADMIN")
         );
         httpSecurity.httpBasic(Customizer.withDefaults());
         httpSecurity.csrf(csrf -> csrf.disable());
