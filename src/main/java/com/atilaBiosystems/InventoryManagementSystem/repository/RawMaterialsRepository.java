@@ -1,10 +1,10 @@
 package com.atilaBiosystems.InventoryManagementSystem.repository;
 
-import com.atilaBiosystems.InventoryManagementSystem.entity.RawMaterial;
+import com.atilaBiosystems.InventoryManagementSystem.entity.RawMaterials;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(path="raw-materials")
-public interface RawMaterialsRepository extends JpaRepository<RawMaterial, Integer> {
+import java.util.List;
+
+public interface RawMaterialsRepository extends JpaRepository<RawMaterials, Integer> {
 
 }
