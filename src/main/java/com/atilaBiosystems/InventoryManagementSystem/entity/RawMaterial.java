@@ -20,7 +20,7 @@ public class RawMaterial {
     @Column(name="manufacturer")
     private String manufacturer;
     @Column(name="concentration")
-    private double concentration;
+    private Double concentration;
     @Column(name="receive_date")
     private Date receiveDate;
     @Column(name="threshold")
@@ -87,11 +87,11 @@ public class RawMaterial {
         this.manufacturer = manufacturer;
     }
 
-    public double getConcentration() {
+    public Double getConcentration() {
         return concentration;
     }
 
-    public void setConcentration(double concentration) {
+    public void setConcentration(Double concentration) {
         this.concentration = concentration;
     }
 

@@ -18,7 +18,7 @@ public class ComponentRecord {
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="component_id")
-    private IntermediateComponent component;
+    private Component component;
 
     @Column(name="lot_number")
     private String lotNumber;
@@ -54,11 +54,11 @@ public class ComponentRecord {
         this.componentName = componentName;
     }
 
-    public IntermediateComponent getComponent() {
+    public Component getComponent() {
         return component;
     }
 
-    public void setComponent(IntermediateComponent component) {
+    public void setComponent(Component component) {
         this.component = component;
     }
 
