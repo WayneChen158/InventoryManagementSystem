@@ -1,0 +1,21 @@
+group_name,catalog_num,description,manufacturer,concentration,receive_date,threshold,amount_in_stock
+1,B0538B,"10X Mg free isothermal buffer",NEB,10,10/1/23,100,2500
+1,T8787-250ML,Triton X-100(T8787-250ML),Sigma,125,10/2/23,50,1500
+1,15568025,"Invitrogen UltraPure 1M Tris-HCI, pH 8.0",FisherSci,1,10/3/23,75,1800
+1,CR,cRNA,SZ Mebep,1,10/4/23,40,1200
+1,c4706-50g,TCEP,Sigma,1,10/5/23,60,2200
+1,10977-015,"Invitrogen UltraPure Dnase RNase-Free Distilled Water",FisherSci,NULL,10/6/23,30,800
+1,RI,Vazyme RI,Vazyme,NULL,10/7/23,90,2700
+1,DNTP,dNTPs (25mM each),SZ Mebep,NULL,10/8/23,25,700
+1,DUTP,dUTPs (100mM),SZ Mebep,NULL,10/9/23,120,3800
+1,c0759-500g,Na3Citrate (1M),Sigma,NULL,10/10/23,80,1900
+1,71289-50G,NaN3,Sigma,NULL,10/1/23,100,2500
+1,G9391-500G,Bovine Gelatin (Gelatin from bovine skin),Sigma,NULL,10/2/23,50,1500
+1,E3889-100G,EGTA,Sigma,NULL,10/3/23,75,1800
+1,M0538L,WS-Bst 2.0,NEB,NULL,10/4/23,40,1200
+1,M0380L,WS RT enzyme,NEB,NULL,10/5/23,60,2200
+1,UDG,UDG,SZ Mebep,NULL,10/6/23,30,800
+1,Oligo,oligo,IDT,NULL,10/1/23,90,2700
+1,83266,Magnesium sulfate solution-500mL (2.5M),Sigma,NULL,10/2/23,25,2500
+1,14300-500G,Betaine (5M),Sigma,NULL,10/3/23,100,1500
+1,RI_2,FAPON RI,FAPON,NULL,10/9/23,25,3800
