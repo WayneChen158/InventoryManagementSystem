@@ -23,10 +23,6 @@ public class RecipeItem {
     @JoinColumn(name = "component_id")
     private Component component;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "i_component_id")
-    private IntermediateComponent intermediateComponent;
-
     public RecipeItem() {}
 
     public RecipeItem(String name, double amountPerRxn, RawMaterial material, Component component) {
@@ -74,14 +70,6 @@ public class RecipeItem {
 
     public void setComponent(Component component) {
         this.component = component;
-    }
-
-    public IntermediateComponent getIntermediateComponent() {
-        return intermediateComponent;
-    }
-
-    public void setIntermediateComponent(IntermediateComponent intermediateComponent) {
-        this.intermediateComponent = intermediateComponent;
     }
 
     @Override

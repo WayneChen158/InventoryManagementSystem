@@ -27,11 +27,11 @@ public class Component {
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
                     CascadeType.PERSIST, CascadeType.PERSIST})
     @JoinTable(
-            name = "components_intermediate_components",
+            name = "prerequisite",
             joinColumns = @JoinColumn(name = "component_id"),
-            inverseJoinColumns = @JoinColumn(name = "i_component_id")
+            inverseJoinColumns = @JoinColumn(name = "prerequisite_id")
     )
-    private List<IntermediateComponent> interComponents;
+    private List<Component> interComponents;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
@@ -90,11 +90,11 @@ public class Component {
         this.recipeItems = recipeItems;
     }
 
-    public List<IntermediateComponent> getInterComponents() {
+    public List<Component> getInterComponents() {
         return interComponents;
     }
 
-    public void setInterComponents(List<IntermediateComponent> interComponents) {
+    public void setInterComponents(List<Component> interComponents) {
         this.interComponents = interComponents;
     }
 

@@ -1,0 +1,24 @@
+component_name,version_description
+XM,for COVID-v6 COV-FLU-RSV 20%dUTP
+i-SBA,for COVIDRM
+i-COVID-PM,for COVID-V6-SM
+ORF+N module,COVID two targets mix
+Flu module,FluA and FluB primer mix
+RSV module,RSV primer mix
+IC & module,IC primer mix and COVIDXM(20%dUTP)
+COVID19-6X SBA(60 ul),v4.3 for COVID EUA kit
+COVID19-6X SBA(2 ul),v2.1 for V4 and CE kit
+COVID19-30X SBB,Vazyme Rnase Inhibitor
+COVID19-RM,COVID-19 Reaction Mix
+COVID19-BM,"COVID-19 Buffer Mix for EUA, V4"
+Negative Control,300 ul
+COVID Positive Control,"300 ul for (EUA, v6, CE)"
+COVID-v6-BM,COVID-v6 BM
+COVID-v6-SM,COVID-v6 SM(20% dUTP)
+25xES,"for COVID-v6, COV-FLU-RSV all combos"
+COVFLU-v4 BM,Vazyme BST
+CovFlu SM,"ORF+N, Flu, IC-buffer"
+Flu SM,"Flu, IC-buffer"
+INF/RSV SM,"Flu, RSV_v5, IC-buffer"
+RSV SM,"RSV_v5, IC-buffer"
+COVFLURSV PC,All for one

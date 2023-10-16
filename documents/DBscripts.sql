@@ -113,22 +113,12 @@ CREATE TABLE component_records (
     FOREIGN KEY (component_id) REFERENCES components (component_id)
 );
 
-CREATE TABLE intermediate_components (
-    i_component_id INT NOT NULL AUTO_INCREMENT,
-    i_component_name VARCHAR(50) NOT NULL,
-    version_description VARCHAR(255),
-    PRIMARY KEY (i_component_id)
-);
-
-CREATE TABLE intermediate_component_records (
-	i_component_record_id INT NOT NULL AUTO_INCREMENT,
-    i_component_name VARCHAR(100),
-    i_component_id INT,
-    lot_number VARCHAR(50),
-    manufacture_date DATE,
-    amount_in_stock INT,
-    PRIMARY KEY (i_component_record_id),
-    FOREIGN KEY (i_component_id) REFERENCES intermediate_components (i_component_id)
+CREATE TABLE prerequisite (
+	component_id INT,
+    prerequisite_id INT,
+    PRIMARY KEY (component_id, prerequisite_id),
+    FOREIGN KEY (component_id) REFERENCES components (component_id),
+    FOREIGN KEY (prerequisite_id) REFERENCES components (component_id)
 );
 
 CREATE TABLE assembly_by (
@@ -137,14 +127,6 @@ CREATE TABLE assembly_by (
     PRIMARY KEY (product_id, component_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id),
     FOREIGN KEY (product_id) REFERENCES products (product_id)
-);
-
-CREATE TABLE components_intermediate_components (
-    component_id INT,
-    i_component_id INT,
-    PRIMARY KEY (component_id, i_component_id),
-    FOREIGN KEY (component_id) REFERENCES components (component_id),
-    FOREIGN KEY (i_component_id) REFERENCES intermediate_components (i_component_id)
 );
 
 CREATE TABLE recipe_items (
@@ -156,9 +138,7 @@ CREATE TABLE recipe_items (
     i_component_id INT DEFAULT NULL,
     PRIMARY KEY (recipe_item_id),
     FOREIGN KEY (material_id) REFERENCES raw_materials (material_id),
-    FOREIGN KEY (component_id) REFERENCES components (component_id),
-    FOREIGN KEY (i_component_id) REFERENCES intermediate_components (i_component_id)
+    FOREIGN KEY (component_id) REFERENCES components (component_id)
 );
-
 
 
