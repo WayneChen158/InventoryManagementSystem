@@ -1,4 +1,4 @@
-package com.atilaBiosystems.InventoryManagementSystem.entity;
+package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
 import jakarta.persistence.*;
 import java.util.List;

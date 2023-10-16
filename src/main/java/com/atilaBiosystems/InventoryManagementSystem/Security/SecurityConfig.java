@@ -1,4 +1,4 @@
-package com.atilaBiosystems.InventoryManagementSystem.security;
+package com.atilaBiosystems.InventoryManagementSystem.Security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +37,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/raw-materials").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT, "/api/raw-materials/**").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.DELETE, "/api/raw-materials/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/components").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/api/components/**").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.POST, "/api/components").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PUT, "/api/components/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/components/**").hasRole("ADMIN")
         );
         httpSecurity.httpBasic(Customizer.withDefaults());
         httpSecurity.csrf(csrf -> csrf.disable());
