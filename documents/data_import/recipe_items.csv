@@ -1,0 +1,181 @@
+name,amount_per_rxn,material_id,component_id
+10X Mg free isothermal buffer,2.4,1,1
+Na3Citrate (1M),0.01875,13,1
+TCEP (g),0.0000043,5,1
+Tris-HCl (1M),0.15,3,1
+EGTA (0.1M),0.125,16,1
+Triton (8%),0.4,2,1
+cRNA (400X),0.00000375,4,1
+dATP (100mM),0.15,8,1
+dCTP (100mM),0.15,10,1
+dGTP (100mM),0.15,11,1
+dTTP (100mM),0.12,9,1
+dUTP (100mM),0.03,12,1
+H2O,1.30625,6,1
+10X Mg free isothermal buffer,36,1,2
+Tris-HCl (1M),3.6,3,2
+Triton (8%),6.3,2,2
+PolyA cRNA (ShenZhen) g,0.00009,4,2
+TCEP (MW 286.65) g,0.000103194,5,2
+H2O,14.1,6,2
+hemo LF (300uM HPLC),0.004,28,3
+hemo LR (300uM HPLC),0.004,29,3
+MgSO4 (1M),0.11,21,3
+betaine (5M),1.2,22,3
+H2O,1.681,6,3
+ORF1ab-LB Fam (1mM),0.0025,32,4
+BTQ66 (300uM),0.009166667,34,4
+H2O(TE),0.118333333,6,4
+isoPv2-ORF1ab ex-KF2 (1mM),0.00002,35,4
+isoPv2-ORF1ab ex-KF1 (1mM),0.003,36,4
+isoPv2-Pnevir-ORF1ab e-Kfo (1mM),0.01,37,4
+isoPv2-Pnevir-ORF1ab e-Kfi (1mM),0.003,38,4
+isoPv2-Pnevir-ORF1ab KF (1mM),0.01,39,4
+isoPv2-Pnevir-ORF1ab KB (1mM),0.003,40,4
+isoPv2-Pnevir-ORF1ab e-KBi (1mM),0.01,41,4
+isoPv2-Pnevir-ORF1ab e-Kbo (1mM),0.003,42,4
+isoPv2-ORF1ab ex-KR1 (1mM),0.0075,43,4
+isoPv2-ORF1ab ex-KR2 (1mM),0.003,44,4
+ORF1ab-LF (1mM),0.012,45,4
+ORF1ab-LB (1mM),0.009,46,4
+ORF1ab-FIP (1mM),0.03,47,4
+ORF1ab-BIP (1mM),0.03,48,4
+N2-LF-FAM (1mM),0.0025,33,4
+BTQ66 (300uM),0.009166667,34,4
+H2O(TE),0.118333333,6,4
+isoPv2-Pnevir-N exKF4 (1mM),0.003,49,4
+isoPv2-Pnevir-N exKF3 (1mM),0.003,50,4
+isoPv2-Pnevir-N exKF2 (1mM),0.003,51,4
+isoPv2-Pnevir-N e-KF (1mM),0.00925,52,4
+isoPv2-Pnevir-N exKF1 (1mM),0.00425,53,4
+isoPv2-Pnevir-N KF (1mM),0.008,54,4
+isoPv2-Pnevir-N KB (1mM),0.003,55,4
+isoPv2-Pnevir-N exKB1 (1mM),0.0055,56,4
+isoPv2-Pnevir-N exKB2 (1mM),0.003,57,4
+isoPv2-Pnevir-N exKB3 (1mM),0.003,58,4
+isoPv2-Pnevir-N exKB4 (1mM),0.003,59,4
+N-LF (1mM),0.009,60,4
+N-LB (1mM),0.012,61,4
+N-FIP (1mM),0.03,62,4
+N-BIP m1 (1mM),0.036,63,4
+H2O,0.47148,6,4
+hemo LF-Hex (300uM),0.008,24,5
+BTQ77 (300uM),0.0088,25,5
+H2O(TE),0.1032,6,5
+"hemo-KF (300uM HPLC, half is good)",0.006,26,5
+"hemo-KR (300uM HPLC, half is good)",0.006,27,5
+"hemo-FIP (300uM HPLC, half is good)",0.027,30,5
+"hemo-BIP (300uM HPLC, half is good)",0.027,31,5
+H2O,0.814,6,5
+SC2-Flu I-A KF2 (1mM),0.0025,64,6
+SC2-Flu I-A KF1.5 (1mM),0.0025,65,6
+SC2-Flu I-A KF1-1 (1mM),0.0025,66,6
+SC2-Flu I-A KF1-2 (1mM),0.0025,67,6
+SC2-Flu I-A KF1-3 (1mM),0.0025,68,6
+SC2-Flu I-A KB0.5 (1mM),0.0025,69,6
+SC2-Flu I-A KB1-1 (1mM),0.0025,70,6
+SC2-Flu I-A KB1-2 m1 (1mM),0.0025,71,6
+SC2-Flu I-A KB2 (1mM),0.0025,72,6
+SC2-Flu I-A LF (1mM),0.0075,73,6
+SC2-Flu I-A LB-1 m1 (1mM),0.005,74,6
+SC2-Flu I-A LB-2 (1mM),0.005,75,6
+SC2-Flu I-A FIP (1mM),0.02,76,6
+SC2-Flu I-A BIP-1 (1mM),0.02,77,6
+SC2-Flu I-A BIP-2 (1mM),0.02,78,6
+SC2-Flu-I-A_H3N2 BIP (1mM),0.02,79,6
+SC2-Flu Inf-B KF2 (1mM),0.0025,80,6
+SC2-Flu Inf-B KF1 (1mM),0.0025,81,6
+SC2-Flu I-B KB 0.5 (1mM),0.0025,82,6
+SC2-Flu I-B KB0.5_2 (1mM),0.0025,83,6
+SC2-Flu Inf-B KB1 (1mM),0.0025,84,6
+SC2-Flu Inf-B KB2 (1mM),0.0025,85,6
+SC2-Flu Inf-B LF v2 (1mM),0.0075,86,6
+SC2-Flu Inf-B LB (1mM),0.01,87,6
+SC2-Flu Inf-B FIP v2 m3 (1mM),0.03,88,6
+SC2-Flu Inf-B BIP v2 (1mM),0.03,89,6
+FLU A CY5/Q (300uM ),0.00375,90,6
+FLU B ROX/Q (300uM ),0.00333,91,6
+BTQ88 (300 uM),0.004125,92,6
+BTQ99 (300 uM),0.00367,93,6
+H2O,0.791375,6,6
+SK_RSV_M_KF (1mM),0.0025,92,7
+SK_RSV_M_KF2 (1mM),0.0025,93,7
+SK_ RSV_M _KB (1mM),0.0025,94,7
+SK_RSVA_M_KB (1mM),0.0025,95,7
+SK_ RSV_M _ LF3a (1mM),0.0075,96,7
+SK_ RSVA_M _LB (1mM),0.0075,97,7
+SK_ RSVB_M _LB (1mM),0.0075,98,7
+SK_ RSVB_M _LB_seraPerfect (1mM),0.0075,99,7
+SK_ RSVA_M _FIP_2 (1mM),0.01,100,7
+SK_ RSVAB_M _FIP_2 (1mM),0.01,101,7
+SK_ RSV_M _FIP_seraPerfect (1mM),0.01,102,7
+SK_ RSVA_M _BIP_2 (1mM),0.01,103,7
+SK_ RSVB_M _BIP_2 (1mM),0.01,104,7
+SK_ RSV_BIP_seraPerfect (1mM),0.01,105,7
+SK_ RSV_M_LF3a_FAM (1mM),0.0025,106,7
+BTQ 66 (300uM),0.0092,34,7
+H2O,0.8883,6,7
+Hemo-LF (300 uM),0.004,28,8
+Hemo-LB (300 uM),0.004,29,8
+MgSO4 (1M),0.11,21,8
+betaine (5M),1.2,22,8
+8% Triton,0.15,2,8
+H2O,2.532,6,8
+10X Mg free isothermal buffer,36,1,9
+Tris-HCl (1M),3.6,3,9
+Triton (8%),6.3,2,9
+PolyA cRNA (ShenZhen) g,0.00009,4,9
+TCEP (MW 286.65) g,0.000103194,5,9
+H2O,14.1,6,9
+10X Mg free isothermal buffer,1.2,1,10
+Tris-HCl (1M),0.12,3,10
+Triton (8%),0.21,2,10
+PolyA cRNA (ShenZhen) g,0.000003,4,10
+TCEP (MW 286.65) g,0.00000344,5,10
+H2O,0.47,6,10
+Vazyme RI,12,7,11
+H2O,10,6,12
+10X Mg free isothermal buffer,1,1,13
+dATPs (25mM each),0.125,8,13
+dTTPs (25mM each),0.125,9,13
+dCTPs (25mM each),0.125,10,13
+dGTPs (25mM each),0.125,11,13
+dUTP (100mM),0.025,12,13
+Na3Citrate (1M),0.01875,13,13
+2% NaN3,0.1,14,13
+5% Bovine Gelatin,0.2,15,13
+100mM EGTA,0.125,16,13
+H2O,0.08125,6,13
+WS-Bst,1.25,17,13
+WS RT enzyme,0.9,18,13
+Vazyme RI,0.5,7,13
+SZ UDG,0.3,19,13
+10X Mg free isothermal buffer,0.3,1,14
+H2O,2.7,6,14
+COVID template,0.0001,107,15
+H2O,0.9999,6,15
+Vazyme RI,1,7,16
+NEB ws. RTx,0.9,18,16
+2% NaN3,0.1,14,16
+Vazyme Bst,0.75,23,16
+China UDG,0.3,19,16
+10Xiso buffer,0.145,1,16
+5% Gelatin,0.2,15,16
+H2O,1.605,6,16
+H2O,5,6,17
+NaCl,0.1386,109,18
+H2O,700,6,18
+H2O,0.9,6,19
+10X Mg free iso buffer,0.15,1,19
+5%Gelatin,0.2,15,19
+2% NaN3,0.1,14,19
+SZ UNG,0.25,19,19
+Vazyme WS-Bst (8U/uL)*,1.4,23,19
+Vazyme RI*,1,7,19
+NEB RTx,1,18,19
+H2O,3.1,6,20
+H2O,4,6,21
+H2O,3.25,6,22
+H2O,4.25,6,23
+COVFLURSV template,0.0001,108,24
+H2O,0.9999,6,24
