@@ -16,15 +16,6 @@ CREATE TABLE raw_materials (
     PRIMARY KEY (material_id)
 );
 
-
-TRUNCATE TABLE raw_materials;
-
-INSERT INTO raw_materials VALUES 
-	(1,1,"B0538B","10x Mg free isothermal buffer","NEB",10.0,'2023-10-04',1000,100000),
-    (2,1,"T8787-250ML","Triton™ X-100(T8787-250ML)","Sigma",1,'2022-10-04',900,9000),
-    (3,1,"15568025","Invitrogen™ UltraPure™ 1M Tris-HCI, pH 8.0","FisherSci",1,'2022-12-19',10000,1000000),
-	(4,1,"c4706-50g","TCEP","Sigma",1,'2023-06-15',100,300);
-
 CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` char(68) NOT NULL,
@@ -116,6 +107,7 @@ CREATE TABLE component_records (
 CREATE TABLE prerequisite (
 	component_id INT,
     prerequisite_id INT,
+    amount_per_rxn DOUBLE;
     PRIMARY KEY (component_id, prerequisite_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id),
     FOREIGN KEY (prerequisite_id) REFERENCES components (component_id)
@@ -135,7 +127,6 @@ CREATE TABLE recipe_items (
     amount_per_rxn DOUBLE,
     material_id INT DEFAULT NULL,
 	component_id INT DEFAULT NULL,
-    i_component_id INT DEFAULT NULL,
     PRIMARY KEY (recipe_item_id),
     FOREIGN KEY (material_id) REFERENCES raw_materials (material_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id)

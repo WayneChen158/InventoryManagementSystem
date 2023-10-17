@@ -9,7 +9,7 @@ public class Component {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "component_id")
-    private Long componentId;
+    private Integer componentId;
 
     @Column(name = "component_name")
     private String componentName;
@@ -50,11 +50,11 @@ public class Component {
         this.versionDescription = versionDescription;
     }
 
-    public Long getComponentId() {
+    public Integer getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(Long componentId) {
+    public void setComponentId(Integer componentId) {
         this.componentId = componentId;
     }
 

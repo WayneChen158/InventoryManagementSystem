@@ -11,7 +11,7 @@ public class ComponentRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="component_record_id")
-    private int ComponentRecordId;
+    private Integer ComponentRecordId;
 
     @Column(name="component_name")
     private String componentName;
@@ -38,11 +38,11 @@ public class ComponentRecord {
         this.amountInStock = amountInStock;
     }
 
-    public int getComponentRecordId() {
+    public Integer getComponentRecordId() {
         return ComponentRecordId;
     }
 
-    public void setComponentRecordId(int componentRecordId) {
+    public void setComponentRecordId(Integer componentRecordId) {
         ComponentRecordId = componentRecordId;
     }
 

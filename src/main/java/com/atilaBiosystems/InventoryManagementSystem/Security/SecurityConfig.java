@@ -42,6 +42,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/components").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT, "/api/components/**").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.DELETE, "/api/components/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/manufacture").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/api/manufacture/**").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.POST, "/api/manufacture").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PUT, "/api/manufacture/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/manufacture/**").hasRole("ADMIN")
         );
         httpSecurity.httpBasic(Customizer.withDefaults());
         httpSecurity.csrf(csrf -> csrf.disable());
