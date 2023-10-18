@@ -1,6 +1,8 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RecipeItem;
+import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 
 import java.util.List;
 
@@ -16,4 +18,8 @@ public interface ComponentService {
      * DELETE	/api/tutorials/:id/comments	    delete all Comments of a Tutorial
      */
     List<RecipeItem> getRecipeItemsByComponentId(int componentId);
+
+    Component findById(int componentId);
+
+    List<CustomRecipeItem> getRecipeByComponentId(int componentId, Integer scale);
 }

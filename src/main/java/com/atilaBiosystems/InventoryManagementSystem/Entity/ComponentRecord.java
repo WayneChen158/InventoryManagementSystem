@@ -1,5 +1,7 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -16,6 +18,7 @@ public class ComponentRecord {
     @Column(name="component_name")
     private String componentName;
 
+    @JsonBackReference // Indicates that Component is not serialized as part of ComponentRecord
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="component_id")
     private Component component;

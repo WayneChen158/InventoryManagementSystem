@@ -105,18 +105,21 @@ CREATE TABLE component_records (
 );
 
 CREATE TABLE prerequisite (
-	component_id INT,
-    prerequisite_id INT,
-    amount_per_rxn DOUBLE;
-    PRIMARY KEY (component_id, prerequisite_id),
+	prerequisite_id INT NOT NULL AUTO_INCREMENT,
+    component_id INT,
+    intermediate_component_id INT,
+    amount_per_rxn DOUBLE,
+    PRIMARY KEY (prerequisite_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id),
-    FOREIGN KEY (prerequisite_id) REFERENCES components (component_id)
+    FOREIGN KEY (intermediate_component_id) REFERENCES components (component_id)
 );
 
 CREATE TABLE assembly_by (
+    assembly_id INT NOT NULL AUTO_INCREMENT,
     product_id INT,
     component_id INT,
-    PRIMARY KEY (product_id, component_id),
+    amount_per_assay INT,
+    PRIMARY KEY (assembly_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id),
     FOREIGN KEY (product_id) REFERENCES products (product_id)
 );
@@ -131,5 +134,9 @@ CREATE TABLE recipe_items (
     FOREIGN KEY (material_id) REFERENCES raw_materials (material_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id)
 );
+
+-- SET FOREIGN_KEY_CHECKS = 0;
+-- SET FOREIGN_KEY_CHECKS = 1;
+
 
 

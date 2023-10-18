@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,21 +18,27 @@ public class Component {
     @Column(name="version_description")
     private String versionDescription;
 
+    @JsonManagedReference // Indicates that ComponentRecord is serialized as part of Component
     @OneToMany(mappedBy = "component")
     private List<ComponentRecord> ComponentRecords;
 
     @OneToMany(mappedBy = "component")
     private List<RecipeItem> recipeItems;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
-                    CascadeType.PERSIST, CascadeType.PERSIST})
-    @JoinTable(
-            name = "prerequisite",
-            joinColumns = @JoinColumn(name = "component_id"),
-            inverseJoinColumns = @JoinColumn(name = "prerequisite_id")
-    )
-    private List<Component> interComponents;
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
+//                    CascadeType.PERSIST, CascadeType.PERSIST})
+//    @JoinTable(
+//            name = "prerequisite",
+//            joinColumns = @JoinColumn(name = "component_id"),
+//            inverseJoinColumns = @JoinColumn(name = "prerequisite_id")
+//    )
+//    private List<Component> interComponents;
+    @OneToMany(mappedBy = "component")
+    private List<Prerequisite> prerequisites;
+
+    @OneToMany(mappedBy = "intermediateComponent")
+    private List<Prerequisite> intermediateComponents;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
@@ -90,12 +97,20 @@ public class Component {
         this.recipeItems = recipeItems;
     }
 
-    public List<Component> getInterComponents() {
-        return interComponents;
+    public List<Prerequisite> getPrerequisites() {
+        return prerequisites;
     }
 
-    public void setInterComponents(List<Component> interComponents) {
-        this.interComponents = interComponents;
+    public void setPrerequisites(List<Prerequisite> prerequisites) {
+        this.prerequisites = prerequisites;
+    }
+
+    public List<Prerequisite> getIntermediateComponents() {
+        return intermediateComponents;
+    }
+
+    public void setIntermediateComponents(List<Prerequisite> intermediateComponents) {
+        this.intermediateComponents = intermediateComponents;
     }
 
     public List<Product> getProducts() {
