@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ public class ComponentController {
             @PathVariable int componentId,
             @RequestParam(value = "scale", required = false) Integer scale){
         return componentService.getRecipeByComponentId(componentId, scale);
+    }
+
+    @PostMapping("/manufacture/{componentId}")
+    public ManufactureRecord putInManufactureLine(
+            @PathVariable int componentId,
+            @RequestParam(value = "scale", required = false) Integer scale){
+        return componentService.putInManufactureLine(componentId, scale);
     }
 
 }

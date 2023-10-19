@@ -40,6 +40,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/components").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET, "/api/components/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST, "/api/components").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.POST, "/api/components/**").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT, "/api/components/**").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.DELETE, "/api/components/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/manufacture").hasRole("EMPLOYEE")

@@ -1,6 +1,7 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RecipeItem;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 
@@ -22,4 +23,6 @@ public interface ComponentService {
     Component findById(int componentId);
 
     List<CustomRecipeItem> getRecipeByComponentId(int componentId, Integer scale);
+
+    ManufactureRecord putInManufactureLine(int componentId, Integer scale);
 }
