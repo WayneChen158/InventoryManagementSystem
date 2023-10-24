@@ -1,6 +1,8 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
+import com.atilaBiosystems.InventoryManagementSystem.Exception.InvalidProductIdException;
+import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.Repository.ManufactureRecordDetailRepository;
 import com.atilaBiosystems.InventoryManagementSystem.Repository.ManufactureRecordRepository;
 import com.atilaBiosystems.InventoryManagementSystem.Repository.ProductRecordRepository;
@@ -64,7 +66,7 @@ public class ProductServiceImpl implements ProductService{
         for (ManufactureRecordDetail currManDetail: manufactureRecord.getRecordDetails()){
             Double needAmount = currManDetail.getTotalVol();
             if (needAmount > currManDetail.getComponentRecord().getAmountInStock()){
-                throw new RuntimeException("Not Enough " + currManDetail.getComponentRecord().getComponentName() + "In Stock");
+                throw new NullPointerException("Not Enough " + currManDetail.getComponentRecord().getComponentName() + " In Stock");
             }
         }
     }
@@ -76,7 +78,7 @@ public class ProductServiceImpl implements ProductService{
         Product product = productRepository.findById(productId).orElse(null);
 
         if (product == null) {
-            throw new RuntimeException("Invalid productId");
+            throw new InvalidProductIdException("Invalid productId " + productId);
         }
 
         LocalDate localDate = LocalDate.now();
@@ -101,7 +103,7 @@ public class ProductServiceImpl implements ProductService{
         for (Component component: product.getComponents()){
             boolean hasRecord = false;
             for (ComponentRecord componentRecord: component.getComponentRecords()){
-                if (componentRecord.getAmountInStock() > scale){
+                if (componentRecord.getAmountInStock() >= scale){
                     ManufactureRecordDetail currDetail = new ManufactureRecordDetail(componentRecord.getComponentName(),
                             1.0, scale.doubleValue(), currManufactureRecord);
                     currDetail.setComponentRecord(componentRecord);
@@ -113,18 +115,23 @@ public class ProductServiceImpl implements ProductService{
             }
             if (!hasRecord){
                 for (ManufactureRecord mr: manufactureRecordRepository.findByStatus(1)){
-                    if (mr.getComponentRecord().getComponent().getComponentId() == component.getComponentId()){
-                        ManufactureRecordDetail currDetail = new ManufactureRecordDetail(mr.getComponentRecord().getComponentName(),
-                                1.0, scale.doubleValue(), currManufactureRecord);
-                        currDetail.setComponentRecord(mr.getComponentRecord());
-                        details.add(currDetail);
-                        manufactureRecordDetailRepository.save(currDetail);
-                        hasRecord = true;
+                    try{
+                        if (mr.getComponentRecord().getComponent().getComponentId() == component.getComponentId()){
+                            ManufactureRecordDetail currDetail = new ManufactureRecordDetail(mr.getComponentRecord().getComponentName(),
+                                    1.0, scale.doubleValue(), currManufactureRecord);
+                            currDetail.setComponentRecord(mr.getComponentRecord());
+                            details.add(currDetail);
+                            manufactureRecordDetailRepository.save(currDetail);
+                            hasRecord = true;
+                        }
+
+                    } catch (NullPointerException e1){
+
                     }
                 }
             }
             if (!hasRecord) {
-                throw new RuntimeException("Please make sure you have put all the required component in manufacture line");
+                throw new MissingComponentException("Please make sure you have put all the required component in manufacture line");
             }
         }
 

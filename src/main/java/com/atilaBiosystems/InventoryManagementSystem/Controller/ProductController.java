@@ -1,9 +1,12 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
+import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomComponentRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,5 +44,10 @@ public class ProductController {
 
     }
 
+
+    @ExceptionHandler(MissingComponentException.class)
+    public ResponseEntity<String> handleNullComponentException(MissingComponentException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
 }
