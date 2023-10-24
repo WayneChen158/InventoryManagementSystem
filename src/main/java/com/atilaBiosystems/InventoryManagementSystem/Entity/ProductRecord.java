@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -27,6 +28,7 @@ public class ProductRecord {
     @Column(name="product_name")
     private String productName;
 
+    @JsonBackReference
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="product_id")
     private Product product;

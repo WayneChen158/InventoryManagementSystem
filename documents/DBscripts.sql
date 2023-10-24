@@ -135,6 +135,34 @@ CREATE TABLE recipe_items (
     FOREIGN KEY (component_id) REFERENCES components (component_id)
 );
 
+CREATE TABLE manufacture_records (
+	manufacture_record_id INT NOT NULL AUTO_INCREMENT,
+    component_name VARCHAR(50) NOT NULL,
+    manufacture_date DATE,
+    manufacture_scale INT,
+    owner VARCHAR(50),
+    status INT CHECK (status IN (1, 2, 3)),
+    component_record_id INT,
+    product_record_id INT,
+    PRIMARY KEY (manufacture_record_id),
+    FOREIGN KEY (component_record_id) REFERENCES component_records (component_record_id),
+    FOREIGN KEY (product_record_id) REFERENCES product_records (product_record_id)
+);
+
+CREATE TABLE manufacture_record_details (
+	record_detail_id INT NOT NULL AUTO_INCREMENT,
+    item_name VARCHAR(100) NOT NULL,
+    amount_per_rxn DOUBLE,
+    total_vol DOUBLE,
+    manufacture_record_id INT,
+    component_record_id INT DEFAULT NULL,
+    raw_material_id INT DEFAULT NULL,
+    PRIMARY KEY (record_detail_id),
+    FOREIGN KEY (raw_material_id) REFERENCES raw_materials (material_id),
+    FOREIGN KEY (component_record_id) REFERENCES component_records (component_record_id),
+    FOREIGN KEY (manufacture_record_id) REFERENCES manufacture_records (manufacture_record_id)
+);
+
 -- SET FOREIGN_KEY_CHECKS = 0;
 -- SET FOREIGN_KEY_CHECKS = 1;
 

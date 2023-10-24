@@ -25,15 +25,6 @@ public class Component {
     @OneToMany(mappedBy = "component")
     private List<RecipeItem> recipeItems;
 
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
-//                    CascadeType.PERSIST, CascadeType.PERSIST})
-//    @JoinTable(
-//            name = "prerequisite",
-//            joinColumns = @JoinColumn(name = "component_id"),
-//            inverseJoinColumns = @JoinColumn(name = "prerequisite_id")
-//    )
-//    private List<Component> interComponents;
     @OneToMany(mappedBy = "component")
     private List<Prerequisite> prerequisites;
 

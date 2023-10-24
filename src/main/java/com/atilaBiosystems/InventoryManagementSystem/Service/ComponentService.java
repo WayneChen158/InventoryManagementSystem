@@ -2,10 +2,12 @@ package com.atilaBiosystems.InventoryManagementSystem.Service;
 
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RecipeItem;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ComponentService {
     /**
@@ -25,4 +27,8 @@ public interface ComponentService {
     List<CustomRecipeItem> getRecipeByComponentId(int componentId, Integer scale);
 
     ManufactureRecord putInManufactureLine(int componentId, Integer scale);
+
+    void updateManufactureRecipe(int manufactureRecordId, List<Map<String, Double>> updates);
+
+    List<RawMaterial> finishManufacture(int manufactureRecordId, int updateScale);
 }

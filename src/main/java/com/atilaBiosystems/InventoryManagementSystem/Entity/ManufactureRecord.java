@@ -29,8 +29,14 @@ public class ManufactureRecord {
     @Column(name = "status")
     private Integer status; // {1: manufacturing, 2: done, 3: cancelled}
 
-    @OneToMany(mappedBy = "manufactureRecord")
+    @OneToMany(mappedBy = "manufactureRecord", cascade = CascadeType.ALL)
     private List<ManufactureRecordDetail> recordDetails;
+    @OneToOne
+    @JoinColumn(name = "component_record_id")
+    private ComponentRecord componentRecord;
+    @OneToOne
+    @JoinColumn(name = "product_record_id")
+    private ProductRecord productRecord;
 
     public ManufactureRecord() {}
 
@@ -96,6 +102,22 @@ public class ManufactureRecord {
 
     public void setRecordDetails(List<ManufactureRecordDetail> recordDetails) {
         this.recordDetails = recordDetails;
+    }
+
+    public ComponentRecord getComponentRecord() {
+        return componentRecord;
+    }
+
+    public void setComponentRecord(ComponentRecord componentRecord) {
+        this.componentRecord = componentRecord;
+    }
+
+    public ProductRecord getProductRecord() {
+        return productRecord;
+    }
+
+    public void setProductRecord(ProductRecord productRecord) {
+        this.productRecord = productRecord;
     }
 
     @Override

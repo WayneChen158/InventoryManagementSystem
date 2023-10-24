@@ -24,9 +24,9 @@ public class RawMaterial {
     @Column(name="receive_date")
     private Date receiveDate;
     @Column(name="threshold")
-    private int threshold;
+    private Integer threshold;
     @Column(name="amount_in_stock")
-    private int amountInStock;
+    private Integer amountInStock;
 
     // Define constructors
     public RawMaterial() {
@@ -34,8 +34,8 @@ public class RawMaterial {
     }
 
     public RawMaterial(int groupName, String catalogNumber, String description,
-                       String manufacturer, double concentration, Date receiveDate,
-                       int threshold, int amountInStock) {
+                       String manufacturer, Double concentration, Date receiveDate,
+                       Integer threshold, Integer amountInStock) {
         this.groupName = groupName;
         this.catalogNumber = catalogNumber;
         this.description = description;
@@ -103,19 +103,19 @@ public class RawMaterial {
         this.receiveDate = receiveDate;
     }
 
-    public int getThreshold() {
+    public Integer getThreshold() {
         return threshold;
     }
 
-    public void setThreshold(int threshold) {
+    public void setThreshold(Integer threshold) {
         this.threshold = threshold;
     }
 
-    public int getAmountInStock() {
+    public Integer getAmountInStock() {
         return amountInStock;
     }
 
-    public void setAmountInStock(int amountInStock) {
+    public void setAmountInStock(Integer amountInStock) {
         this.amountInStock = amountInStock;
     }
 

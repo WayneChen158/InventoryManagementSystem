@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 @Entity
@@ -16,6 +17,7 @@ public class Product {
     @Column(name="version_description")
     private String versionDescription;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     private List<ProductRecord> productRecords;
 

@@ -32,7 +32,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeHttpRequests(configurer ->
                 configurer
-                        .requestMatchers(HttpMethod.GET, "/api/raw-materials").hasRole("EMPLOYEE")
+                        .requestMatchers(HttpMethod.GET, "/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/raw-materials/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST, "/api/raw-materials").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT, "/api/raw-materials/**").hasRole("MANAGER")

@@ -1,33 +1,37 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
-import com.atilaBiosystems.InventoryManagementSystem.Repository.ComponentRepository;
-import com.atilaBiosystems.InventoryManagementSystem.Repository.ManufactureRecordDetailRepository;
-import com.atilaBiosystems.InventoryManagementSystem.Repository.ManufactureRecordRepository;
-import com.atilaBiosystems.InventoryManagementSystem.Repository.RecipeItemRepository;
+import com.atilaBiosystems.InventoryManagementSystem.Repository.*;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Map;
 
 @Service
 public class ComponentServiceImpl implements ComponentService{
 
     private final RecipeItemRepository recipeItemRepository;
     private final ComponentRepository componentRepository;
+    private final ComponentRecordRepository componentRecordRepository;
     private final ManufactureRecordRepository manufactureRecordRepository;
     private final ManufactureRecordDetailRepository manufactureRecordDetailRepository;
 
     public ComponentServiceImpl(RecipeItemRepository recipeItemRepository,
                                 ComponentRepository componentRepository,
+                                ComponentRecordRepository componentRecordRepository,
                                 ManufactureRecordRepository manufactureRecordRepository,
                                 ManufactureRecordDetailRepository manufactureRecordDetailRepository) {
         this.recipeItemRepository = recipeItemRepository;
         this.componentRepository = componentRepository;
+        this.componentRecordRepository = componentRecordRepository;
         this.manufactureRecordRepository = manufactureRecordRepository;
         this.manufactureRecordDetailRepository = manufactureRecordDetailRepository;
     }
@@ -77,6 +81,7 @@ public class ComponentServiceImpl implements ComponentService{
     }
 
     @Override
+    @Transactional
     public ManufactureRecord putInManufactureLine(int componentId, Integer scale) {
 
         Component component = this.findById(componentId);
@@ -84,8 +89,18 @@ public class ComponentServiceImpl implements ComponentService{
         LocalDate localDate = LocalDate.now();
         Date currentDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        String lotNum = sdf.format(currentDate);
+
+        ComponentRecord latestComponentRecord = new ComponentRecord(component.getComponentName(),
+                lotNum, currentDate, 0); // Scale should be 0 before done the manufacture
+
+        latestComponentRecord.setComponent(component);
+        componentRecordRepository.save(latestComponentRecord);
+
         ManufactureRecord currManufactureRecord = new ManufactureRecord(component.getComponentName(),
                 currentDate, scale, "YC", 1);
+        currManufactureRecord.setComponentRecord(latestComponentRecord);
 
         List<ManufactureRecordDetail> details = new ArrayList<>();
         List<Prerequisite> prerequisites = component.getPrerequisites();
@@ -120,6 +135,70 @@ public class ComponentServiceImpl implements ComponentService{
         currManufactureRecord.setRecordDetails(details);
         manufactureRecordRepository.save(currManufactureRecord);
         return currManufactureRecord;
+    }
+
+    @Override
+    @Transactional
+    public void updateManufactureRecipe(int manufactureRecordId, List<Map<String, Double>> updates) {
+
+        ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
+
+        if (manufactureRecord != null) {
+            for (Map<String, Double> update : updates) {
+                int recordDetailId = update.get("recordDetailId").intValue();
+                double amountPerRxn = update.get("amountPerRxn");
+                double totalVol = update.get("totalVol");
+
+                for (ManufactureRecordDetail detail : manufactureRecord.getRecordDetails()) {
+                    if (detail.getRecordDetailId() == recordDetailId) {
+                        if (detail.getRawMaterial() != null) {
+                            if (detail.getRawMaterial().getAmountInStock() < totalVol){
+                                throw new RuntimeException("Not enough " + detail.getRawMaterial() + " in stock");
+                            }
+                        }
+                        if (detail.getComponentRecord() != null) {
+                            if (detail.getComponentRecord().getAmountInStock() < totalVol){
+                                throw new RuntimeException("Not enough " + detail.getComponentRecord() + " in stock");
+                            }
+                        }
+                        detail.setAmountPerRxn(amountPerRxn);
+                        detail.setTotalVol(totalVol);
+                    }
+                }
+            }
+
+            manufactureRecordRepository.save(manufactureRecord);
+        } else {
+            throw new EntityNotFoundException("ManufactureRecord not found");
+        }
+    }
+
+    @Override
+    @Transactional
+    public List<RawMaterial> finishManufacture(int manufactureRecordId, int updateScale) {
+        ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
+        List<RawMaterial> rawMaterials = new ArrayList<>();
+
+        if (manufactureRecord != null) {
+            for (ManufactureRecordDetail detail : manufactureRecord.getRecordDetails()) {
+                if (detail.getComponentRecord() != null) {
+                    int beforeManufacture = detail.getComponentRecord().getAmountInStock();
+                    detail.getComponentRecord().setAmountInStock((int)(beforeManufacture - detail.getTotalVol()));
+                    continue;
+                }
+                if (detail.getRawMaterial() != null) {
+                    RawMaterial currRawMateiral = detail.getRawMaterial();
+                    int beforeManufacture = currRawMateiral.getAmountInStock();
+                    currRawMateiral.setAmountInStock((int) (beforeManufacture - detail.getTotalVol()));
+                    rawMaterials.add(currRawMateiral);
+                }
+            }
+            manufactureRecord.setStatus(2);
+            manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
+            return rawMaterials;
+        } else {
+            throw new EntityNotFoundException("ManufactureRecord not found");
+        }
     }
 
 }
