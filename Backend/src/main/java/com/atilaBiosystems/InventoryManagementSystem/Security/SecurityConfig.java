@@ -49,7 +49,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/manufacture").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.GET, "/api/manufacture/**").hasRole("EMPLOYEE")
                         .requestMatchers(HttpMethod.POST, "/api/manufacture").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PUT, "/api/manufacture/**").hasRole("MANAGER")
+                        .requestMatchers(HttpMethod.PUT, "/api/manufacture/**").hasRole("ADMIn")
                         .requestMatchers(HttpMethod.DELETE, "/api/manufacture/**").hasRole("ADMIN")
         );
         httpSecurity.httpBasic(Customizer.withDefaults());
