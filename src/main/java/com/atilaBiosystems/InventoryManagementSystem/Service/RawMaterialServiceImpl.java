@@ -22,4 +22,9 @@ public class RawMaterialServiceImpl implements RawMaterialService{
         return rawMaterialsRepository.findFilteredRawMaterials(searchKeyword, manufacturer, groupName);
     }
 
+    @Override
+    public List<RawMaterial> findAll() {
+        return rawMaterialsRepository.findAll();
+    }
+
 }
