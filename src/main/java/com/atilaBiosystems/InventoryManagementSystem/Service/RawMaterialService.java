@@ -14,4 +14,6 @@ public interface RawMaterialService {
 //    public RawMaterial createRawMaterial(RawMaterial rawMaterial);
 //
 //    public RawMaterial updateRawMaterialById(Integer materialId, RawMaterial updatedRawMaterial);
+
+    List<RawMaterial> findAll();
 }

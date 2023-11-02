@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/raw-materials")
+@RequestMapping("/api")
 public class RawMaterialController {
 
     private final RawMaterialService rawMaterialService;
@@ -18,6 +18,11 @@ public class RawMaterialController {
     @Autowired
     public RawMaterialController(RawMaterialService rawMaterialService) {
         this.rawMaterialService = rawMaterialService;
+    }
+
+    @GetMapping("/rawMaterials")
+    public List<RawMaterial> getRawMaterials(){
+        return rawMaterialService.findAll();
     }
 
     // Additional custom endpoints, if needed
