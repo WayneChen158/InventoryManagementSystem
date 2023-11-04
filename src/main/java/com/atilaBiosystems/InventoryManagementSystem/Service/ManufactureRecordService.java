@@ -7,4 +7,6 @@ import java.util.List;
 public interface ManufactureRecordService {
 
     List<ManufactureRecord> findAll();
+
+    List<ManufactureRecord> findByStatus(Integer status);
 }

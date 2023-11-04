@@ -23,4 +23,9 @@ public class ManufactureRecordImpl implements ManufactureRecordService{
     public List<ManufactureRecord> findAll() {
         return manufactureRecordRepository.findAll();
     }
+
+    @Override
+    public List<ManufactureRecord> findByStatus(Integer status) {
+        return manufactureRecordRepository.findByStatus(status);
+    }
 }

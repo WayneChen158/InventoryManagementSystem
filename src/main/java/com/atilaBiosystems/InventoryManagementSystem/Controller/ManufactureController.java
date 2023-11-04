@@ -16,7 +16,8 @@ public class ManufactureController {
         this.manufactureRecordService = manufactureRecordService;
     }
     @GetMapping("/manufactureRecords")
-    public List<ManufactureRecord> getManufactureRecord(){
-        return manufactureRecordService.findAll();
+    public List<ManufactureRecord> getManufactureRecord(
+            @RequestParam(name = "status", required = true, defaultValue = "1") int status){
+        return manufactureRecordService.findByStatus(status);
     }
 }
