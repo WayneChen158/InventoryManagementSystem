@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -31,6 +32,7 @@ public class Component {
     @OneToMany(mappedBy = "intermediateComponent")
     private List<Prerequisite> intermediateComponents;
 
+    @JsonBackReference
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
                     CascadeType.PERSIST, CascadeType.PERSIST})

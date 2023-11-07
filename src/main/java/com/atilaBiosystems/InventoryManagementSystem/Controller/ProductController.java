@@ -1,6 +1,8 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.Product;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomComponentRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ProductService;
@@ -19,6 +21,18 @@ public class ProductController {
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @GetMapping()
+    public List<Product> getAllProducts() {
+        return productService.findAll();
+    }
+
+    @GetMapping("/components/{productId}")
+    public List<Component> getAllComponents(
+            @PathVariable int productId) {
+        Product product = productService.findById(productId);
+        return product.getComponents();
     }
 
     @GetMapping("/manufacture/{productId}")
@@ -43,7 +57,6 @@ public class ProductController {
         productService.finishManufacture(manufactureRecordId, scale);
 
     }
-
 
     @ExceptionHandler(MissingComponentException.class)
     public ResponseEntity<String> handleNullComponentException(MissingComponentException ex) {

@@ -35,6 +35,17 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public Product findById(int productId) {
+        Product product = productRepository.findById(productId).orElse(null);
+        return product;
+    }
+
+    @Override
     public List<CustomComponentRecord> checkComponentInventory(Integer productId) {
         List<CustomComponentRecord> comLst = new ArrayList<>();
 
