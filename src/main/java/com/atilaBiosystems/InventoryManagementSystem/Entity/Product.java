@@ -21,6 +21,7 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductRecord> productRecords;
 
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
                     CascadeType.PERSIST, CascadeType.PERSIST})

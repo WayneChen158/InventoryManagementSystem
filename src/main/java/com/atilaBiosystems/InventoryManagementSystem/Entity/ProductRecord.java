@@ -9,17 +9,6 @@ import java.util.Date;
 @Table(name="product_records")
 public class ProductRecord {
 
-    /*
-    product_record_id INT NOT NULL AUTO_INCREMENT,
-    product_name VARCHAR(100),
-    product_id INT,
-    lot_number VARCHAR(50),
-    manufacture_date DATE,
-    amount_in_stock INT,
-    PRIMARY KEY (product_record_id),
-    FOREIGN KEY (product_id) REFERENCES products (product_id)
-     */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_record_id")
