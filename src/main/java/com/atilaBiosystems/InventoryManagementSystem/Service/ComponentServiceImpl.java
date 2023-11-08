@@ -37,6 +37,11 @@ public class ComponentServiceImpl implements ComponentService{
     }
 
     @Override
+    public List<Component> findAll() {
+        return componentRepository.findAll();
+    }
+
+    @Override
     public List<RecipeItem> getRecipeItemsByComponentId(int componentId) {
         Component component = componentRepository.findById(componentId).orElse(null);
         if (component != null) {

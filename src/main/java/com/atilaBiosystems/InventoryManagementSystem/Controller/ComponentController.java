@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
@@ -24,6 +25,11 @@ public class ComponentController {
 
     // Additional custom endpoints, if needed
     // For example, you can define custom search or business logic endpoints here.
+
+    @GetMapping()
+    public List<Component> findAll(){
+        return componentService.findAll();
+    }
 
     @GetMapping("/manufacture/{componentId}")
     public List<CustomRecipeItem> getRecipeByComponentId(
