@@ -60,6 +60,7 @@ public class ComponentServiceImpl implements ComponentService{
     public List<CustomRecipeItem> getRecipeByComponentId(int componentId, Integer scale) {
         Component component = this.findById(componentId);
         List<CustomRecipeItem> recipe = new ArrayList<>();
+        int id = 1;
 
         List<Prerequisite> prerequisites = component.getPrerequisites();
         for (Prerequisite pre: prerequisites){
@@ -70,17 +71,19 @@ public class ComponentServiceImpl implements ComponentService{
             for (ComponentRecord tempCR: crs){
                 amount = Math.max(tempCR.getAmountInStock(), amount);
             }
-            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentName(), vol,
+            CustomRecipeItem currItem = new CustomRecipeItem(id, i_component.getComponentName(), vol,
                     vol*scale, amount >= vol*scale);
             recipe.add(currItem);
+            id++;
         }
 
         List<RecipeItem> recipeItems = this.getRecipeItemsByComponentId(componentId);
         for (RecipeItem item: recipeItems) {
-            CustomRecipeItem currItem = new CustomRecipeItem(item.getName(), item.getAmountPerRxn(),
+            CustomRecipeItem currItem = new CustomRecipeItem(id, item.getName(), item.getAmountPerRxn(),
                     item.getAmountPerRxn()*scale,
                     item.getMaterial().getAmountInStock() >= item.getAmountPerRxn()*scale);
             recipe.add(currItem);
+            id++;
         }
         return recipe;
     }
