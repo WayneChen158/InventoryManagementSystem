@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.RawMaterialDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,21 @@ public class RawMaterialController {
             @RequestParam(value = "groupName", required = false) Integer groupName) {
         // Implement filtering and searching logic in the service
         return rawMaterialService.filterRawMaterials(searchKeyword, manufacturer, groupName);
+    }
+
+    // Add a new RawMaterial entry to the database
+    @PostMapping("/rawMaterials")
+    public RawMaterial addNewMaterial(@RequestBody RawMaterialDAO rawMaterialDAO){
+        RawMaterial rawMaterial = new RawMaterial();
+        rawMaterial.setGroupName(rawMaterialDAO.getRawMaterialType());
+        rawMaterial.setCatalogNumber(rawMaterialDAO.getCatlogNumber());
+        rawMaterial.setDescription(rawMaterialDAO.getItemName());
+        rawMaterial.setManufacturer(rawMaterialDAO.getVendor());
+        rawMaterial.setConcentration(null);
+        rawMaterial.setReceiveDate(null);
+        rawMaterial.setThreshold(rawMaterialDAO.getAlertAmount());
+        rawMaterial.setAmountInStock(rawMaterialDAO.getAmount());
+        return this.rawMaterialService.createRawMaterial(rawMaterial);
     }
 
     // GET /api/rawMaterials : get all the RawMaterials

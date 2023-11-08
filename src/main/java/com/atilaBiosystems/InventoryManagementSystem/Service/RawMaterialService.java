@@ -11,9 +11,9 @@ public interface RawMaterialService {
     public List<RawMaterial> filterRawMaterials(
             String searchKeyword, String manufacturer, Integer groupName);
 
-//    public RawMaterial createRawMaterial(RawMaterial rawMaterial);
-//
-//    public RawMaterial updateRawMaterialById(Integer materialId, RawMaterial updatedRawMaterial);
+    public RawMaterial createRawMaterial(RawMaterial rawMaterial);
+
+    //    public RawMaterial updateRawMaterialById(Integer materialId, RawMaterial updatedRawMaterial);
 
     List<RawMaterial> findAll();
 }
