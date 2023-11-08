@@ -27,4 +27,9 @@ public class RawMaterialServiceImpl implements RawMaterialService{
         return rawMaterialsRepository.findAll();
     }
 
+    @Override
+    public RawMaterial createRawMaterial(RawMaterial rawMaterial) {
+        return this.rawMaterialsRepository.save(rawMaterial);
+    }
+
 }
