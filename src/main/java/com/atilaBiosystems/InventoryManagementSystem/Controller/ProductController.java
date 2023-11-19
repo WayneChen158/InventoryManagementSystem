@@ -54,7 +54,6 @@ public class ProductController {
             @PathVariable int manufactureRecordId,
             @RequestParam(value = "scale", required = false) Integer scale){
         productService.checkComponentinventoryWithScale(manufactureRecordId, scale);
-        productService.finishManufacture(manufactureRecordId, scale);
 
     }
 

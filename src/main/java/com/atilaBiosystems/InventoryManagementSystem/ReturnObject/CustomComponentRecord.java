@@ -12,6 +12,7 @@ public class CustomComponentRecord {
     public String lotNumber;
     public Date manufactureDate;
     public int amountInStock;
+    public String type;
 
     public CustomComponentRecord(ComponentRecord componentRecord) {
         this.componentRecordId = componentRecord.getComponentRecordId();
@@ -20,5 +21,6 @@ public class CustomComponentRecord {
         this.lotNumber = componentRecord.getLotNumber();
         this.manufactureDate = componentRecord.getManufactureDate();
         this.amountInStock = componentRecord.getAmountInStock();
+        this.type = "component";
     }
 }

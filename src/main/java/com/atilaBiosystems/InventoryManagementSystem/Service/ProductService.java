@@ -23,6 +23,4 @@ public interface ProductService {
     //Only put manufacture record in the DB, manufacture record should be updated right before 'Done' manufacture
     ManufactureRecord putInManufactureLine(Integer productId, Integer scale);
 
-    void finishManufacture(Integer manufactureRecordId, Integer scale);
-
 }
