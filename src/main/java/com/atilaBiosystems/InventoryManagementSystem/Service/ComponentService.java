@@ -20,6 +20,8 @@ public interface ComponentService {
      * DELETE	/api/tutorials/:id	            delete a Tutorial (and its Comments) by :id
      * DELETE	/api/tutorials/:id/comments	    delete all Comments of a Tutorial
      */
+    List<Component> findAll();
+
     List<RecipeItem> getRecipeItemsByComponentId(int componentId);
 
     Component findById(int componentId);

@@ -37,6 +37,11 @@ public class ComponentServiceImpl implements ComponentService{
     }
 
     @Override
+    public List<Component> findAll() {
+        return componentRepository.findAll();
+    }
+
+    @Override
     public List<RecipeItem> getRecipeItemsByComponentId(int componentId) {
         Component component = componentRepository.findById(componentId).orElse(null);
         if (component != null) {
@@ -65,14 +70,14 @@ public class ComponentServiceImpl implements ComponentService{
             for (ComponentRecord tempCR: crs){
                 amount = Math.max(tempCR.getAmountInStock(), amount);
             }
-            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentName(), vol,
+            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentId(), i_component.getComponentName(),"component", vol,
                     vol*scale, amount >= vol*scale);
             recipe.add(currItem);
         }
 
         List<RecipeItem> recipeItems = this.getRecipeItemsByComponentId(componentId);
         for (RecipeItem item: recipeItems) {
-            CustomRecipeItem currItem = new CustomRecipeItem(item.getName(), item.getAmountPerRxn(),
+            CustomRecipeItem currItem = new CustomRecipeItem(item.getMaterial().getMaterialId(), item.getName(),"raw material", item.getAmountPerRxn(),
                     item.getAmountPerRxn()*scale,
                     item.getMaterial().getAmountInStock() >= item.getAmountPerRxn()*scale);
             recipe.add(currItem);
@@ -194,7 +199,11 @@ public class ComponentServiceImpl implements ComponentService{
                 }
             }
             manufactureRecord.setStatus(2);
-            manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
+            if (manufactureRecord.getComponentRecord() != null){
+                manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
+            } else {
+                manufactureRecord.getProductRecord().setAmountInStock(updateScale);
+            }
             return rawMaterials;
         } else {
             throw new EntityNotFoundException("ManufactureRecord not found");

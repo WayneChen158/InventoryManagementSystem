@@ -9,4 +9,8 @@ public interface ManufactureRecordService {
     List<ManufactureRecord> findAll();
 
     List<ManufactureRecord> findByStatus(Integer status);
+
+    void finishManufacture(Integer manufactureRecordId, Integer updateScale);
+
+    void cancelManufacture(Integer manufactureRecordId);
 }

@@ -52,13 +52,17 @@ public class ProductServiceImpl implements ProductService{
         Product product = productRepository.findById(productId).orElse(null);
 
         for (Component com: product.getComponents()){
-            int currSize = comLst.size();
+//            int currSize = comLst.size();
+            int min = Integer.MAX_VALUE;
+            ComponentRecord curr = null;
             for (ComponentRecord comRecord: com.getComponentRecords()) {
-                if (comRecord.getAmountInStock() > 0) {
-                    comLst.add(new CustomComponentRecord(comRecord));
+                if (comRecord.getAmountInStock() > 0 && comRecord.getAmountInStock() < min) {
+                    min = comRecord.getAmountInStock();
+                    curr = comRecord;
                 }
-            }
-            if (comLst.size() == currSize){
+            } if (curr != null) {
+                comLst.add(new CustomComponentRecord(curr));
+            } else{
                 ComponentRecord needToManufacture = new ComponentRecord(com.getComponentName(),
                         null, null, 0);
                 needToManufacture.setComponent(com);
@@ -148,21 +152,5 @@ public class ProductServiceImpl implements ProductService{
 
         manufactureRecordRepository.save(currManufactureRecord);
         return currManufactureRecord;
-    }
-
-    @Override
-    @Transactional
-    public void finishManufacture(Integer manufactureRecordId, Integer updateScale) {
-        ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
-
-        for (ManufactureRecordDetail currManDetail: manufactureRecord.getRecordDetails()){
-            ComponentRecord cr = currManDetail.getComponentRecord();
-            Double amount = currManDetail.getTotalVol();
-            cr.setAmountInStock((int)(cr.getAmountInStock() - amount));
-
-        }
-
-        manufactureRecord.setStatus(2);
-        manufactureRecord.getProductRecord().setAmountInStock(updateScale);
     }
 }
