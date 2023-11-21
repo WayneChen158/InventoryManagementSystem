@@ -153,4 +153,9 @@ public class ProductServiceImpl implements ProductService{
         manufactureRecordRepository.save(currManufactureRecord);
         return currManufactureRecord;
     }
+
+    @Override
+    public List<ProductRecord> findByAmountInStockGreaterThan() {
+        return productRecordRepository.findByAmountInStockGreaterThan(0);
+    }
 }
