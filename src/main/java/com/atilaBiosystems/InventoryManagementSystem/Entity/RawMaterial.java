@@ -23,6 +23,12 @@ public class RawMaterial {
     private Double concentration;
     @Column(name="receive_date")
     private Date receiveDate;
+    @Column(name="location")
+    private String location;
+    @Column(name="owner")
+    private String owner;
+    @Column(name="website")
+    private String website;
     @Column(name="threshold")
     private Integer threshold;
     @Column(name="amount_in_stock")
@@ -101,6 +107,30 @@ public class RawMaterial {
 
     public void setReceiveDate(Date receiveDate) {
         this.receiveDate = receiveDate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public Integer getThreshold() {

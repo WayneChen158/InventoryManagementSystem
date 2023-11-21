@@ -1,4 +1,5 @@
 SHOW DATABASES;
+CREATE DATABASE AtilaInventoryDB;
 USE AtilaInventoryDB;
 
 DROP TABLE raw_materials;
@@ -11,6 +12,9 @@ CREATE TABLE raw_materials (
     manufacturer VARCHAR(50) NOT NULL,
     concentration DOUBLE,
     receive_date DATE,
+    location VARCHAR(50),
+    owner VARCHAR(50),
+    website VARCHAR(255),
     threshold INT NOT NULL,
     amount_in_stock INT NOT NULL,
     PRIMARY KEY (material_id)
@@ -163,8 +167,8 @@ CREATE TABLE manufacture_record_details (
     FOREIGN KEY (manufacture_record_id) REFERENCES manufacture_records (manufacture_record_id)
 );
 
--- SET FOREIGN_KEY_CHECKS = 0;
--- SET FOREIGN_KEY_CHECKS = 1;
+SET FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 1;
 
 
 
