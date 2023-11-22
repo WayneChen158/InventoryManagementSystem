@@ -4,13 +4,17 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 @Entity
-@Table(name = "raw_materials")
-public class RawMaterial {
+@Table(name = "RD_materials")
+public class RDMaterial {
     // Define fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="material_id")
-    private int materialId;
+    private int rdMaterialId;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="p_material_id")
+    private RawMaterial material;
     @Column(name = "category")
     private Integer category;
     @Column(name="group_name")
@@ -37,30 +41,30 @@ public class RawMaterial {
     private Integer amountInStock;
 
     // Define constructors
-    public RawMaterial() {
+
+    public RDMaterial() {
 
     }
 
-    public RawMaterial(int groupName, String catalogNumber, String description,
-                       String manufacturer, Double concentration, Date receiveDate,
-                       Integer threshold, Integer amountInStock) {
-        this.groupName = groupName;
-        this.catalogNumber = catalogNumber;
-        this.description = description;
-        this.manufacturer = manufacturer;
-        this.concentration = concentration;
-        this.receiveDate = receiveDate;
-        this.threshold = threshold;
+    public RDMaterial(RawMaterial material, Integer amountInStock) {
+        this.material = material;
         this.amountInStock = amountInStock;
     }
 
-    // Define getters/setters
-    public int getMaterialId() {
-        return materialId;
+    public int getRdMaterialId() {
+        return rdMaterialId;
     }
 
-    public void setMaterialId(int materialId) {
-        this.materialId = materialId;
+    public void setRdMaterialId(int rdMaterialId) {
+        this.rdMaterialId = rdMaterialId;
+    }
+
+    public RawMaterial getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(RawMaterial material) {
+        this.material = material;
     }
 
     public Integer getCategory() {
@@ -157,18 +161,5 @@ public class RawMaterial {
 
     public void setAmountInStock(Integer amountInStock) {
         this.amountInStock = amountInStock;
-    }
-
-    // Define toString() method
-
-    @Override
-    public String toString() {
-        String s = groupName == 1 ? "Chemicals" : "Oligos";
-        return "RawMaterials{" +
-                "materialId=" + materialId +
-                ", groupName=" + s +
-                ", description='" + description + '\'' +
-                ", amountInStock=" + amountInStock +
-                '}';
     }
 }

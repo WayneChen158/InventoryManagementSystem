@@ -4,8 +4,29 @@ USE AtilaInventoryDB;
 
 DROP TABLE raw_materials;
 
+CREATE TABLE requests (
+    request_id INT NOT NULL AUTO_INCREMENT,
+    item_description VARCHAR(255),
+    request_category INT,
+	project VARCHAR(255),
+    project_description VARCHAR(255),
+    purpose INT,
+    request_by VARCHAR(50),
+    done_by VARCHAR(50),
+    request_amount DOUBLE,
+    fulfilled_amount DOUBLE,
+    price_per_unit DOUBLE,
+    request_date DATE,
+    fulfilled_date DATE,
+    status INT CHECK (status IN (1, 2)),
+    material_id INT,
+    PRIMARY KEY (request_id),
+    FOREIGN KEY (material_id) REFERENCES raw_materials (material_id)
+);
+
 CREATE TABLE raw_materials (
     material_id INT NOT NULL AUTO_INCREMENT,
+    category INT,
     group_name INT CHECK (group_name IN (1, 2)),
     catalog_num VARCHAR(50) NOT NULL,
     description VARCHAR(255) NOT NULL,
@@ -18,6 +39,25 @@ CREATE TABLE raw_materials (
     threshold INT NOT NULL,
     amount_in_stock INT NOT NULL,
     PRIMARY KEY (material_id)
+);
+
+CREATE TABLE RD_materials (
+    RD_material_id INT NOT NULL AUTO_INCREMENT,
+    p_material_id INT,
+    category INT,
+    group_name INT CHECK (group_name IN (1, 2)),
+    catalog_num VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    manufacturer VARCHAR(50) NOT NULL,
+    concentration DOUBLE,
+    receive_date DATE,
+    location VARCHAR(50),
+    owner VARCHAR(50),
+    website VARCHAR(255),
+    threshold INT NOT NULL,
+    amount_in_stock INT NOT NULL,
+    PRIMARY KEY (RD_material_id),
+    FOREIGN KEY (p_material_id) REFERENCES raw_materials (material_id)
 );
 
 CREATE TABLE `users` (

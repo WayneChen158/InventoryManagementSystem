@@ -3,6 +3,7 @@ package com.atilaBiosystems.InventoryManagementSystem.Controller;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Product;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.ProductRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomComponentRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ProductService;
@@ -26,6 +27,11 @@ public class ProductController {
     @GetMapping()
     public List<Product> getAllProducts() {
         return productService.findAll();
+    }
+
+    @GetMapping("/inStock")
+    public List<ProductRecord> getAllInStockProducts() {
+        return productService.findByAmountInStockGreaterThan();
     }
 
     @GetMapping("/components/{productId}")
