@@ -1,8 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
-import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ComponentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +27,11 @@ public class ComponentController {
     @GetMapping()
     public List<Component> findAll(){
         return componentService.findAll();
+    }
+
+    @GetMapping("/inStock")
+    public List<ComponentRecord> getAllInStockProducts() {
+        return componentService.findByAmountInStockGreaterThan();
     }
 
     @GetMapping("/manufacture/{componentId}")

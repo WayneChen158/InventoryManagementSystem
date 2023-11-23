@@ -4,6 +4,23 @@ USE AtilaInventoryDB;
 
 DROP TABLE raw_materials;
 
+CREATE TABLE raw_materials (
+    material_id INT NOT NULL AUTO_INCREMENT,
+    category INT,
+    group_name INT CHECK (group_name IN (1, 2)),
+    catalog_num VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    manufacturer VARCHAR(50) NOT NULL,
+    concentration DOUBLE,
+    receive_date DATE,
+    location VARCHAR(50),
+    owner VARCHAR(50),
+    website VARCHAR(255),
+    threshold INT NOT NULL,
+    amount_in_stock INT NOT NULL,
+    PRIMARY KEY (material_id)
+);
+
 CREATE TABLE requests (
     request_id INT NOT NULL AUTO_INCREMENT,
     item_description VARCHAR(255),
@@ -22,23 +39,6 @@ CREATE TABLE requests (
     material_id INT,
     PRIMARY KEY (request_id),
     FOREIGN KEY (material_id) REFERENCES raw_materials (material_id)
-);
-
-CREATE TABLE raw_materials (
-    material_id INT NOT NULL AUTO_INCREMENT,
-    category INT,
-    group_name INT CHECK (group_name IN (1, 2)),
-    catalog_num VARCHAR(50) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    manufacturer VARCHAR(50) NOT NULL,
-    concentration DOUBLE,
-    receive_date DATE,
-    location VARCHAR(50),
-    owner VARCHAR(50),
-    website VARCHAR(255),
-    threshold INT NOT NULL,
-    amount_in_stock INT NOT NULL,
-    PRIMARY KEY (material_id)
 );
 
 CREATE TABLE RD_materials (

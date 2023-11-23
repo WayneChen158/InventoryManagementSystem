@@ -16,4 +16,6 @@ public interface RawMaterialService {
     //    public RawMaterial updateRawMaterialById(Integer materialId, RawMaterial updatedRawMaterial);
 
     List<RawMaterial> findAll();
+
+    List<RawMaterial> findByCategory(Integer category);
 }

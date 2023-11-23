@@ -26,6 +26,11 @@ public class RawMaterialController {
         return rawMaterialService.findAll();
     }
 
+    @GetMapping("/consumables")
+    public List<RawMaterial> getConsumables(){
+        return rawMaterialService.findByCategory(1);
+    }
+
     // Additional custom endpoints, if needed
     // For example, you can define custom search or business logic endpoints here.
     @GetMapping("/filter")
