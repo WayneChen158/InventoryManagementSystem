@@ -19,4 +19,6 @@ public interface RawMaterialsRepository extends JpaRepository<RawMaterial, Integ
             @Param("manufacturer") String manufacturer,
             @Param("groupName") Integer groupName
     );
+
+    List<RawMaterial> findByCatalogNumber(String catalogNumber);
 }
