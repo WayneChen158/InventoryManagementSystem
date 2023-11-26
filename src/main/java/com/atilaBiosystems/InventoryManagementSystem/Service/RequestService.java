@@ -8,4 +8,6 @@ public interface RequestService {
     List<Request> findAll();
 
     Request findById(int requestId);
+
+    Request createRequest(Request request);
 }

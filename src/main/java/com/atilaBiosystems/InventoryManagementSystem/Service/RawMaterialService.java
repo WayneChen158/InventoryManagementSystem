@@ -8,14 +8,18 @@ public interface RawMaterialService {
 
     // Additional custom service methods, if needed
     // To Define methods that go beyond basic CRUD operations here.
-    public List<RawMaterial> filterRawMaterials(
-            String searchKeyword, String manufacturer, Integer groupName);
+    List<RawMaterial> filterRawMaterials(
+        String searchKeyword, String manufacturer, Integer groupName);
 
-    public RawMaterial createRawMaterial(RawMaterial rawMaterial);
+    RawMaterial createRawMaterial(RawMaterial rawMaterial);
 
     //    public RawMaterial updateRawMaterialById(Integer materialId, RawMaterial updatedRawMaterial);
 
     List<RawMaterial> findAll();
 
-    List<RawMaterial> findByCategory(Integer category);
+    // When adding a new request, check whether the requested item
+    // is already in raw_materials table by input catalog number
+    // When more than 1 items are returned with the same catalog number,
+    // try to match with the item description
+    RawMaterial findByCatalogNumber(String catalogNumber, String itemDescription);
 }

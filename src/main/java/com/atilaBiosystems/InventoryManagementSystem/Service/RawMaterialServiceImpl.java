@@ -37,4 +37,28 @@ public class RawMaterialServiceImpl implements RawMaterialService{
         return this.rawMaterialsRepository.save(rawMaterial);
     }
 
+    @Override
+    public RawMaterial findByCatalogNumber(String catalogNumber, String itemDescription) {
+        System.out.println(catalogNumber);
+        List<RawMaterial> candidates = this.rawMaterialsRepository.findByCatalogNumber(catalogNumber);
+        if (candidates != null && candidates.size() == 1) {
+            System.out.println("Existing raw material found!");
+            System.out.println(candidates.get(0).getDescription());
+            System.out.println(candidates.get(0).getMaterialId());
+            return candidates.get(0);
+        } else if (candidates != null && candidates.size() > 1) {
+            System.out.println("More than 1 items found");
+            for (RawMaterial candidate : candidates) {
+                if (candidate.getDescription().equals(itemDescription)) {
+                    System.out.println(candidate.getDescription());
+                    System.out.println(candidate.getMaterialId());
+                    return candidate;
+                }
+            }
+            return null;
+        } else {
+            System.out.println("No item found");
+            return null;
+        }
+    }
 }
