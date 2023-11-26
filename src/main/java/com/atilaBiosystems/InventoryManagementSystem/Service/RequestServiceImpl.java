@@ -26,4 +26,9 @@ public class RequestServiceImpl implements RequestService{
         Request request = requestRepository.findById(requestId).orElse(null);
         return request;
     }
+
+    @Override
+    public Request createRequest(Request request) {
+        return this.requestRepository.save(request);
+    }
 }
