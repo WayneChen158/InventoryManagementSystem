@@ -1,9 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
-import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.RecipeItem;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomRecipeItem;
 
 import java.util.List;
@@ -21,6 +18,8 @@ public interface ComponentService {
      * DELETE	/api/tutorials/:id/comments	    delete all Comments of a Tutorial
      */
     List<Component> findAll();
+
+    List<ComponentRecord> findByAmountInStockGreaterThan();
 
     List<RecipeItem> getRecipeItemsByComponentId(int componentId);
 

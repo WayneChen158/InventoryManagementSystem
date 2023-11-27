@@ -14,6 +14,9 @@ public class ProductRecord {
     @Column(name="product_record_id")
     private int productRecordId;
 
+    @Column(name="product_catalog")
+    private String productCatalog;
+
     @Column(name="product_name")
     private String productName;
 
@@ -33,7 +36,8 @@ public class ProductRecord {
 
     public ProductRecord() {}
 
-    public ProductRecord(String productName, String lotNumber, Date manufactureDate, int amountInStock) {
+    public ProductRecord(String productCatalog, String productName, String lotNumber, Date manufactureDate, int amountInStock) {
+        this.productCatalog = productCatalog;
         this.productName = productName;
         this.lotNumber = lotNumber;
         this.manufactureDate = manufactureDate;
@@ -46,6 +50,14 @@ public class ProductRecord {
 
     public void setProductRecordId(int productRecordId) {
         this.productRecordId = productRecordId;
+    }
+
+    public String getProductCatalog() {
+        return productCatalog;
+    }
+
+    public void setProductCatalog(String productCatalog) {
+        this.productCatalog = productCatalog;
     }
 
     public String getProductName() {

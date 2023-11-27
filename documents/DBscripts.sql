@@ -4,6 +4,23 @@ USE AtilaInventoryDB;
 
 DROP TABLE raw_materials;
 
+CREATE TABLE raw_materials (
+    material_id INT NOT NULL AUTO_INCREMENT,
+    category INT,
+    group_name INT CHECK (group_name IN (1, 2)),
+    catalog_num VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    manufacturer VARCHAR(50) NOT NULL,
+    concentration DOUBLE,
+    receive_date DATE,
+    location VARCHAR(50),
+    owner VARCHAR(50),
+    website VARCHAR(255),
+    threshold INT NOT NULL,
+    amount_in_stock INT NOT NULL,
+    PRIMARY KEY (material_id)
+);
+
 CREATE TABLE requests (
     request_id INT NOT NULL AUTO_INCREMENT,
     item_description VARCHAR(255),
@@ -22,23 +39,6 @@ CREATE TABLE requests (
     material_id INT,
     PRIMARY KEY (request_id),
     FOREIGN KEY (material_id) REFERENCES raw_materials (material_id)
-);
-
-CREATE TABLE raw_materials (
-    material_id INT NOT NULL AUTO_INCREMENT,
-    category INT,
-    group_name INT CHECK (group_name IN (1, 2)),
-    catalog_num VARCHAR(50) NOT NULL,
-    description VARCHAR(255) NOT NULL,
-    manufacturer VARCHAR(50) NOT NULL,
-    concentration DOUBLE,
-    receive_date DATE,
-    location VARCHAR(50),
-    owner VARCHAR(50),
-    website VARCHAR(255),
-    threshold INT NOT NULL,
-    amount_in_stock INT NOT NULL,
-    PRIMARY KEY (material_id)
 );
 
 CREATE TABLE RD_materials (
@@ -114,14 +114,16 @@ DROP TABLE intermediate_components;
 
 CREATE TABLE products (
 	product_id INT NOT NULL AUTO_INCREMENT,
-    product_name VARCHAR(100),
+    product_catalog VARCHAR(50),
+    product_name VARCHAR(150),
     version_description VARCHAR(255),
     PRIMARY KEY (product_id)
 );
 
 CREATE TABLE product_records (
 	product_record_id INT NOT NULL AUTO_INCREMENT,
-    product_name VARCHAR(100),
+    product_catalog VARCHAR(50),
+    product_name VARCHAR(150),
     product_id INT,
     lot_number VARCHAR(50),
     manufacture_date DATE,
@@ -132,6 +134,7 @@ CREATE TABLE product_records (
 
 CREATE TABLE components (
     component_id INT NOT NULL AUTO_INCREMENT,
+    component_catalog VARCHAR(50),
     component_name VARCHAR(50) NOT NULL,
 	version_description VARCHAR(255),
     PRIMARY KEY (component_id)
@@ -139,6 +142,7 @@ CREATE TABLE components (
 
 CREATE TABLE component_records (
 	component_record_id INT NOT NULL AUTO_INCREMENT,
+    component_catalog VARCHAR(50),
     component_name VARCHAR(100),
     component_id INT,
     lot_number VARCHAR(50),

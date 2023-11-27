@@ -13,6 +13,9 @@ public class Component {
     @Column(name = "component_id")
     private Integer componentId;
 
+    @Column(name = "component_catalog")
+    private String componentCatalog;
+
     @Column(name = "component_name")
     private String componentName;
 
@@ -45,7 +48,8 @@ public class Component {
 
     public Component() {};
 
-    public Component(String componentName, String versionDescription) {
+    public Component(String componentCatalog, String componentName, String versionDescription) {
+        this.componentCatalog = componentCatalog;
         this.componentName = componentName;
         this.versionDescription = versionDescription;
     }
@@ -56,6 +60,14 @@ public class Component {
 
     public void setComponentId(Integer componentId) {
         this.componentId = componentId;
+    }
+
+    public String getComponentCatalog() {
+        return componentCatalog;
+    }
+
+    public void setComponentCatalog(String componentCatalog) {
+        this.componentCatalog = componentCatalog;
     }
 
     public String getComponentName() {

@@ -42,6 +42,11 @@ public class ComponentServiceImpl implements ComponentService{
     }
 
     @Override
+    public List<ComponentRecord> findByAmountInStockGreaterThan() {
+        return componentRecordRepository.findByAmountInStockGreaterThan(0);
+    }
+
+    @Override
     public List<RecipeItem> getRecipeItemsByComponentId(int componentId) {
         Component component = componentRepository.findById(componentId).orElse(null);
         if (component != null) {
@@ -97,7 +102,7 @@ public class ComponentServiceImpl implements ComponentService{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String lotNum = sdf.format(currentDate);
 
-        ComponentRecord latestComponentRecord = new ComponentRecord(component.getComponentName(),
+        ComponentRecord latestComponentRecord = new ComponentRecord(component.getComponentCatalog(),component.getComponentName(),
                 lotNum, currentDate, 0); // Scale should be 0 before done the manufacture
 
         latestComponentRecord.setComponent(component);

@@ -9,6 +9,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import java.util.List;
 
 public interface RawMaterialsRepository extends JpaRepository<RawMaterial, Integer> {
+
+    List<RawMaterial> findByCategory(Integer category);
+
     // Find raw materials based on search keyword, manufacturer, and group name
     @Query("SELECT rm FROM RawMaterial rm WHERE " +
             "((:searchKeyword is NULL OR LOWER(rm.description) LIKE %:searchKeyword%) AND " +

@@ -15,6 +15,9 @@ public class ComponentRecord {
     @Column(name="component_record_id")
     private Integer ComponentRecordId;
 
+    @Column(name="component_catalog")
+    private String componentCatalog;
+
     @Column(name="component_name")
     private String componentName;
 
@@ -34,7 +37,8 @@ public class ComponentRecord {
 
     public ComponentRecord() {}
 
-    public ComponentRecord(String componentName, String lotNumber, Date manufactureDate, int amountInStock) {
+    public ComponentRecord(String componentCatalog, String componentName, String lotNumber, Date manufactureDate, int amountInStock) {
+        this.componentCatalog = componentCatalog;
         this.componentName = componentName;
         this.lotNumber = lotNumber;
         this.manufactureDate = manufactureDate;
@@ -47,6 +51,14 @@ public class ComponentRecord {
 
     public void setComponentRecordId(Integer componentRecordId) {
         ComponentRecordId = componentRecordId;
+    }
+
+    public String getComponentCatalog() {
+        return componentCatalog;
+    }
+
+    public void setComponentCatalog(String componentCatalog) {
+        this.componentCatalog = componentCatalog;
     }
 
     public String getComponentName() {

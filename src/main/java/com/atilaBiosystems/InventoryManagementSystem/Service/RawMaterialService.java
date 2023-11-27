@@ -17,6 +17,8 @@ public interface RawMaterialService {
 
     List<RawMaterial> findAll();
 
+    List<RawMaterial> findByCategory(Integer category);
+
     // When adding a new request, check whether the requested item
     // is already in raw_materials table by input catalog number
     // When more than 1 items are returned with the same catalog number,

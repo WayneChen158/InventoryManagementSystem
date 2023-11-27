@@ -63,7 +63,7 @@ public class ProductServiceImpl implements ProductService{
             } if (curr != null) {
                 comLst.add(new CustomComponentRecord(curr));
             } else{
-                ComponentRecord needToManufacture = new ComponentRecord(com.getComponentName(),
+                ComponentRecord needToManufacture = new ComponentRecord(com.getComponentCatalog(),com.getComponentName(),
                         null, null, 0);
                 needToManufacture.setComponent(com);
                 comLst.add(new CustomComponentRecord(needToManufacture));
@@ -102,7 +102,7 @@ public class ProductServiceImpl implements ProductService{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         String lotNum = sdf.format(currentDate);
 
-        ProductRecord latestProductRecord = new ProductRecord(product.getProductName(),
+        ProductRecord latestProductRecord = new ProductRecord(product.getProductCatalog(),product.getProductName(),
                 lotNum, currentDate, 0);
 
         latestProductRecord.setProduct(product);
