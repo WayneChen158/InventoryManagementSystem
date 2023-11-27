@@ -13,8 +13,15 @@ public class Request {
     @Column(name = "request_id")
     private int requestId;
 
+    @Column(name = "item_catalog")
+    private String itemCatalog;
+
     @Column(name = "item_description")
     private String itemDescription;
+
+    @Column(name = "item_URL")
+    private String itemURL;
+
 
     @Column(name = "request_category")
     private Integer requestCategory;
@@ -53,7 +60,7 @@ public class Request {
     private Integer status;
 
     @Column(name = "material_id")
-    private int materialId;
+    private Integer materialId;
 
     // Define constructors
     public Request(){}
@@ -88,6 +95,26 @@ public class Request {
 
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
+    }
+
+    public String getItemCatalog() {
+        return itemCatalog;
+    }
+
+    public void setItemCatalog(String itemCatalog) {
+        this.itemCatalog = itemCatalog;
+    }
+
+    public String getItemURL() {
+        return itemURL;
+    }
+
+    public void setItemURL(String itemURL) {
+        this.itemURL = itemURL;
+    }
+
+    public void setMaterialId(Integer materialId) {
+        this.materialId = materialId;
     }
 
     public Integer getRequestCategory() {
@@ -184,13 +211,5 @@ public class Request {
 
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    public int getMaterialId() {
-        return materialId;
-    }
-
-    public void setMaterialId(int materialId) {
-        this.materialId = materialId;
     }
 }
