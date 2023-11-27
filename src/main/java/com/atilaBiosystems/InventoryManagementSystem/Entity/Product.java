@@ -11,6 +11,9 @@ public class Product {
     @Column(name = "product_id")
     private int productId;
 
+    @Column(name = "product_catalog")
+    private String productCatalog;
+
     @Column(name = "product_name")
     private String productName;
 
@@ -34,7 +37,8 @@ public class Product {
 
     public Product(){}
 
-    public Product(String productName, String versionDescription) {
+    public Product(String productCatalog, String productName, String versionDescription) {
+        this.productCatalog = productCatalog;
         this.productName = productName;
         this.versionDescription = versionDescription;
     }
@@ -45,6 +49,14 @@ public class Product {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String getProductCatalog() {
+        return productCatalog;
+    }
+
+    public void setProductCatalog(String productCatalog) {
+        this.productCatalog = productCatalog;
     }
 
     public String getProductName() {

@@ -114,14 +114,16 @@ DROP TABLE intermediate_components;
 
 CREATE TABLE products (
 	product_id INT NOT NULL AUTO_INCREMENT,
-    product_name VARCHAR(100),
+    product_catalog VARCHAR(50),
+    product_name VARCHAR(150),
     version_description VARCHAR(255),
     PRIMARY KEY (product_id)
 );
 
 CREATE TABLE product_records (
 	product_record_id INT NOT NULL AUTO_INCREMENT,
-    product_name VARCHAR(100),
+    product_catalog VARCHAR(50),
+    product_name VARCHAR(150),
     product_id INT,
     lot_number VARCHAR(50),
     manufacture_date DATE,
@@ -132,6 +134,7 @@ CREATE TABLE product_records (
 
 CREATE TABLE components (
     component_id INT NOT NULL AUTO_INCREMENT,
+    component_catalog VARCHAR(50),
     component_name VARCHAR(50) NOT NULL,
 	version_description VARCHAR(255),
     PRIMARY KEY (component_id)
@@ -139,6 +142,7 @@ CREATE TABLE components (
 
 CREATE TABLE component_records (
 	component_record_id INT NOT NULL AUTO_INCREMENT,
+    component_catalog VARCHAR(50),
     component_name VARCHAR(100),
     component_id INT,
     lot_number VARCHAR(50),
