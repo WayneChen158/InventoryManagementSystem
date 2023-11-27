@@ -22,7 +22,6 @@ public class Request {
     @Column(name = "item_URL")
     private String itemURL;
 
-
     @Column(name = "request_category")
     private Integer requestCategory;
 
