@@ -31,4 +31,13 @@ public class RequestServiceImpl implements RequestService{
     public Request createRequest(Request request) {
         return this.requestRepository.save(request);
     }
+
+    @Override
+    public boolean deleteRequestById(int requestId) {
+        if (this.findById(requestId) != null) {
+            this.requestRepository.deleteById(requestId);
+            return true;
+        }
+        return false;
+    }
 }
