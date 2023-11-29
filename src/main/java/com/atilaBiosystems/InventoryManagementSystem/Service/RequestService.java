@@ -10,4 +10,6 @@ public interface RequestService {
     Request findById(int requestId);
 
     Request createRequest(Request request);
+
+    boolean deleteRequestById(int requestId);
 }
