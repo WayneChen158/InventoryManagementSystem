@@ -55,10 +55,12 @@ public class RequestController {
     public ResponseEntity<String> addNewRequest(@RequestBody RequestDAO requestDAO) {
         Request request = new Request();
 
+        request.setItemCatalog(requestDAO.getCatalogNumber());
         request.setItemDescription(requestDAO.getItemDescription());
         request.setRequestCategory(requestDAO.getRequestCategory());
         request.setProject(requestDAO.getProject());
         request.setProjectDescription(null);
+        request.setItemURL(requestDAO.getItemURL());
         request.setPurpose(requestDAO.getPurpose());
         request.setRequestBy(requestDAO.getRequestBy());
         request.setDoneBy(null);
