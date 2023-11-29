@@ -6,7 +6,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,14 +40,27 @@ public class RequestController {
         return this.requestService.findAll();
     }
 
+    @DeleteMapping("/delete/{requestId}")
+    public ResponseEntity<String> deleteRequestById(@PathVariable int requestId) {
+        boolean success = requestService.deleteRequestById(requestId);
+        if (success) {
+            return ResponseEntity.ok().body(String.format("Request ID %d has been successfully deleted", requestId));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to delete request ID %d...", requestId));
+        }
+
+    }
+
     @PostMapping("/add")
-    public Request addNewRequest(@RequestBody RequestDAO requestDAO) {
+    public ResponseEntity<String> addNewRequest(@RequestBody RequestDAO requestDAO) {
         Request request = new Request();
 
+        request.setItemCatalog(requestDAO.getCatalogNumber());
         request.setItemDescription(requestDAO.getItemDescription());
         request.setRequestCategory(requestDAO.getRequestCategory());
         request.setProject(requestDAO.getProject());
         request.setProjectDescription(null);
+        request.setItemURL(requestDAO.getItemURL());
         request.setPurpose(requestDAO.getPurpose());
         request.setRequestBy(requestDAO.getRequestBy());
         request.setDoneBy(null);
@@ -78,7 +95,13 @@ public class RequestController {
             request.setMaterialId(1);
         }
 
-        return this.requestService.createRequest(request);
+        Request newRequest = requestService.createRequest(request);
+
+        if (newRequest != null) {
+            return ResponseEntity.ok().body(String.format("Request for %s has been recorded", itemDescription));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to create request for %s", itemDescription));
+        }
     }
   
 }
