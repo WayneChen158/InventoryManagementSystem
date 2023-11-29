@@ -63,6 +63,13 @@ public class ProductController {
 
     }
 
+    @PutMapping("/updateStock/{productRecordId}")
+    public void updateStock(
+            @PathVariable int productRecordId,
+            @RequestParam(value = "updateStock", required = false) Integer updateStock) {
+        productService.updateStock(productRecordId, updateStock);
+    }
+
     @ExceptionHandler(MissingComponentException.class)
     public ResponseEntity<String> handleNullComponentException(MissingComponentException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);

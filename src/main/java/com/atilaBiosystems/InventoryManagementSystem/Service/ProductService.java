@@ -25,4 +25,6 @@ public interface ProductService {
 
     List<ProductRecord> findByAmountInStockGreaterThan();
 
+    void updateStock(Integer productRecordId, Integer updateScale);
+
 }

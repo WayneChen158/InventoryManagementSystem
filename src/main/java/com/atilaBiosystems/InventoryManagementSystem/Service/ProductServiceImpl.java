@@ -158,4 +158,11 @@ public class ProductServiceImpl implements ProductService{
     public List<ProductRecord> findByAmountInStockGreaterThan() {
         return productRecordRepository.findByAmountInStockGreaterThan(0);
     }
+
+    @Override
+    @Transactional
+    public void updateStock(Integer productRecordId, Integer updateScale) {
+        ProductRecord productRecord = productRecordRepository.findById(productRecordId).orElse(null);
+        productRecord.setAmountInStock(updateScale);
+    }
 }
