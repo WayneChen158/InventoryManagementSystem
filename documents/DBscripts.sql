@@ -23,7 +23,9 @@ CREATE TABLE raw_materials (
 
 CREATE TABLE requests (
     request_id INT NOT NULL AUTO_INCREMENT,
+    item_catalog VARCHAR(255),
     item_description VARCHAR(255),
+    item_URL VARCHAR(255),
     request_category INT,
 	project VARCHAR(255),
     project_description VARCHAR(255),
@@ -209,6 +211,40 @@ CREATE TABLE manufacture_record_details (
     FOREIGN KEY (raw_material_id) REFERENCES raw_materials (material_id),
     FOREIGN KEY (component_record_id) REFERENCES component_records (component_record_id),
     FOREIGN KEY (manufacture_record_id) REFERENCES manufacture_records (manufacture_record_id)
+);
+
+CREATE TABLE invoices (
+	invoice_id INT NOT NULL AUTO_INCREMENT,
+    invoice_number VARCHAR(100) NOT NULL,
+    status INT CHECK (status IN (1, 2, 3)),
+    customer INT,
+    invoice_date DATE,
+    ship_date DATE,
+    tracking_number VARCHAR(100),
+    PRIMARY KEY (invoice_id),
+    FOREIGN KEY (customer) REFERENCES customers (customer_id)
+);
+
+CREATE TABLE customers (
+	customer_id INT NOT NULL AUTO_INCREMENT,
+    customer_name VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(100),
+    email_address VARCHAR(100),
+    ship_address VARCHAR(255),
+    PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE invoice_contents (
+	content_id INT NOT NULL AUTO_INCREMENT,
+    invoice_id INT,
+    product_record_id INT,
+    component_record_id INT,
+    material_id INT,
+    qty INT,
+    PRIMARY KEY (content_id),
+    FOREIGN KEY (product_record_id) REFERENCES product_records (product_record_id),
+    FOREIGN KEY (component_record_id) REFERENCES component_records (component_record_id),
+    FOREIGN KEY (material_id) REFERENCES raw_materials (material_id)
 );
 
 SET FOREIGN_KEY_CHECKS = 0;
