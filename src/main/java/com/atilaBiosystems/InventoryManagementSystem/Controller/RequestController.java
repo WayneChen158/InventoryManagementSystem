@@ -92,7 +92,7 @@ public class RequestController {
             request.setMaterialId(rawMaterial.getMaterialId());
         } else {
             // TODO: create a new item in this case
-            request.setMaterialId(1);
+            request.setMaterialId(null);
         }
 
         Request newRequest = requestService.createRequest(request);
