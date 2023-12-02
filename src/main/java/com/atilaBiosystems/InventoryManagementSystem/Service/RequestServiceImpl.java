@@ -40,4 +40,10 @@ public class RequestServiceImpl implements RequestService{
         }
         return false;
     }
+
+    @Override
+    public Request updateRequest(Request request) {
+        this.requestRepository.save(request);
+        return this.requestRepository.findById(request.getRequestId()).orElse(null);
+    }
 }

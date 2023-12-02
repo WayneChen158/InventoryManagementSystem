@@ -12,4 +12,6 @@ public interface RequestService {
     Request createRequest(Request request);
 
     boolean deleteRequestById(int requestId);
+
+    Request updateRequest(Request request);
 }

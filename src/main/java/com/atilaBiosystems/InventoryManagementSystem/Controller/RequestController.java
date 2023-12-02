@@ -10,12 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.MarkRequestOrderedForm;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.RequestDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Request;
@@ -35,6 +37,20 @@ public class RequestController {
         this.rawMaterialService = rawMaterialService;
     }
 
+    private Date parseDateString(String dateString) {
+        String datePattern = "MM-dd-yyyy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
+        Date date = null;
+        try {
+            date = dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            System.out.println("Date parsing failed");
+            System.out.println(dateString);
+            e.printStackTrace();;
+        }
+        return date;
+    }
+    
     @GetMapping()
     public List<Request> getAllRequests() {
         return this.requestService.findAll();
@@ -72,17 +88,10 @@ public class RequestController {
 
         // Convert original date string from frontend
         String dateString = requestDAO.getRequestDate();
-        String datePattern = "MM-dd-yyyy";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
-        Date date = null;
-        try {
-            date = dateFormat.parse(dateString);
-        } catch (ParseException e) {
-            System.out.println("Date parsing failed");
-            System.out.println(dateString);
-            e.printStackTrace();;
+        Date date = this.parseDateString(dateString);
+        if (date != null) {
+            request.setRequestDate(date);
         }
-        request.setRequestDate(date);
 
         // Try assigning material_id to known item by catalog number
         String catalogNumber = requestDAO.getCatalogNumber();
@@ -102,6 +111,27 @@ public class RequestController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to create request for %s", itemDescription));
         }
+    }
+
+    @PatchMapping("/mark-ordered")
+    public ResponseEntity<String> markRequestOrdered(@RequestBody MarkRequestOrderedForm form) {
+        int requestId = form.getRequestId();
+        Request request = this.requestService.findById(requestId);
+        if (request == null) {
+            String responseString = String.format("Failed to mark Request ID %s as ordered.", requestId);
+            responseString += " The given Request ID is not valid.";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
+        }
+        request.setFulfilledAmount(form.getFulfilledAmount());
+        request.setDoneBy(form.getDoneBy());
+        Date date = this.parseDateString(form.getFulfilledDate());
+        if (date != null) {
+            request.setFulfilledDate(date);
+        }
+        // Update status as ordered (2)
+        request.setStatus(2);
+        this.requestService.updateRequest(request);
+        return ResponseEntity.ok().body(String.format("Successfully marked Request ID %s as ordered", requestId));
     }
   
 }
