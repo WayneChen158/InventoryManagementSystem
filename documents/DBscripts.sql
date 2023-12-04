@@ -37,10 +37,15 @@ CREATE TABLE requests (
     price_per_unit DOUBLE,
     request_date DATE,
     fulfilled_date DATE,
-    status INT CHECK (status IN (1, 2)),
+    status INT,
+    order_number VARCHAR(255),
     material_id INT,
+    component_record_id INT,
+    product_record_id INT,
     PRIMARY KEY (request_id),
-    FOREIGN KEY (material_id) REFERENCES raw_materials (material_id)
+    FOREIGN KEY (material_id) REFERENCES raw_materials (material_id),
+    FOREIGN KEY (component_record_id) REFERENCES component_records (component_record_id),
+    FOREIGN KEY (product_record_id) REFERENCES product_records (product_record_id)
 );
 
 CREATE TABLE RD_materials (
