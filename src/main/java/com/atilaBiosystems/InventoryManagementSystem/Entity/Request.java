@@ -58,8 +58,17 @@ public class Request {
     @Column(name = "status")
     private Integer status;
 
+    @Column(name = "order_number")
+    private String orderNumber;
+
     @Column(name = "material_id")
     private Integer materialId;
+
+    @Column(name = "component_record_id")
+    private Integer componentRecordId;
+
+    @Column(name = "product_record_id")
+    private Integer productRecordId;
 
     // Define constructors
     public Request(){}
@@ -210,5 +219,33 @@ public class Request {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public Integer getMaterialId() {
+        return materialId;
+    }
+
+    public Integer getComponentRecordId() {
+        return componentRecordId;
+    }
+
+    public void setComponentRecordId(Integer componentRecordId) {
+        this.componentRecordId = componentRecordId;
+    }
+
+    public Integer getProductRecordId() {
+        return productRecordId;
+    }
+
+    public void setProductRecordId(Integer productRecordId) {
+        this.productRecordId = productRecordId;
     }
 }
