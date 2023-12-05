@@ -11,6 +11,10 @@ public class RequestDAO {
     private double pricePerUnit;
     private String requestBy;
     private String requestDate;
+    private Integer materialId;
+    private Integer componentRecordId;
+    private Integer productRecordId;
+
     public String getItemDescription() {
         return itemDescription;
     }
@@ -70,5 +74,23 @@ public class RequestDAO {
     }
     public void setRequestDate(String requestDate) {
         this.requestDate = requestDate;
+    }
+    public Integer getMaterialId() {
+        return materialId;
+    }
+    public void setMaterialId(Integer materialId) {
+        this.materialId = materialId;
+    }
+    public Integer getComponentRecordId() {
+        return componentRecordId;
+    }
+    public void setComponentRecordId(Integer componentRecordId) {
+        this.componentRecordId = componentRecordId;
+    }
+    public Integer getProductRecordId() {
+        return productRecordId;
+    }
+    public void setProductRecordId(Integer productRecordId) {
+        this.productRecordId = productRecordId;
     }
 }

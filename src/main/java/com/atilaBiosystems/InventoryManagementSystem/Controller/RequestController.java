@@ -85,6 +85,9 @@ public class RequestController {
         request.setPricePerUnit(requestDAO.getPricePerUnit());
         request.setFulfilledDate(null);
         request.setStatus(1);
+        request.setMaterialId(requestDAO.getMaterialId());
+        request.setComponentRecordId(requestDAO.getComponentRecordId());
+        request.setProductRecordId(requestDAO.getProductRecordId());
 
         // Convert original date string from frontend
         String dateString = requestDAO.getRequestDate();
@@ -93,19 +96,9 @@ public class RequestController {
             request.setRequestDate(date);
         }
 
-        // Try assigning material_id to known item by catalog number
-        String catalogNumber = requestDAO.getCatalogNumber();
-        String itemDescription = requestDAO.getItemDescription();
-        RawMaterial rawMaterial = this.rawMaterialService.findByCatalogNumber(catalogNumber, itemDescription);
-        if (rawMaterial != null) {
-            request.setMaterialId(rawMaterial.getMaterialId());
-        } else {
-            // TODO: create a new item in this case
-            request.setMaterialId(null);
-        }
-
         Request newRequest = requestService.createRequest(request);
 
+        String itemDescription = requestDAO.getItemDescription();
         if (newRequest != null) {
             return ResponseEntity.ok().body(String.format("Request for %s has been recorded", itemDescription));
         } else {
