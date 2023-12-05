@@ -40,11 +40,17 @@ public class Request {
     @Column(name = "done_by")
     private String doneBy;
 
+    @Column(name = "received_by")
+    private String received_by;
+
     @Column(name = "request_amount")
     private Double requestAmount;
 
     @Column(name = "fulfilled_amount")
     private Double fulfilledAmount;
+
+    @Column(name = "received_amount")
+    private Double receivedAmount;
 
     @Column(name = "price_per_unit")
     private Double pricePerUnit;
@@ -54,6 +60,9 @@ public class Request {
 
     @Column(name = "fulfilled_date")
     private Date fulfilledDate;
+
+    @Column(name = "received_date")
+    private Date receivedDate;
 
     @Column(name = "status")
     private Integer status;
@@ -247,5 +256,29 @@ public class Request {
 
     public void setProductRecordId(Integer productRecordId) {
         this.productRecordId = productRecordId;
+    }
+
+    public String getReceived_by() {
+        return received_by;
+    }
+
+    public void setReceived_by(String received_by) {
+        this.received_by = received_by;
+    }
+
+    public Double getReceivedAmount() {
+        return receivedAmount;
+    }
+
+    public void setReceivedAmount(Double receivedAmount) {
+        this.receivedAmount = receivedAmount;
+    }
+
+    public Date getReceivedDate() {
+        return receivedDate;
+    }
+
+    public void setReceivedDate(Date receivedDate) {
+        this.receivedDate = receivedDate;
     }
 }
