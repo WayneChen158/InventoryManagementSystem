@@ -24,4 +24,8 @@ public interface RawMaterialService {
     // When more than 1 items are returned with the same catalog number,
     // try to match with the item description
     RawMaterial findByCatalogNumber(String catalogNumber, String itemDescription);
+
+    RawMaterial findById(int rawMaterialId);
+
+    RawMaterial updateRawMaterial(RawMaterial rawMaterial);
 }

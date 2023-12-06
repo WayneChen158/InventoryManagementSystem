@@ -41,7 +41,7 @@ public class Request {
     private String doneBy;
 
     @Column(name = "received_by")
-    private String received_by;
+    private String receivedBy;
 
     @Column(name = "request_amount")
     private Double requestAmount;
@@ -258,12 +258,12 @@ public class Request {
         this.productRecordId = productRecordId;
     }
 
-    public String getReceived_by() {
-        return received_by;
+    public String getReceivedBy() {
+        return receivedBy;
     }
 
-    public void setReceived_by(String received_by) {
-        this.received_by = received_by;
+    public void setReceivedBy(String receivedBy) {
+        this.receivedBy = receivedBy;
     }
 
     public Double getReceivedAmount() {

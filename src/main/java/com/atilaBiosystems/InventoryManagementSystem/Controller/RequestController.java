@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.atilaBiosystems.InventoryManagementSystem.DAO.MarkRequestOrderedForm;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.MarkRequestReceivedForm;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.RequestDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Request;
@@ -125,6 +126,70 @@ public class RequestController {
         request.setStatus(2);
         this.requestService.updateRequest(request);
         return ResponseEntity.ok().body(String.format("Successfully marked Request ID %s as ordered", requestId));
+    }
+
+    @PatchMapping("/mark-received")
+    public ResponseEntity<String> markRequestReceived(@RequestBody MarkRequestReceivedForm form) {
+        // Step 1: update request
+        int requestId = form.getRequestId();
+        Request request = this.requestService.findById(requestId);
+        if (request == null) {
+            String responseString = String.format("Failed to mark Request ID %s as received.", requestId);
+            responseString += " The given Request ID is not valid.";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
+        }
+        request.setReceivedAmount(form.getReceivedAmount());
+        request.setReceivedBy(form.getReceivedBy());
+        Date receivedDate = this.parseDateString(form.getReceivedDate());
+        if (receivedDate != null) {
+            request.setReceivedDate(receivedDate);
+        }
+        // Update status as partially received (3) or fully received (4)
+        if (form.getIsFullyReceived() == 1) {
+            request.setStatus(4);
+        } else {
+            request.setStatus(3);
+        }
+        request = this.requestService.updateRequest(request);
+        if (request == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to update Request ID %s", requestId));
+        }
+
+        // Step 2: update inventory
+        Integer materialId = request.getMaterialId();
+        RawMaterial existingMaterial = null;
+        if (materialId != null) {
+            existingMaterial = this.rawMaterialService.findById(materialId);
+        }
+        if (existingMaterial != null) {
+            // Case 1: request can map to an existing inventory item
+            // Update its amount in stock
+            Integer previousAmountInStock = existingMaterial.getAmountInStock();
+            if (previousAmountInStock == null) {
+                previousAmountInStock = 0;
+            }
+            Integer currentAmountInStock = previousAmountInStock + (int) Math.round(form.getReceivedAmount());
+            existingMaterial.setAmountInStock(currentAmountInStock);
+            this.rawMaterialService.updateRawMaterial(existingMaterial);
+        } else {
+            // Case 2: request does not map to an existing inventory item
+            // Create a new entry for it
+            RawMaterial rawMaterial = new RawMaterial();
+            rawMaterial.setCatalogNumber(request.getItemCatalog());
+            rawMaterial.setDescription(request.getItemDescription());
+            rawMaterial.setReceiveDate(request.getReceivedDate());
+            rawMaterial.setOwner(request.getRequestBy());
+            rawMaterial.setWebsite(request.getItemURL());
+            rawMaterial.setAmountInStock((int) Math.round(form.getReceivedAmount()));
+            // TODO: get NOT NULL info somehow...
+            rawMaterial.setGroupName(1);
+            rawMaterial.setManufacturer("Unknown - New Inventory Item");
+            rawMaterial.setThreshold((int) Math.round(form.getReceivedAmount() * 0.5));
+            this.rawMaterialService.createRawMaterial(rawMaterial);
+        }
+
+        // Finally...
+        return ResponseEntity.ok().body(String.format("Successfully marked Request ID %s as received", requestId));
     }
   
 }
