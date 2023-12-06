@@ -40,11 +40,17 @@ public class Request {
     @Column(name = "done_by")
     private String doneBy;
 
+    @Column(name = "received_by")
+    private String receivedBy;
+
     @Column(name = "request_amount")
     private Double requestAmount;
 
     @Column(name = "fulfilled_amount")
     private Double fulfilledAmount;
+
+    @Column(name = "received_amount")
+    private Double receivedAmount;
 
     @Column(name = "price_per_unit")
     private Double pricePerUnit;
@@ -55,11 +61,23 @@ public class Request {
     @Column(name = "fulfilled_date")
     private Date fulfilledDate;
 
+    @Column(name = "received_date")
+    private Date receivedDate;
+
     @Column(name = "status")
     private Integer status;
 
+    @Column(name = "order_number")
+    private String orderNumber;
+
     @Column(name = "material_id")
     private Integer materialId;
+
+    @Column(name = "component_record_id")
+    private Integer componentRecordId;
+
+    @Column(name = "product_record_id")
+    private Integer productRecordId;
 
     // Define constructors
     public Request(){}
@@ -210,5 +228,57 @@ public class Request {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
+    }
+
+    public Integer getMaterialId() {
+        return materialId;
+    }
+
+    public Integer getComponentRecordId() {
+        return componentRecordId;
+    }
+
+    public void setComponentRecordId(Integer componentRecordId) {
+        this.componentRecordId = componentRecordId;
+    }
+
+    public Integer getProductRecordId() {
+        return productRecordId;
+    }
+
+    public void setProductRecordId(Integer productRecordId) {
+        this.productRecordId = productRecordId;
+    }
+
+    public String getReceivedBy() {
+        return receivedBy;
+    }
+
+    public void setReceivedBy(String receivedBy) {
+        this.receivedBy = receivedBy;
+    }
+
+    public Double getReceivedAmount() {
+        return receivedAmount;
+    }
+
+    public void setReceivedAmount(Double receivedAmount) {
+        this.receivedAmount = receivedAmount;
+    }
+
+    public Date getReceivedDate() {
+        return receivedDate;
+    }
+
+    public void setReceivedDate(Date receivedDate) {
+        this.receivedDate = receivedDate;
     }
 }

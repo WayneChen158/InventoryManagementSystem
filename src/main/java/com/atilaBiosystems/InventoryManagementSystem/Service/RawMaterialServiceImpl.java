@@ -61,4 +61,16 @@ public class RawMaterialServiceImpl implements RawMaterialService{
             return null;
         }
     }
+
+    @Override
+    public RawMaterial findById(int rawMaterialId) {
+        RawMaterial rawMaterial = rawMaterialsRepository.findById(rawMaterialId).orElse(null);
+        return rawMaterial;
+    }
+
+    @Override
+    public RawMaterial updateRawMaterial(RawMaterial rawMaterial) {
+        this.rawMaterialsRepository.save(rawMaterial);
+        return this.rawMaterialsRepository.findById(rawMaterial.getMaterialId()).orElse(null);
+    }
 }
