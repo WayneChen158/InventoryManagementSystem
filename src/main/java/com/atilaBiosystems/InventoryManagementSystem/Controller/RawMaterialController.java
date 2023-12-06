@@ -43,7 +43,7 @@ public class RawMaterialController {
     }
 
     // Add a new RawMaterial entry to the database
-    @PostMapping("/rawMaterials")
+    @PostMapping("/rawMaterials/add")
     public RawMaterial addNewMaterial(@RequestBody RawMaterialDAO rawMaterialDAO){
         RawMaterial rawMaterial = new RawMaterial();
         rawMaterial.setGroupName(rawMaterialDAO.getRawMaterialType());
@@ -54,7 +54,20 @@ public class RawMaterialController {
         rawMaterial.setReceiveDate(null);
         rawMaterial.setThreshold(rawMaterialDAO.getAlertAmount());
         rawMaterial.setAmountInStock(rawMaterialDAO.getAmount());
+        rawMaterial.setOwner(rawMaterialDAO.getOwner());
+        rawMaterial.setLocation(rawMaterialDAO.getLocation());
+        rawMaterial.setWebsite(rawMaterialDAO.getWebsite());
         return this.rawMaterialService.createRawMaterial(rawMaterial);
+    }
+
+    @DeleteMapping("/rawMaterials/delete/{rawMaterialId}")
+    public ResponseEntity<String> deleteRawMaterialById(@PathVariable int rawMaterialId) {
+        boolean success = this.rawMaterialService.deleteRawMaterialById(rawMaterialId);
+        if (success) {
+            return ResponseEntity.ok().body(String.format("Raw material ID %d has been successfully deleted", rawMaterialId));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to delete raw material ID %d...", rawMaterialId));
+        }
     }
 
     // GET /api/rawMaterials : get all the RawMaterials

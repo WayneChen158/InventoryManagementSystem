@@ -28,4 +28,6 @@ public interface RawMaterialService {
     RawMaterial findById(int rawMaterialId);
 
     RawMaterial updateRawMaterial(RawMaterial rawMaterial);
+
+    boolean deleteRawMaterialById(int rawMaterialId);
 }

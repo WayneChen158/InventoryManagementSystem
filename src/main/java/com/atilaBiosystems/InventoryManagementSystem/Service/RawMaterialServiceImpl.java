@@ -73,4 +73,13 @@ public class RawMaterialServiceImpl implements RawMaterialService{
         this.rawMaterialsRepository.save(rawMaterial);
         return this.rawMaterialsRepository.findById(rawMaterial.getMaterialId()).orElse(null);
     }
+
+    @Override
+    public boolean deleteRawMaterialById(int rawMaterialId) {
+        if (this.findById(rawMaterialId) != null) {
+            this.rawMaterialsRepository.deleteById(rawMaterialId);
+            return true;
+        }
+        return false;
+    }
 }
