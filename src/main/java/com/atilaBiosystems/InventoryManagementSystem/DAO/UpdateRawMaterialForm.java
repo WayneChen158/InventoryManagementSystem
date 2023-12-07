@@ -7,7 +7,7 @@ public class UpdateRawMaterialForm {
     private String catalogNumber;
     private String description;
     private String manufacturer;
-    private Double concentration;
+    private String concentration;
     private String receiveDate;
     private String location;
     private String owner;
@@ -50,10 +50,10 @@ public class UpdateRawMaterialForm {
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
     }
-    public Double getConcentration() {
+    public String getConcentration() {
         return concentration;
     }
-    public void setConcentration(Double concentration) {
+    public void setConcentration(String concentration) {
         this.concentration = concentration;
     }
     public String getReceiveDate() {

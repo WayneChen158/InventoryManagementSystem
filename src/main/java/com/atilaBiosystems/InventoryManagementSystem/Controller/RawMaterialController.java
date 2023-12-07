@@ -26,7 +26,7 @@ public class RawMaterialController {
     }
 
     private Date parseDateString(String dateString) {
-        String datePattern = "MM-dd-yyyy";
+        String datePattern = "MM/dd/yyyy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(datePattern);
         Date date = null;
         try {
@@ -96,6 +96,7 @@ public class RawMaterialController {
     @PatchMapping("/rawMaterials/update")
     public ResponseEntity<String> updateRawMaterialById(@RequestBody UpdateRawMaterialForm form) {
         int materialId = form.getMaterialId();
+
         RawMaterial material = this.rawMaterialService.findById(materialId);
         if (material == null) {
             String responseString = String.format("Failed to update raw material ID %d...", materialId);
@@ -103,15 +104,41 @@ public class RawMaterialController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
         }
 
-        material.setCategory(form.getCategory());
+        if (form.getCategory().equals(1) || form.getCategory().equals(2)) {
+            material.setCategory(form.getCategory());
+        } else {
+            material.setCategory(null);
+        }
+
         material.setGroupName(form.getGroupName());
         material.setCatalogNumber(form.getCatalogNumber());
         material.setDescription(form.getDescription());
         material.setManufacturer(form.getManufacturer());
-        material.setConcentration(form.getConcentration());
-        material.setLocation(form.getLocation());
-        material.setOwner(form.getOwner());
-        material.setWebsite(form.getWebsite());
+
+        try {
+            material.setConcentration(Double.valueOf(form.getConcentration()));
+        } catch (NumberFormatException e) {
+            material.setConcentration(null);
+        }
+
+        if (material.getLocation() == null && form.getLocation().equals("")) {
+            material.setLocation(null);
+        } else {
+            material.setLocation(form.getLocation());
+        }
+
+        if (material.getOwner() == null && form.getOwner().equals("")) {
+            material.setOwner(null);
+        } else {
+            material.setOwner(form.getOwner());
+        }
+
+        if (material.getWebsite() == null && form.getWebsite().equals("")) {
+            material.setWebsite(null);
+        } else {
+            material.setWebsite(form.getWebsite());
+        }
+        
         material.setThreshold(form.getThreshold());
         material.setAmountInStock(form.getAmountInStock());
 
@@ -126,7 +153,6 @@ public class RawMaterialController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to update raw material %d...", materialId));
         }
-
     }
 
     // GET /api/rawMaterials : get all the RawMaterials
