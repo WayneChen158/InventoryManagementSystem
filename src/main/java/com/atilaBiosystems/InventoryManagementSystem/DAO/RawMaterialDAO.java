@@ -9,6 +9,7 @@ public class RawMaterialDAO {
     private String location;
     private int amount;
     private int alertAmount;
+    private String website;
     public String getItemName() {
         return itemName;
     }
@@ -56,5 +57,11 @@ public class RawMaterialDAO {
     }
     public void setAlertAmount(int alertAmount) {
         this.alertAmount = alertAmount;
+    }
+    public String getWebsite() {
+        return website;
+    }
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }
