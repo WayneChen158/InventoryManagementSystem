@@ -23,11 +23,11 @@ public class Prerequisite {
     private Component intermediateComponent;
 
     @Column(name = "amount_per_rxn")
-    private Integer amountPerRxn;
+    private Double amountPerRxn;
 
     public Prerequisite(){}
 
-    public Prerequisite(Integer amountPerRxn) {
+    public Prerequisite(Double amountPerRxn) {
         this.amountPerRxn = amountPerRxn;
     }
 
@@ -55,11 +55,11 @@ public class Prerequisite {
         this.intermediateComponent = intermediateComponent;
     }
 
-    public Integer getAmountPerRxn() {
+    public Double getAmountPerRxn() {
         return amountPerRxn;
     }
 
-    public void setAmountPerRxn(Integer amountPerRxn) {
+    public void setAmountPerRxn(Double amountPerRxn) {
         this.amountPerRxn = amountPerRxn;
     }
 
