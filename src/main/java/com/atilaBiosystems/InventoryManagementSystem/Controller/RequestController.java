@@ -138,8 +138,15 @@ public class RequestController {
             responseString += " The given Request ID is not valid.";
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
         }
-        request.setReceivedAmount(form.getReceivedAmount());
+        
+        Double prevReceivedAmount = request.getReceivedAmount();
+        if (prevReceivedAmount == null) {
+            prevReceivedAmount = 0.0;
+        }
+        request.setReceivedAmount(form.getReceivedAmount() + prevReceivedAmount);
+
         request.setReceivedBy(form.getReceivedBy());
+        
         Date receivedDate = this.parseDateString(form.getReceivedDate());
         if (receivedDate != null) {
             request.setReceivedDate(receivedDate);
