@@ -69,14 +69,15 @@ public class ComponentServiceImpl implements ComponentService{
         List<Prerequisite> prerequisites = component.getPrerequisites();
         for (Prerequisite pre: prerequisites){
             Component i_component = pre.getIntermediateComponent();
-            Double vol = Double.valueOf(pre.getAmountPerRxn());
+            Double vol = Double.valueOf(pre.getTestPerRxn());
+            Double liquidVolume = Double.valueOf(pre.getVolPerRxn());
             List<ComponentRecord> crs = i_component.getComponentRecords();
             int amount = 0;
             for (ComponentRecord tempCR: crs){
                 amount = Math.max(tempCR.getAmountInStock(), amount);
             }
-            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentId(), i_component.getComponentName(),"component", vol,
-                    vol*scale, amount >= vol*scale);
+            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentId(), i_component.getComponentName(),"component", liquidVolume,
+                    liquidVolume*scale, amount >= vol*scale);
             recipe.add(currItem);
         }
 
@@ -116,7 +117,7 @@ public class ComponentServiceImpl implements ComponentService{
         List<Prerequisite> prerequisites = component.getPrerequisites();
         for (Prerequisite pre: prerequisites){
             Component i_component = pre.getIntermediateComponent();
-            Double vol = Double.valueOf(pre.getAmountPerRxn());
+            Double vol = Double.valueOf(pre.getTestPerRxn());
             List<ComponentRecord> crs = i_component.getComponentRecords();
             int amount = 0;
 

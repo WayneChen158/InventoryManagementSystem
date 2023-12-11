@@ -22,13 +22,17 @@ public class Prerequisite {
     @JoinColumn(name="intermediate_component_id")
     private Component intermediateComponent;
 
-    @Column(name = "amount_per_rxn")
-    private Double amountPerRxn;
+    @Column(name = "test_per_rxn")
+    private Double testPerRxn;
+
+    @Column(name = "vol_per_rxn")
+    private Double volPerRxn;
 
     public Prerequisite(){}
 
-    public Prerequisite(Double amountPerRxn) {
-        this.amountPerRxn = amountPerRxn;
+    public Prerequisite(Double testPerRxn, Double volPerRxn) {
+        this.testPerRxn = testPerRxn;
+        this.volPerRxn = volPerRxn;
     }
 
     public Integer getPrerequisiteId() {
@@ -55,19 +59,27 @@ public class Prerequisite {
         this.intermediateComponent = intermediateComponent;
     }
 
-    public Double getAmountPerRxn() {
-        return amountPerRxn;
+    public Double getTestPerRxn() {
+        return testPerRxn;
     }
 
-    public void setAmountPerRxn(Double amountPerRxn) {
-        this.amountPerRxn = amountPerRxn;
+    public void setTestPerRxn(Double amountPerRxn) {
+        this.testPerRxn = testPerRxn;
+    }
+
+    public Double getVolPerRxn() {
+        return volPerRxn;
+    }
+
+    public void setVolPerRxn(Double volPerRxn) {
+        this.volPerRxn = volPerRxn;
     }
 
     @Override
     public String toString() {
         return "Prerequisite{" +
                 "component=" + component +
-                ", amountPerRxn=" + amountPerRxn +
+                ", amountPerRxn=" + testPerRxn +
                 '}';
     }
 }
