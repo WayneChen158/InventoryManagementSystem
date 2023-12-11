@@ -57,6 +57,11 @@ public class RequestController {
         return this.requestService.findAll();
     }
 
+    @GetMapping("/{requestId}")
+    public Request getRequestById(@PathVariable int requestId) {
+        return this.requestService.findById(requestId);
+    }
+
     @DeleteMapping("/delete/{requestId}")
     public ResponseEntity<String> deleteRequestById(@PathVariable int requestId) {
         boolean success = requestService.deleteRequestById(requestId);
