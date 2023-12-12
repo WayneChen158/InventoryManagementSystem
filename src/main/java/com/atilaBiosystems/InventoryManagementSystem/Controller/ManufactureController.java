@@ -34,8 +34,9 @@ public class ManufactureController {
     @PutMapping("/{manufactureRecordId}")
     public ResponseEntity<?> finishManufacture(
             @PathVariable int manufactureRecordId,
-            @RequestParam(value = "updateScale", required = false) Integer updateScale){
-        manufactureRecordService.finishManufacture(manufactureRecordId, updateScale);
+            @RequestParam(value = "updateScale", required = false) Integer updateScale,
+            @RequestParam(value = "updateLotNumber", required = false) String updateLotNumber){
+        manufactureRecordService.finishManufacture(manufactureRecordId, updateScale, updateLotNumber);
         return ResponseEntity.ok().body("Manufacture finished successfully");
     }
 }

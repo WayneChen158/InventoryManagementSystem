@@ -37,7 +37,7 @@ public class ManufactureRecordImpl implements ManufactureRecordService{
 
     @Override
     @Transactional
-    public void finishManufacture(Integer manufactureRecordId, Integer updateScale) {
+    public void finishManufacture(Integer manufactureRecordId, Integer updateScale, String updateLotNumber) {
         ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
 
         if (manufactureRecord != null) {
@@ -56,8 +56,10 @@ public class ManufactureRecordImpl implements ManufactureRecordService{
             manufactureRecord.setStatus(2);
             if (manufactureRecord.getComponentRecord() != null){
                 manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
+                manufactureRecord.getComponentRecord().setLotNumber(updateLotNumber);
             } else {
                 manufactureRecord.getProductRecord().setAmountInStock(updateScale);
+                manufactureRecord.getProductRecord().setLotNumber(updateLotNumber);
             }
         } else {
             throw new EntityNotFoundException("ManufactureRecord not found");

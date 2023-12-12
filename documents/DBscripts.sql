@@ -146,6 +146,7 @@ CREATE TABLE components (
     component_id INT NOT NULL AUTO_INCREMENT,
     component_catalog VARCHAR(50),
     component_name VARCHAR(50) NOT NULL,
+    unit VARCHAR(10),
 	version_description VARCHAR(255),
     PRIMARY KEY (component_id)
 );
@@ -155,6 +156,7 @@ CREATE TABLE component_records (
     component_catalog VARCHAR(50),
     component_name VARCHAR(100),
     component_id INT,
+    unit VARCHAR(10),
     lot_number VARCHAR(50),
     manufacture_date DATE,
     amount_in_stock INT,
@@ -166,7 +168,8 @@ CREATE TABLE prerequisite (
 	prerequisite_id INT NOT NULL AUTO_INCREMENT,
     component_id INT,
     intermediate_component_id INT,
-    amount_per_rxn DOUBLE,
+    test_per_rxn DOUBLE,
+    vol_per_rxn DOUBLE,
     PRIMARY KEY (prerequisite_id),
     FOREIGN KEY (component_id) REFERENCES components (component_id),
     FOREIGN KEY (intermediate_component_id) REFERENCES components (component_id)
@@ -199,6 +202,7 @@ CREATE TABLE manufacture_records (
     manufacture_date DATE,
     manufacture_scale INT,
     owner VARCHAR(50),
+    yield_unit VARCHAR(10),
     status INT CHECK (status IN (1, 2, 3)),
     component_record_id INT,
     product_record_id INT,

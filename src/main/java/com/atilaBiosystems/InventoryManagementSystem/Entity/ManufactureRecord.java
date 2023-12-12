@@ -26,6 +26,9 @@ public class ManufactureRecord {
     @Column(name = "owner")
     private String owner;
 
+    @Column(name = "yield_unit")
+    private String yieldUnit;
+
     @Column(name = "status")
     private Integer status; // {1: manufacturing, 2: done, 3: cancelled}
 
@@ -40,11 +43,13 @@ public class ManufactureRecord {
 
     public ManufactureRecord() {}
 
-    public ManufactureRecord(String componentName, Date manufactureDate, Integer scale, String owner, Integer status) {
+    public ManufactureRecord(String componentName, Date manufactureDate,
+                             Integer scale, String owner, String yieldUnit, Integer status) {
         this.componentName = componentName;
         this.manufactureDate = manufactureDate;
         this.scale = scale;
         this.owner = owner;
+        this.yieldUnit = yieldUnit;
         this.status = status;
     }
 
@@ -86,6 +91,14 @@ public class ManufactureRecord {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public String getYieldUnit() {
+        return yieldUnit;
+    }
+
+    public void setYieldUnit(String yieldUnit) {
+        this.yieldUnit = yieldUnit;
     }
 
     public Integer getStatus() {

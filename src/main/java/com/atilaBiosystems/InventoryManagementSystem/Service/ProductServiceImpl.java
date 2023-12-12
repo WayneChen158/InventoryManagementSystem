@@ -64,7 +64,7 @@ public class ProductServiceImpl implements ProductService{
                 comLst.add(new CustomComponentRecord(curr));
             } else{
                 ComponentRecord needToManufacture = new ComponentRecord(com.getComponentCatalog(),com.getComponentName(),
-                        null, null, 0);
+                        null, null, 0, com.getUnit());
                 needToManufacture.setComponent(com);
                 comLst.add(new CustomComponentRecord(needToManufacture));
             }
@@ -109,7 +109,7 @@ public class ProductServiceImpl implements ProductService{
         productRecordRepository.save(latestProductRecord);
 
         ManufactureRecord currManufactureRecord = new ManufactureRecord(product.getProductName(),
-                currentDate, scale, "YC", 1);
+                currentDate, scale, "YC", "kit(s)", 1);
 
         currManufactureRecord.setProductRecord(latestProductRecord);
 
