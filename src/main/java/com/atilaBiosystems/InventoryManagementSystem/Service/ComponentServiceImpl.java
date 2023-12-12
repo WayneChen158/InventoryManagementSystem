@@ -18,18 +18,15 @@ import java.util.Map;
 @Service
 public class ComponentServiceImpl implements ComponentService{
 
-    private final RecipeItemRepository recipeItemRepository;
     private final ComponentRepository componentRepository;
     private final ComponentRecordRepository componentRecordRepository;
     private final ManufactureRecordRepository manufactureRecordRepository;
     private final ManufactureRecordDetailRepository manufactureRecordDetailRepository;
 
-    public ComponentServiceImpl(RecipeItemRepository recipeItemRepository,
-                                ComponentRepository componentRepository,
+    public ComponentServiceImpl(ComponentRepository componentRepository,
                                 ComponentRecordRepository componentRecordRepository,
                                 ManufactureRecordRepository manufactureRecordRepository,
                                 ManufactureRecordDetailRepository manufactureRecordDetailRepository) {
-        this.recipeItemRepository = recipeItemRepository;
         this.componentRepository = componentRepository;
         this.componentRecordRepository = componentRecordRepository;
         this.manufactureRecordRepository = manufactureRecordRepository;
@@ -69,14 +66,15 @@ public class ComponentServiceImpl implements ComponentService{
         List<Prerequisite> prerequisites = component.getPrerequisites();
         for (Prerequisite pre: prerequisites){
             Component i_component = pre.getIntermediateComponent();
-            Double vol = Double.valueOf(pre.getAmountPerRxn());
+            Double vol = Double.valueOf(pre.getTestPerRxn());
+            Double liquidVolume = Double.valueOf(pre.getVolPerRxn());
             List<ComponentRecord> crs = i_component.getComponentRecords();
             int amount = 0;
             for (ComponentRecord tempCR: crs){
                 amount = Math.max(tempCR.getAmountInStock(), amount);
             }
-            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentId(), i_component.getComponentName(),"component", vol,
-                    vol*scale, amount >= vol*scale);
+            CustomRecipeItem currItem = new CustomRecipeItem(i_component.getComponentId(), i_component.getComponentName(),"component", liquidVolume,
+                    liquidVolume*scale, amount >= vol*scale);
             recipe.add(currItem);
         }
 
@@ -103,20 +101,20 @@ public class ComponentServiceImpl implements ComponentService{
         String lotNum = sdf.format(currentDate);
 
         ComponentRecord latestComponentRecord = new ComponentRecord(component.getComponentCatalog(),component.getComponentName(),
-                lotNum, currentDate, 0); // Scale should be 0 before done the manufacture
+                lotNum, currentDate, 0, component.getUnit()); // Scale should be 0 before done the manufacture
 
         latestComponentRecord.setComponent(component);
         componentRecordRepository.save(latestComponentRecord);
 
         ManufactureRecord currManufactureRecord = new ManufactureRecord(component.getComponentName(),
-                currentDate, scale, "YC", 1);
+                currentDate, scale, "YC", component.getUnit(), 1);
         currManufactureRecord.setComponentRecord(latestComponentRecord);
 
         List<ManufactureRecordDetail> details = new ArrayList<>();
         List<Prerequisite> prerequisites = component.getPrerequisites();
         for (Prerequisite pre: prerequisites){
             Component i_component = pre.getIntermediateComponent();
-            Double vol = Double.valueOf(pre.getAmountPerRxn());
+            Double vol = Double.valueOf(pre.getTestPerRxn());
             List<ComponentRecord> crs = i_component.getComponentRecords();
             int amount = 0;
 

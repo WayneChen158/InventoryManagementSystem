@@ -34,15 +34,23 @@ public class ComponentRecord {
 
     @Column(name="amount_in_stock")
     private int amountInStock;
+    @Column(name="unit")
+    private String unit;
 
     public ComponentRecord() {}
 
-    public ComponentRecord(String componentCatalog, String componentName, String lotNumber, Date manufactureDate, int amountInStock) {
+    public ComponentRecord(String componentCatalog,
+                           String componentName,
+                           String lotNumber,
+                           Date manufactureDate,
+                           int amountInStock,
+                           String unit) {
         this.componentCatalog = componentCatalog;
         this.componentName = componentName;
         this.lotNumber = lotNumber;
         this.manufactureDate = manufactureDate;
         this.amountInStock = amountInStock;
+        this.unit = unit;
     }
 
     public Integer getComponentRecordId() {
@@ -99,6 +107,14 @@ public class ComponentRecord {
 
     public void setAmountInStock(int amountInStock) {
         this.amountInStock = amountInStock;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     @Override

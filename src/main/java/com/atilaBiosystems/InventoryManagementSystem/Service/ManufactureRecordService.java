@@ -10,7 +10,7 @@ public interface ManufactureRecordService {
 
     List<ManufactureRecord> findByStatus(Integer status);
 
-    void finishManufacture(Integer manufactureRecordId, Integer updateScale);
+    void finishManufacture(Integer manufactureRecordId, Integer updateScale, String updateLotNumber);
 
     void cancelManufacture(Integer manufactureRecordId);
 }
