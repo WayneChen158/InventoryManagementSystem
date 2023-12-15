@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.MarkRequestOrderedForm;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.MarkRequestReceivedForm;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.RequestDAO;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.UpdateRequestForm;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Request;
 import com.atilaBiosystems.InventoryManagementSystem.Service.RawMaterialService;
@@ -123,6 +124,14 @@ public class RequestController {
         }
         request.setFulfilledAmount(form.getFulfilledAmount());
         request.setDoneBy(form.getDoneBy());
+        if (form.getPricePerUnit() != null) {
+            try {
+                request.setPricePerUnit(Double.valueOf(form.getPricePerUnit()));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+        
         Date date = this.parseDateString(form.getFulfilledDate());
         if (date != null) {
             request.setFulfilledDate(date);
@@ -203,5 +212,59 @@ public class RequestController {
         // Finally...
         return ResponseEntity.ok().body(String.format("Successfully marked Request ID %s as received", requestId));
     }
-  
+
+    @PatchMapping("/update")
+    public ResponseEntity<String> updateRequestById(@RequestBody UpdateRequestForm form) {
+        int requestId = form.getRequestId();
+
+        Request request = this.requestService.findById(requestId);
+        if (request == null) {
+            String responseString = String.format("Failed to update request ID %d...", requestId);
+            responseString += "Provided ID is not valid.";
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
+        }
+
+        if (form.getItemURL() != null) {
+            request.setItemURL(form.getItemURL());
+        }
+
+        if (form.getPurpose() != null) {
+            request.setPurpose(form.getPurpose());
+        }
+
+        if (form.getProject() != null) {
+            request.setProject(form.getProject());
+        }
+
+        if (form.getRequestAmount() != null) {
+            try {
+                request.setRequestAmount(Double.valueOf(form.getRequestAmount()));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (form.getFulfilledAmount() != null) {
+            try {
+                request.setFulfilledAmount(Double.valueOf(form.getFulfilledAmount()));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (form.getPricePerUnit() != null) {
+            try {
+                request.setPricePerUnit(Double.valueOf(form.getPricePerUnit()));
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Request updatedRequest = this.requestService.updateRequest(request);
+        if (updatedRequest != null) {
+            return ResponseEntity.ok().body(String.format("Successfully updated request %d", requestId));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to update raw material %d...", requestId));
+        }
+    }
 }
