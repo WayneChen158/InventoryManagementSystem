@@ -46,6 +46,7 @@ CREATE TABLE requests (
     received_date DATE,
     status INT,
     order_number VARCHAR(255),
+    vendor VARCHAR(50),
     comment VARCHAR(500),
     material_id INT,
     component_record_id INT,

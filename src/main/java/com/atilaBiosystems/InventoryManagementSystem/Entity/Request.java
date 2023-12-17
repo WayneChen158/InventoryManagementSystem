@@ -73,6 +73,9 @@ public class Request {
     @Column(name = "order_number")
     private String orderNumber;
 
+    @Column(name = "vendor")
+    private String vendor;
+
     @Column(name = "comment")
     private String comment;
 
@@ -258,6 +261,14 @@ public class Request {
 
     public void setOrderNumber(String orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public String getVendor() {
+        return vendor;
+    }
+
+    public void setVendor(String vendor) {
+        this.vendor = vendor;
     }
 
     public Integer getMaterialId() {
