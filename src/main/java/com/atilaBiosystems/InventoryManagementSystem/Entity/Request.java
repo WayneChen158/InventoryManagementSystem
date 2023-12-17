@@ -19,6 +19,9 @@ public class Request {
     @Column(name = "item_description")
     private String itemDescription;
 
+    @Column(name = "unit")
+    private String unit;
+
     @Column(name = "item_URL")
     private String itemURL;
 
@@ -70,6 +73,9 @@ public class Request {
     @Column(name = "order_number")
     private String orderNumber;
 
+    @Column(name = "comment")
+    private String comment;
+
     @Column(name = "material_id")
     private Integer materialId;
 
@@ -112,6 +118,14 @@ public class Request {
 
     public void setItemDescription(String itemDescription) {
         this.itemDescription = itemDescription;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getItemCatalog() {
@@ -232,6 +246,14 @@ public class Request {
 
     public String getOrderNumber() {
         return orderNumber;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public void setOrderNumber(String orderNumber) {
