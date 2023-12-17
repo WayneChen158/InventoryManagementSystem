@@ -80,6 +80,7 @@ public class RequestController {
 
         request.setItemCatalog(requestDAO.getCatalogNumber());
         request.setItemDescription(requestDAO.getItemDescription());
+        request.setVendor(requestDAO.getVendor());
         request.setRequestCategory(requestDAO.getRequestCategory());
         request.setProject(requestDAO.getProject());
         request.setProjectDescription(null);
@@ -88,8 +89,11 @@ public class RequestController {
         request.setRequestBy(requestDAO.getRequestBy());
         request.setDoneBy(null);
         request.setRequestAmount(requestDAO.getRequestAmount());
+        request.setUnit(requestDAO.getUnit());
         request.setFulfilledAmount(null);
         request.setPricePerUnit(requestDAO.getPricePerUnit());
+        request.setOrderNumber(null);
+        request.setComment(requestDAO.getComment());
         request.setFulfilledDate(null);
         request.setStatus(1);
         request.setMaterialId(requestDAO.getMaterialId());
