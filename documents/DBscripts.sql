@@ -18,6 +18,7 @@ CREATE TABLE raw_materials (
     website VARCHAR(255),
     threshold INT NOT NULL,
     amount_in_stock INT NOT NULL,
+    unit VARCHAR(50),
     PRIMARY KEY (material_id)
 );
 

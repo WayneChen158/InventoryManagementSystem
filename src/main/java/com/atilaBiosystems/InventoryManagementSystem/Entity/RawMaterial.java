@@ -35,6 +35,8 @@ public class RawMaterial {
     private Integer threshold;
     @Column(name="amount_in_stock")
     private Integer amountInStock;
+    @Column(name="unit")
+    private String unit;
 
     // Define constructors
     public RawMaterial() {
@@ -157,6 +159,14 @@ public class RawMaterial {
 
     public void setAmountInStock(Integer amountInStock) {
         this.amountInStock = amountInStock;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     // Define toString() method
