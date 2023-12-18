@@ -5,6 +5,7 @@ public class MarkRequestOrderedForm {
     private double fulfilledAmount;
     private Double pricePerUnit;
     private String doneBy;
+    private String orderNumber;
     private String fulfilledDate;
     public int getRequestId() {
         return requestId;
@@ -17,6 +18,9 @@ public class MarkRequestOrderedForm {
     }
     public String getDoneBy() {
         return doneBy;
+    }
+    public String getOrderNumber() {
+        return orderNumber;
     }
     public String getFulfilledDate() {
         return fulfilledDate;

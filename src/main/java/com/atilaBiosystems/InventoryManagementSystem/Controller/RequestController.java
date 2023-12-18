@@ -135,6 +135,8 @@ public class RequestController {
                 e.printStackTrace();
             }
         }
+
+        request.setOrderNumber(form.getOrderNumber());
         
         Date date = this.parseDateString(form.getFulfilledDate());
         if (date != null) {
@@ -228,6 +230,8 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
         }
 
+        request.setVendor(form.getVendor());
+
         if (form.getItemURL() != null) {
             request.setItemURL(form.getItemURL());
         }
@@ -263,6 +267,10 @@ public class RequestController {
                 e.printStackTrace();
             }
         }
+
+        request.setUnit(form.getUnit());
+
+        request.setComment(form.getComment());
 
         Request updatedRequest = this.requestService.updateRequest(request);
         if (updatedRequest != null) {
