@@ -18,13 +18,17 @@ CREATE TABLE raw_materials (
     website VARCHAR(255),
     threshold INT NOT NULL,
     amount_in_stock INT NOT NULL,
+    unit VARCHAR(50),
     PRIMARY KEY (material_id)
 );
+
+DROP TABLE requests;
 
 CREATE TABLE requests (
     request_id INT NOT NULL AUTO_INCREMENT,
     item_catalog VARCHAR(255),
     item_description VARCHAR(255),
+    unit VARCHAR(50),
     item_URL VARCHAR(255),
     request_category INT,
 	project VARCHAR(255),
@@ -42,6 +46,8 @@ CREATE TABLE requests (
     received_date DATE,
     status INT,
     order_number VARCHAR(255),
+    vendor VARCHAR(50),
+    comment VARCHAR(500),
     material_id INT,
     component_record_id INT,
     product_record_id INT,

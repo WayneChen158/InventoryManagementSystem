@@ -80,6 +80,7 @@ public class RequestController {
 
         request.setItemCatalog(requestDAO.getCatalogNumber());
         request.setItemDescription(requestDAO.getItemDescription());
+        request.setVendor(requestDAO.getVendor());
         request.setRequestCategory(requestDAO.getRequestCategory());
         request.setProject(requestDAO.getProject());
         request.setProjectDescription(null);
@@ -88,8 +89,11 @@ public class RequestController {
         request.setRequestBy(requestDAO.getRequestBy());
         request.setDoneBy(null);
         request.setRequestAmount(requestDAO.getRequestAmount());
+        request.setUnit(requestDAO.getUnit());
         request.setFulfilledAmount(null);
         request.setPricePerUnit(requestDAO.getPricePerUnit());
+        request.setOrderNumber(null);
+        request.setComment(requestDAO.getComment());
         request.setFulfilledDate(null);
         request.setStatus(1);
         request.setMaterialId(requestDAO.getMaterialId());
@@ -131,6 +135,8 @@ public class RequestController {
                 e.printStackTrace();
             }
         }
+
+        request.setOrderNumber(form.getOrderNumber());
         
         Date date = this.parseDateString(form.getFulfilledDate());
         if (date != null) {
@@ -224,6 +230,8 @@ public class RequestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseString);
         }
 
+        request.setVendor(form.getVendor());
+
         if (form.getItemURL() != null) {
             request.setItemURL(form.getItemURL());
         }
@@ -259,6 +267,10 @@ public class RequestController {
                 e.printStackTrace();
             }
         }
+
+        request.setUnit(form.getUnit());
+
+        request.setComment(form.getComment());
 
         Request updatedRequest = this.requestService.updateRequest(request);
         if (updatedRequest != null) {

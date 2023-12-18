@@ -142,6 +142,12 @@ public class RawMaterialController {
         material.setThreshold(form.getThreshold());
         material.setAmountInStock(form.getAmountInStock());
 
+        if (material.getUnit() == null && form.getUnit().equals("")) {
+            material.setUnit(null);
+        } else {
+            material.setUnit(form.getUnit());
+        }
+
         Date receiveDate = this.parseDateString(form.getReceiveDate());
         if (receiveDate != null) {
             material.setReceiveDate(receiveDate);
