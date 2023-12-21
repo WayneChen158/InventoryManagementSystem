@@ -195,7 +195,7 @@ public class RequestController {
             if (previousAmountInStock == null) {
                 previousAmountInStock = 0;
             }
-            Integer currentAmountInStock = previousAmountInStock + (int) Math.round(form.getReceivedAmount());
+            Integer currentAmountInStock = previousAmountInStock + (int) Math.round(form.getReceivedAmount() * form.getInboundFactor());
             existingMaterial.setAmountInStock(currentAmountInStock);
             this.rawMaterialService.updateRawMaterial(existingMaterial);
         } else {
@@ -208,6 +208,7 @@ public class RequestController {
             rawMaterial.setOwner(request.getRequestBy());
             rawMaterial.setWebsite(request.getItemURL());
             rawMaterial.setAmountInStock((int) Math.round(form.getReceivedAmount()));
+            rawMaterial.setUnit(form.getUnit());
             // TODO: get NOT NULL info somehow...
             rawMaterial.setGroupName(1);
             rawMaterial.setManufacturer("Unknown - New Inventory Item");
