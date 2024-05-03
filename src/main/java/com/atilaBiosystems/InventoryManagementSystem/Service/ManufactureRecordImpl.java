@@ -77,4 +77,18 @@ public class ManufactureRecordImpl implements ManufactureRecordService{
             throw new EntityNotFoundException("ManufactureRecord not found");
         }
     }
+
+    @Override
+    @Transactional
+    public void updateRecordDetail(Integer recordDetailId, Double updateVol, String updateName) {
+        ManufactureRecordDetail manufactureRecordDetail =
+                manufactureRecordDetailRepository.findById(recordDetailId).orElse(null);
+
+        if (updateVol != null) {
+            manufactureRecordDetail.setTotalVol(updateVol);
+        }
+        if (updateName != null){
+            manufactureRecordDetail.setItemName(updateName);
+        }
+    }
 }

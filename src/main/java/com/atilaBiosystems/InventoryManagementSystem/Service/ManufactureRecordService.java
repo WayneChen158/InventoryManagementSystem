@@ -13,4 +13,6 @@ public interface ManufactureRecordService {
     void finishManufacture(Integer manufactureRecordId, Integer updateScale, String updateLotNumber);
 
     void cancelManufacture(Integer manufactureRecordId);
+
+    void updateRecordDetail(Integer recordDetailId, Double updateVol, String updateName);
 }
