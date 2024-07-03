@@ -1,0 +1,154 @@
+component_catalog,component_name,unit,version_description
+XM,i-XM(20% dUTP),test(s),for COVID-v6 COV-FLU-RSV 20%dUTP
+i-SBA,i-SBA,test(s),for COVIDRM
+COVIDPM,COVIDPM,tube(s),"COVID-19 Primer Mix for EUA, V4 also for COVID-V6-SM"
+ORF+N module,ORF+N module,test(s),COVID two targets mix
+hemo-IC PM(no LFR),hemo-IC PM(no LFR),test(s),Hemo-IC PM 1 ul/R
+Flu module,Flu module,test(s),FluA and FluB primer mix
+RSV module,RSV module,test(s),RSV primer mix
+IC & Buffer module,IC & Buffer module,test(s),IC primer mix and COVIDXM(20%dUTP)
+6xSBA,COVID19-6X SBA(1.25 ml),tube(s),v4.3 for COVID EUA kit
+30xSBB,COVID19-30X SBB (240 ul),tube(s),Vazyme Rnase Inhibitor
+COVIDRM,COVIDRM,tube(s),COVID-19 Reaction Mix
+COVIDBM,COVIDBM,tube(s),"COVID-19 Buffer Mix for EUA, V4"
+COVIDNC,Negative Control (300 ul),tube(s),"300 ul NC for (EUA, V4, SANO, CE, cov-flu-rsv)"
+COVIDPC,COVID Positive Control (300 ul),tube(s),"300 ul for (EUA, v6, SANO, CE)"
+COVID6SBA - v4 (400 ul),COVID19-6X SBA(400 ul),tube(s),v2.1 for V4 and CE kit
+COVID30SBB - v4 (130 ul),COVID19-30X SBB (130 ul),tube(s),v2.1 for V4 and CE kit
+25XES,COVID-25XES (4 mL),tube(s),Elution solution for all RNA assay and COVID
+COVIDBM - SANO,COVIDBM - SANO,tube(s),FRE special format
+COVIDSM - SANO,COVIDSM - SANO,tube(s),FRE special format
+COVID-v6-BM,COVID-v6-BM,tube(s),COVID-v6 BM
+COVID-v6-SM,COVID-v6-SM,tube(s),COVID-v6 SM(20% dUTP)
+COVFLURSVBM,COVFLURSV BM,tube(s),Vazyme BST
+COVFLUSM,COVFLU SM,tube(s),"ORF+N, Flu, IC-buffer"
+Flu SM,Flu SM,tube(s),"Flu, IC-buffer"
+INF/RSV SM,INF/RSV SM,tube(s),"Flu, RSV_v5, IC-buffer"
+RSVSM,RSV SM,tube(s),"RSV_v5, IC-buffer"
+COVFLURSV PC,COVFLURSV PC,tube(s),All for one for all the cov-flu-rsv assay
+i - HPV G9,i - HPV G9 (1 ul/R),test(s),
+i - HPV G7,i - HPV G7 (0.5 ul/R),test(s),
+i - HPV 16,i - HPV 16 (0.5 ul/R),test(s),
+i - HPV 18,i - HPV 18 (0.25 ul/R),test(s),
+i - HPV 45,i - HPV 45 (0.5 ul/R),test(s),
+i - HPV IC,i - HPV IC (0.25 ul/R),test(s),
+i - HPV G6 (M4F),i - HPV G6 (M4F)  (0.5 ul/R),test(s),
+i - HPV F/Q(M4F),i - HPV F/Q(M4F) (0.25 ul/R),test(s),
+i - HPV G6 (M5F),i - HPV G6 (M5F) (0.5 ul/R),test(s),
+i - HPV F/Q(M5F),i - HPV F/Q(M5F) (0.25 ul/R),test(s),
+M4F PM,HPVM4F AmpFire PM,tube(s),
+M5F PM,HPVM5F ScreenFire PM,tube(s),
+HPV Screening RM (2 ul BsT),HPV M4(5)F RM (10 ul/R),tube(s),For HPV Screening Kits (both 4 and 5 channels)
+M 4/5 F PC,M 4/5 F PC,tube(s),product of M5F
+NC(120 ul),NC(120 ul),tube(s),for HPV and Woman Health
+40xLB,40xLB,tube(s),"for HPV M4F, M5F, G4F sharing"
+G4F-PM-1,G4F-PM-1,tube(s),
+G4F-PM-2,G4F-PM-2,tube(s),
+G4F-PM-3,G4F-PM-3,tube(s),
+G4F-PM-4,G4F-PM-4,tube(s),
+G4F RM,G4F RM,tube(s),
+G4F PC (6/11 included),G4F PC (6/11 included),tube(s),
+NC(240 ul),NC(240 ul),tube(s),"G4F, UTI, UTIplus, NF"
+i-BM124,i-BM124,test(s),
+i-BM3,i-BM3,test(s),
+i-BM1245,i-BM1245,test(s),
+i-UTI-OM-1,i-UTI-OM-1,test(s),
+i-UTI-OM-2,i-UTI-OM-2,test(s),
+i-UTI-OM-3,i-UTI-OM-3,test(s),
+i-UTI-OM-4,i-UTI-OM-4,test(s),
+i-UTIplus-OM-5(common),i-UTIplus-OM-5(common),test(s),
+i-UTIplus-OM-5(Alpha),i-UTIplus-OM-5(Alpha),test(s),
+UTI-PM-1,UTI-PM-1,tube(s),
+UTI-PM-2,UTI-PM-2,tube(s),
+UTI-PM-3,UTI-PM-3,tube(s),
+UTI-PM-4,UTI-PM-4,tube(s),
+UTIplus-PM-5(common),UTIplus-PM-5(common),tube(s),
+UTIplus-PM-5(Alpha),UTIplus-PM-5(Alpha),tube(s),
+UTI-RM,UTI-RM,tube(s),
+UTI-PC-common,UTI-PC-common,tube(s),
+UTI-PC-Alpha,UTI-PC-Alpha,tube(s),
+20xSB,20xSB,tube(s),
+i-CAN oligo mix ,i-CAN oligo mix ,test(s),
+i-isoP-NBFP14 primer mix,i-isoP-NBFP14 primer mix,test(s),
+i-isoP-hemo v2,i-isoP-hemo v2,test(s),
+i-iAMP-4STI Dye-Mix,i-iAMP-4STI Dye-Mix,test(s),intermediate component for 4STI PM
+i-iAMP-4STI CT-mix (no dye),i-iAMP-4STI CT-mix (no dye),test(s),intermediate component for 4STI PM
+i-iAMP-4STI TV-mix (no dye),i-iAMP-4STI TV-mix (no dye),test(s),intermediate component for 4STI PM
+i-iAMP-4STI NG-mix (no dye),i-iAMP-4STI NG-mix (no dye),test(s),intermediate component for 4STI PM
+i-iAMP-4STI MG-mix (no dye),i-iAMP-4STI MG-mix (no dye),test(s),intermediate component for 4STI PM
+i-HSV primer mix,i-HSV primer mix,test(s),
+i-GBS primer mix,i-GBS primer mix,test(s),
+i-BV primer mix,i-BV primer mix,test(s),
+i-CT primer mix,i-CT primer mix,test(s),
+i-UUUP primer mix,i-UUUP primer mix,test(s),
+i-MH primer mix,i-MH primer mix,test(s),
+i-iBM (woman health),i-iBM (woman health),test(s),
+BM (1.0 BsT),BM (1.0 BsT),tube(s),
+BM (1.2 BsT),BM (1.2 BsT),tube(s),
+BM (1.5 BsT),BM (1.5 BsT),tube(s),
+4STI BM,4STI BM,tube(s),
+CAN PM(w IC),CAN PM(w IC),tube(s),
+CAN PM (ATWH),CAN PM (ATWH),tube(s),
+4STI PM(w IC),4STI PM(w IC),tube(s),
+4STI PM (ATWH),4STI PM (ATWH),tube(s),
+HSV PM (w IC),HSV PM (w IC),tube(s),
+HSV PM (ATWH),HSV PM (ATWH),tube(s),
+GBS PM (w IC),GBS PM (w IC),tube(s),
+GBS PM (ATWH),GBS PM (ATWH),tube(s),
+BV PM (w IC),BV PM (w IC),tube(s),
+BV PM (ATWH),BV PM (ATWH),tube(s),
+CT PM (w IC),CT PM (w IC),tube(s),
+UUUP PM (w IC),UUUP PM (w IC),tube(s),
+UUUP PM (ATWH),UUUP PM (ATWH),tube(s),
+MH PM (w IC),MH PM (w IC),tube(s),
+MH PM (ATWH),MH PM (ATWH),tube(s),
+CAN PC,CAN PC,tube(s),
+4STI PC,4STI PC,tube(s), for 4STI and CT
+HSV PC,HSV PC,tube(s),
+GBS PC,GBS PC,tube(s),
+BV PC,BV PC,tube(s),
+UUUP PC,UUUP PC,tube(s),
+MH PC,MH PC,tube(s),
+NF PM-1,NF PM-1,tube(s),
+NF PM-2,NF PM-2,tube(s),
+NF PM-3,NF PM-3,tube(s),
+NF PM-4,NF PM-4,tube(s),
+NF RM,NF RM,tube(s),
+NF PC,NF PC,tube(s),
+i-UTIDR-BMDR,i-UTIDR-BMDR,test(s),
+UTI-DR-RM,UTI-DR-RM,tube(s),
+UTI-DR-PM-1,UTI-DR-PM-1,tube(s),
+UTI-DR-PM-2,UTI-DR-PM-2,tube(s),
+UTI-DR-PM-3-V2,UTI-DR-PM-3-V2,tube(s),
+UTI-DR-PC,UTI-DR-PC,tube(s),
+i-COVIDPM,i-COVIDPM,test(s),For COVID-V6-SM
+ATWH IC-PM,ATWH IC-PM,tube(s),
+IC-BM,Universal IC BM,tube(s),
+IC PC,IC PC,tube(s),
+VAG-BM,VAG-BM,tube(s),
+VAG-PC,VAG-PC,tube(s),
+i-RPP-T1-OM,i-RPP-T1-OM,test(s),
+i-RPP-T2-OM,i-RPP-T2-OM,test(s),
+i-RPP-T3-OM,i-RPP-T3-OM,test(s),
+i-RPP-T4-OM,i-RPP-T4-OM,test(s),
+i-RPP-T5-OM,i-RPP-T5-OM,test(s),
+i-XM(no dUTP),i-XM (no dUTP),test(s),
+i-RPP RM Tube 123,i-RPP RM Tube 123,test(s),
+i-RPP RM Tube 45,i-RPP RM Tube 45,test(s),
+RPP-BM-R,RPP BM Tube 123,tube(s),
+RPP-BM-D,RPP BM Tube 45,tube(s),
+RPP SM1,RPP SM1,tube(s),
+RPP SM2,RPP SM2,tube(s),
+RPP SM3,RPP SM3,tube(s),
+RPP SM4,RPP SM4,tube(s),
+RPP SM5,RPP SM5,tube(s),
+RPP-PC,RPP-PC,tube(s),
+i-WD-OM-1,i-WD-OM-1,test(s),
+i-WD-OM-2,i-WD-OM-2,test(s),
+i-WD-OM-3,i-WD-OM-3,test(s),
+i-WD-OM-4,i-WD-OM-4,test(s),
+WD-PM-1,WD-PM-1,tube(s),
+WD-PM-2,WD-PM-2,tube(s),
+WD-PM-3,WD-PM-3,tube(s),
+WD-PM-4,WD-PM-4,tube(s),
+WD-PC,WD-PC,tube(s),
