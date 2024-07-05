@@ -7,7 +7,7 @@ category,group_name,catalog_num,description,manufacturer,concentration,receive_d
 1,1,Paddle,Tips: filtered pipet tip reload system,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,13
 1,1,MegRack,16-tube Magnetic Separation Rack,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,0
 1,1,P-10,Pipettor: Autoclavable Single Channel Pipettor,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,8
-1,1,Tips-FIL-1000,Filtered Pipette Tips: 50 - 1250 µl (4800 tips/case),Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,18
+1,1,Tips-FIL-1000,Filtered Pipette Tips: 50 - 1250 ul (4800 tips/case),Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,18
 1,1,Tips-FIL-10,Tips: filtered pipet tip reload system,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,58
 1,1,High-Plate,Reaction plate: 96 Well No Skirt PCR Plate,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,75
 1,1,Low-Plate,Reaciton plate: 96 well no skirt PCR plate,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,0
@@ -15,7 +15,7 @@ category,group_name,catalog_num,description,manufacturer,concentration,receive_d
 1,1,Vortex,Vortex,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,11
 1,1,Power96,PowerGene 9600 Plus: Real time PCR instrument with 5 fluorescent detection channels,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,0
 1,1,TIPS-FIL-200,Tips: filtered pipet tip reload system,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,18
-1,1,50ML-TUBERACK,18-PLACE POLYMER TUBE RACK*BLUE*1/PACK,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,3
+1,1,50ML-TUBERACK,18-PLACE POLYMER TUBE RACK BLUE*1/PACK,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,3
 1,1,5ML-TRUBRACK,5ml microcentrifuge tube rack,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,1,5
 1,1,MB,manual book,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,0,0
 1,1,OL100LP,Kit label,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,0,0
