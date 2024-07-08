@@ -1,9 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
-import com.atilaBiosystems.InventoryManagementSystem.Entity.Component;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.Product;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.ProductRecord;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomComponentRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Service.ProductService;
@@ -12,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -38,7 +36,12 @@ public class ProductController {
     public List<Component> getAllComponents(
             @PathVariable int productId) {
         Product product = productService.findById(productId);
-        return product.getComponents();
+        List<AssemblyBy> assemblyItems = product.getAssemblyItems();
+        List<Component> components = new ArrayList<>();
+        for (AssemblyBy assemblyItem: assemblyItems){
+            components.add(assemblyItem.getComponent());
+        }
+        return components;
     }
 
     @GetMapping("/manufacture/{productId}")

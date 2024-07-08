@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.NetSuiteMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
 
 import java.util.List;
@@ -18,6 +19,8 @@ public interface RawMaterialService {
     List<RawMaterial> findAll();
 
     List<RawMaterial> findByCategory(Integer category);
+
+    List<NetSuiteMaterial> findAll_netSuite();
 
     // When adding a new request, check whether the requested item
     // is already in raw_materials table by input catalog number

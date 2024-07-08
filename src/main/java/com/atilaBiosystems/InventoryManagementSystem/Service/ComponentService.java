@@ -27,6 +27,8 @@ public interface ComponentService {
 
     List<CustomRecipeItem> getRecipeByComponentId(int componentId, Integer scale);
 
+    Integer getLargestScale(Component component);
+
     ManufactureRecord putInManufactureLine(int componentId, Integer scale);
 
     void updateManufactureRecipe(int manufactureRecordId, List<Map<String, Double>> updates);

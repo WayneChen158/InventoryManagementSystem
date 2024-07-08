@@ -24,16 +24,21 @@ public class Product {
     @OneToMany(mappedBy = "product")
     private List<ProductRecord> productRecords;
 
+//    @JsonManagedReference
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
+//                    CascadeType.PERSIST, CascadeType.PERSIST})
+//    @JoinTable(
+//            name = "assembly_by",
+//            joinColumns = @JoinColumn(name = "product_id"),
+//            inverseJoinColumns = @JoinColumn(name = "component_id")
+//    )
+//    private List<Component> components;
     @JsonManagedReference
-    @ManyToMany(fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.REFRESH,
                     CascadeType.PERSIST, CascadeType.PERSIST})
-    @JoinTable(
-            name = "assembly_by",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "component_id")
-    )
-    private List<Component> components;
+    private List<AssemblyBy> assemblyItems;
 
     public Product(){}
 
@@ -83,13 +88,21 @@ public class Product {
         this.productRecords = productRecords;
     }
 
-    public List<Component> getComponents() {
-        return components;
+    public List<AssemblyBy> getAssemblyItems() {
+        return assemblyItems;
     }
 
-    public void setComponents(List<Component> components) {
-        this.components = components;
+    public void setAssemblyItems(List<AssemblyBy> assemblyItems) {
+        this.assemblyItems = assemblyItems;
     }
+
+    //    public List<Component> getComponents() {
+//        return components;
+//    }
+//
+//    public void setComponents(List<Component> components) {
+//        this.components = components;
+//    }
 
     @Override
     public String toString() {

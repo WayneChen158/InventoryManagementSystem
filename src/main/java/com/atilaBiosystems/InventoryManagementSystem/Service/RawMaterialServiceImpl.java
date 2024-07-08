@@ -1,6 +1,8 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.Entity.NetSuiteMaterial;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
+import com.atilaBiosystems.InventoryManagementSystem.Repository.NetSuiteMaterialRepository;
 import com.atilaBiosystems.InventoryManagementSystem.Repository.RawMaterialsRepository;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,12 @@ import java.util.List;
 @Service
 public class RawMaterialServiceImpl implements RawMaterialService{
     private RawMaterialsRepository rawMaterialsRepository;
+    private NetSuiteMaterialRepository netSuiteMaterialRepository;
 
-    public RawMaterialServiceImpl(RawMaterialsRepository rawMaterialsRepository) {
+    public RawMaterialServiceImpl(RawMaterialsRepository rawMaterialsRepository,
+                                  NetSuiteMaterialRepository netSuiteMaterialRepository) {
         this.rawMaterialsRepository = rawMaterialsRepository;
+        this.netSuiteMaterialRepository = netSuiteMaterialRepository;
     }
 
     public List<RawMaterial> filterRawMaterials(
@@ -30,6 +35,11 @@ public class RawMaterialServiceImpl implements RawMaterialService{
     @Override
     public List<RawMaterial> findByCategory(Integer category) {
         return rawMaterialsRepository.findByCategory(1);
+    }
+
+    @Override
+    public List<NetSuiteMaterial> findAll_netSuite() {
+        return netSuiteMaterialRepository.findAll();
     }
 
     @Override

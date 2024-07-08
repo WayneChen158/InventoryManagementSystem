@@ -89,6 +89,41 @@ public class ComponentServiceImpl implements ComponentService{
     }
 
     @Override
+    public Integer getLargestScale(Component component) {
+        List<RecipeItem> recipeItems = component.getRecipeItems();
+        int l = 0, r = Integer.MAX_VALUE;
+        while (l < r){
+            int mid = l + (r-l) / 2;
+            if(checkEligibility(recipeItems, mid)){
+                l = mid;
+            } else {
+                r = mid - 1;
+            }
+        }
+
+        return l;
+    }
+    private boolean checkEligibility(List<RecipeItem> recipeItems, Integer scale){
+        if (recipeItems == null) {
+            return false;
+        }
+
+        for (RecipeItem ri: recipeItems){
+            if(!compInstock(ri.getMaterial(), (int) (ri.getAmountPerRxn()*scale))){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean compInstock(RawMaterial rawMaterial, Integer scale){
+        if (rawMaterial == null || rawMaterial.getAmountInStock() == null) {
+            return false;
+        }
+        return rawMaterial.getAmountInStock() >= scale;
+    }
+
+    @Override
     @Transactional
     public ManufactureRecord putInManufactureLine(int componentId, Integer scale) {
 

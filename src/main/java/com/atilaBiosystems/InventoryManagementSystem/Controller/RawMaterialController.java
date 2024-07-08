@@ -2,8 +2,11 @@ package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
 import com.atilaBiosystems.InventoryManagementSystem.DAO.RawMaterialDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.UpdateRawMaterialForm;
-import com.atilaBiosystems.InventoryManagementSystem.Entity.RawMaterial;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
+import com.atilaBiosystems.InventoryManagementSystem.Service.ComponentService;
+import com.atilaBiosystems.InventoryManagementSystem.Service.ProductService;
 import com.atilaBiosystems.InventoryManagementSystem.Service.RawMaterialService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +15,25 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
 public class RawMaterialController {
 
     private final RawMaterialService rawMaterialService;
+    private final ComponentService componentService;
+    private final ProductService productService;
 
     @Autowired
-    public RawMaterialController(RawMaterialService rawMaterialService) {
+    public RawMaterialController(RawMaterialService rawMaterialService,
+                                 ComponentService componentService,
+                                 ProductService productService) {
         this.rawMaterialService = rawMaterialService;
+        this.componentService = componentService;
+        this.productService = productService;
     }
 
     private Date parseDateString(String dateString) {
@@ -159,6 +170,68 @@ public class RawMaterialController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Failed to update raw material %d...", materialId));
         }
+    }
+
+    @GetMapping("/rawMaterials/gen-inventory-report")
+    public Map<String, Integer> genInventoryReport(){
+        Map<Component, Integer> componentInventory = new HashMap<>();
+        // Back calculate inventory Items by saving in a temporary local list/dict
+        List<ComponentRecord> inStockComponents = componentService.findByAmountInStockGreaterThan();
+        for (ComponentRecord cr: inStockComponents){
+            Component component = cr.getComponent();
+            componentInventory.put(component,
+                    componentInventory.getOrDefault(component, 0)+cr.getAmountInStock());
+        }
+
+        List<ProductRecord> inStockProducts = productService.findByAmountInStockGreaterThan();
+        for (ProductRecord pr: inStockProducts){
+            Integer amountInStock = pr.getAmountInStock();
+            Product product = pr.getProduct();
+            List<AssemblyBy> assemblyItems = product.getAssemblyItems();
+            for (AssemblyBy assemblyItem: assemblyItems){
+                Component component = assemblyItem.getComponent();
+                Double amountPerAssay = assemblyItem.getAmountPerAssay();
+                componentInventory.put(component,
+                        (int) (componentInventory.getOrDefault(component, 0)
+                                + amountPerAssay * amountInStock));
+            }
+        }
+        // copy all raw materials in a dict
+        List<RawMaterial> rawMaterials = rawMaterialService.findAll();
+        Map<Integer, Integer> rawMaterialMap = new HashMap<>();
+        for(RawMaterial rawMaterial: rawMaterials){
+            rawMaterialMap.put(rawMaterial.getMaterialId(), rawMaterial.getAmountInStock());
+        }
+
+        // Back accumulate on raw materials, 1.2 as coefficient
+        // Cares ony about recipe items
+        for (Map.Entry<Component, Integer> entrySet: componentInventory.entrySet()){
+            Component component = entrySet.getKey();
+            Integer amount = entrySet.getValue();
+
+            List<RecipeItem> recipeItems = component.getRecipeItems();
+            for(RecipeItem ri: recipeItems){
+                Integer mId = ri.getMaterial().getMaterialId();
+                rawMaterialMap.put(mId, (int) (rawMaterialMap.get(mId) + amount * 1.2));
+            }
+        }
+
+        Map<String, Integer> inventoryReport = new HashMap<>();
+
+        // Check NetSuiteMaterial items, if it foreign link to raw_material, save in the list directly
+        //  If it foreign link to raw_material, calculate the maximum amount we can manufacture now
+        List<NetSuiteMaterial> netSuiteMaterials = rawMaterialService.findAll_netSuite();
+        for(NetSuiteMaterial nm: netSuiteMaterials){
+            if (nm.getRawMaterial() == null && nm.getComponent() == null){
+                inventoryReport.put(nm.getCatalogNum(), -1);
+            } else if(nm.getRawMaterial() != null) {
+                inventoryReport.put(nm.getCatalogNum(), rawMaterialMap.get(nm.getRawMaterial().getMaterialId()));
+            } else {
+                inventoryReport.put(nm.getCatalogNum(), componentService.getLargestScale(nm.getComponent()));
+            }
+        }
+
+        return inventoryReport;
     }
 
     // GET /api/rawMaterials : get all the RawMaterials

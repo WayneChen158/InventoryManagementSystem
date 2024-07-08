@@ -51,16 +51,21 @@ public class ProductServiceImpl implements ProductService{
 
         Product product = productRepository.findById(productId).orElse(null);
 
-        for (Component com: product.getComponents()){
+        assert product != null;
+        for (AssemblyBy assemblyItem: product.getAssemblyItems()){
 //            int currSize = comLst.size();
             int min = Integer.MAX_VALUE;
+            Component com = assemblyItem.getComponent();
+
             ComponentRecord curr = null;
             for (ComponentRecord comRecord: com.getComponentRecords()) {
                 if (comRecord.getAmountInStock() > 0 && comRecord.getAmountInStock() < min) {
                     min = comRecord.getAmountInStock();
                     curr = comRecord;
                 }
-            } if (curr != null) {
+            }
+
+            if (curr != null) {
                 comLst.add(new CustomComponentRecord(curr));
             } else{
                 ComponentRecord needToManufacture = new ComponentRecord(com.getComponentCatalog(),com.getComponentName(),
@@ -115,12 +120,15 @@ public class ProductServiceImpl implements ProductService{
 
         List<ManufactureRecordDetail> details = new ArrayList<>();
 
-        for (Component component: product.getComponents()){
+        for (AssemblyBy assemblyItem: product.getAssemblyItems()){
             boolean hasRecord = false;
+            Component component = assemblyItem.getComponent();
+            Double amountPerAssay = assemblyItem.getAmountPerAssay();
+            double currScale = scale * amountPerAssay;
             for (ComponentRecord componentRecord: component.getComponentRecords()){
-                if (componentRecord.getAmountInStock() >= scale){
+                if (componentRecord.getAmountInStock() >= currScale){
                     ManufactureRecordDetail currDetail = new ManufactureRecordDetail(componentRecord.getComponentName(),
-                            1.0, scale.doubleValue(), currManufactureRecord);
+                            1.0, currScale, currManufactureRecord);
                     currDetail.setComponentRecord(componentRecord);
                     details.add(currDetail);
                     manufactureRecordDetailRepository.save(currDetail);
@@ -131,9 +139,9 @@ public class ProductServiceImpl implements ProductService{
             if (!hasRecord){
                 for (ManufactureRecord mr: manufactureRecordRepository.findByStatus(1)){
                     try{
-                        if (mr.getComponentRecord().getComponent().getComponentId() == component.getComponentId()){
+                        if (Objects.equals(mr.getComponentRecord().getComponent().getComponentId(), component.getComponentId())){
                             ManufactureRecordDetail currDetail = new ManufactureRecordDetail(mr.getComponentRecord().getComponentName(),
-                                    1.0, scale.doubleValue(), currManufactureRecord);
+                                    1.0, currScale, currManufactureRecord);
                             currDetail.setComponentRecord(mr.getComponentRecord());
                             details.add(currDetail);
                             manufactureRecordDetailRepository.save(currDetail);

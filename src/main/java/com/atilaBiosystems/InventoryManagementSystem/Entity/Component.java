@@ -38,16 +38,16 @@ public class Component {
     @OneToMany(mappedBy = "intermediateComponent")
     private List<Prerequisite> intermediateComponents;
 
-    @JsonBackReference
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
-                    CascadeType.PERSIST, CascadeType.PERSIST})
-    @JoinTable(
-            name = "assembly_by",
-            joinColumns = @JoinColumn(name = "component_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> products;
+//    @JsonBackReference
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.REFRESH,
+//                    CascadeType.PERSIST, CascadeType.PERSIST})
+//    @JoinTable(
+//            name = "assembly_by",
+//            joinColumns = @JoinColumn(name = "component_id"),
+//            inverseJoinColumns = @JoinColumn(name = "product_id")
+//    )
+//    private List<Product> products;
 
     public Component() {};
 
@@ -130,13 +130,13 @@ public class Component {
         this.intermediateComponents = intermediateComponents;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+//    public List<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(List<Product> products) {
+//        this.products = products;
+//    }
 
     @Override
     public String toString() {
