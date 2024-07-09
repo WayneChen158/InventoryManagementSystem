@@ -1477,3 +1477,38 @@ NULL,2,WD-PC product,WD-PC product,Atila Internal,101,2024-11-15,NULL,YC,NULL,20
 1,1,iAMP-COVID19-SCD-OP,iAMP-COVID19-SCD-OP,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,0,0
 1,1,AMPF-DS,AMPF-DS,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,0,0
 1,1,iAMP-SWA-SCD,iAMP-SWA-SCD,Atila Internal,NULL,2024-07-05,Consumable room,JL,NULL,0,0
+1,2,3STI-RF,iAMP 3STI  Detection Kit  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,4STI-RF,iAMP 4STI Detection Kit Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,BV-RF,iAMP Bacterial Vaginosis Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,CAN-FG-RF,iAMP Candidiasis Detection Kit Full Genome Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,CAN-RF,iAMP Candidiasis Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,COV-FG-RF,SeraCare SARS-CoV-2,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,COVFLU-FG-RF,iAMP COV/FLU Detection Kit  Full Genome Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,COVFLU-RF,iAMP COV/FLU Detection Kit  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,CT-RF,iAMP CT Detection Kit Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,DRFP-RF,iAMP Drug Resistance Panel Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,GBS-RF,iAMP GBS Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,Hemo-RF,Human DNA Reference Standard,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,HPVG4F-RF,HPV G4F Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,HSV-RF,iAMP HSV Detection Kit  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,INFRSV-FG-RF,iAMP INF/RSV Detection Kit Full Genome Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,INFRSV-RF,iAMP INF/RSV Detection Kit Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,M4F-RF,HPV Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,M5F-RF,HPV Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,MH-RF,iAMP MH Detection Assay Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,NF-RF,Atila Nail Fungus Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,RPP-RF1,iAMP  Respiratory Panel Reference Materials I,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,RPP-RF2,iAMP  Respiratory Panel Reference Materials II,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTI-FG-RF-QL,iAMP UISolution Assay Full Genome Reference Materials (Qualitative),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTI-FG-RF-SQ,iAMP UISolution Assay Full Genome Reference Materials (Semi-Quant),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTI-RF-QL,iAMP UISolution Assay Qualitative  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTI-RF-SQ,iAMP UISolution Assay Semi Quantitative Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTIplus-FG-RF-QL,iAMP UISolution Plus Assay Full Genome Reference Materials (Qualitative),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTIplus-FG-RF-SQ,iAMP UISolution Plus Assay Full Genome Reference Materials (Semi-Quant),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTIplus-RF-QL,iAMP UISolution Plus Assay Qualitative  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTIplus-RF-SQ,iAMP UISolution Plus Assay Semi Quantitative Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UTIplus-RF-SQ,iAMP UISolution Plus Assay Semi Quantitative Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,UUUP-RF,iAMP UUUP Detection Kit  Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,VAG-RF,iAMP Vaginal Panel Reference Materials,Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,WD-FG-RF-QL,iAMP Wound Panel Full Genome Reference Materials  (Qualitative),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0
+1,2,WD-FG-RF-SQ,iAMP Wound Panel Full Genome Reference Materials (Semi-Quant),Atila Internal,NULL,2024-07-05,R&D room,YC,NULL,0,0

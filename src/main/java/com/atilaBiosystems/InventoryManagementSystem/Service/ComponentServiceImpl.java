@@ -95,13 +95,13 @@ public class ComponentServiceImpl implements ComponentService{
         while (l < r){
             int mid = l + (r-l) / 2;
             if(checkEligibility(recipeItems, mid)){
-                l = mid;
+                l = mid + 1;
             } else {
-                r = mid - 1;
+                r = mid;
             }
         }
 
-        return l;
+        return r;
     }
     private boolean checkEligibility(List<RecipeItem> recipeItems, Integer scale){
         if (recipeItems == null) {

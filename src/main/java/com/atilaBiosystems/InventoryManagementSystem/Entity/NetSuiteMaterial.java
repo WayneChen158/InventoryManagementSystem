@@ -3,12 +3,12 @@ package com.atilaBiosystems.InventoryManagementSystem.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "netSuite_materials")
+@Table(name = "netsuite_materials")
 public class NetSuiteMaterial {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "netSuite_material_id")
+    @Column(name = "netsuite_material_id")
     private Integer netSuiteMaterialId;
 
     @Column(name = "catalog_num")
@@ -16,9 +16,6 @@ public class NetSuiteMaterial {
 
     @Column(name = "description")
     private String description;
-
-    @Column(name = "amount_in_stock")
-    private Integer amountInStock;
 
     @Column(name = "unit")
     private String unit;
@@ -30,11 +27,11 @@ public class NetSuiteMaterial {
     @OneToOne
     @JoinColumn(name="component_id")
     private Component component;
+    public NetSuiteMaterial(){}
 
     public NetSuiteMaterial(Integer netSuiteMaterialId,
                             String catalogNum,
                             String description,
-                            Integer amountInStock,
                             String unit,
                             RawMaterial rawMaterial,
                             Component component)
@@ -42,7 +39,6 @@ public class NetSuiteMaterial {
         this.netSuiteMaterialId = netSuiteMaterialId;
         this.catalogNum = catalogNum;
         this.description = description;
-        this.amountInStock = amountInStock;
         this.unit = unit;
         this.rawMaterial = rawMaterial;
         this.component = component;
@@ -70,14 +66,6 @@ public class NetSuiteMaterial {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Integer getAmountInStock() {
-        return amountInStock;
-    }
-
-    public void setAmountInStock(Integer amountInStock) {
-        this.amountInStock = amountInStock;
     }
 
     public String getUnit() {

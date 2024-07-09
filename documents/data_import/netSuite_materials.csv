@@ -1,0 +1,318 @@
+catalog_num,description,unit,material_id,component_id
+0.2ML-Tuberack,0.2ML-Tuberack,bag(s),1453,NULL
+1.5ml-tube,,bag(s),1471,NULL
+10977-015,Invitrogen UltraPure Dnase RNase-Free Distilled Water,ul,6,NULL
+10x PCR Buffer,10x PCR Buffer,ul,NULL,NULL
+14300-500G,Betaine (5M),ul,22,NULL
+15568025,"Invitrogen UltraPure 1M Tris-HCI, pH 8.0",ul,3,NULL
+2ML-Tuberack,2ML-Tuberack,bag(s),1449,NULL
+3STI-RF,iAMP 3STI  Detection Kit  Reference Materials,unit,1479,NULL
+4STI PC template product,4STI PC template product,ul,679,NULL
+4STI-RF,iAMP 4STI Detection Kit Reference Materials,unit,1480,NULL
+50ML-TUBERACK,50ML-TUBERACK,bag(s),1465,NULL
+5ML-TUBERACK,5ML Microcentrifuge tube rack,bag(s),1466,NULL
+71289-50G,NaN3 (2% solution),ul,14,NULL
+83266,Magnesium sulfate solution-500mL (1 M),ul,21,NULL
+95147-250,PerfeCTa MultiPlex qPCR ToughMix,unit,NULL,NULL
+A200-32,"Nucleic Acid Extraction Kit (Magnetic Bead Method, Manual)",unit,NULL,NULL
+ABSA-RF,iAMP Blood Screening Assay Kit Reference Materials,unit,NULL,NULL
+ADMQ-CY55,ADMQ-CY55,ul,NULL,NULL
+AHBV-RF,iAMP HBV Kit Reference Materials,unit,NULL,NULL
+AHCV-RF,iAMP HCV Kit Reference Materials,unit,NULL,NULL
+AHIV-RF,iAMP HIV Kit Reference Materials,unit,NULL,NULL
+AP-OM,AP-OM,ul,NULL,NULL
+Ati-Pure32,Ati-Pure32,unit,NULL,NULL
+Atila-cf50,,unit,NULL,NULL
+B0538B,10X Mg free isothermal buffer,ul,1,NULL
+B200-32,Nucleic Acid Extraction Kit (Magnetic Bead Method),unit,NULL,NULL
+BioDome-UP-384-10,BioDome-UP-384-10,unit,NULL,NULL
+BioDome-UP-96-10,BioDome-UP-96-10,unit,NULL,NULL
+BioDome-UST-10,Universal BioDome PCR Strips with Caps. (120 Strips per kit),unit,NULL,NULL
+Block-2ml,Block-2ml,unit,1443,NULL
+Block-5ml,Block-5ml,unit,1442,NULL
+BR-OM,BR-OM,ul,NULL,NULL
+BSA-OM,BSA-OM,ul,NULL,NULL
+BSA-PC-OM,BSA-PC-OM,ul,NULL,NULL
+BV PC template product,BV PC template product,ul,682,NULL
+BV-RF,iAMP Bacterial Vaginosis Detection Assay Reference Materials,unit,1481,NULL
+c0759-500g,Na3Citrate (1M),ul,13,NULL
+C200-32,Nucleic Acid Extraction Kit (Magnetic Bead Method),unit,NULL,NULL
+c4706-50g,TCEP,g,5,NULL
+CAN PC template product,CAN PC template product,ul,678,NULL
+CAN-FG-RF,iAMP Candidiasis Detection Kit Full Genome Reference Materials,unit,1482,NULL
+CAN-RF,iAMP Candidiasis Detection Assay Reference Materials,unit,1483,NULL
+CD-OM,CD-OM,ul,NULL,NULL
+CD-PC-OM,CD-PC-OM,ul,NULL,NULL
+CJ-OM,CJ-OM,ul,NULL,NULL
+CJ-PC-OM,CJ-PC-OM,ul,NULL,NULL
+COOL-HOLDER,COOL-HOLDER,unit,1433,NULL
+COV-FG-RF,SeraCare SARS-CoV-2,ul,1484,NULL
+COVFLU-FG-RF,iAMP COV/FLU Detection Kit  Full Genome Reference Materials,unit,1485,NULL
+COVFLU-RF,iAMP COV/FLU Detection Kit  Reference Materials,unit,1486,NULL
+COVFLURSV PC TEMPLATE,COVFLURSV PC TEMPLATE,ul,110,NULL
+COVID PC,COVID PC,ul,109,NULL
+CP-AP-501-OM,CP-AP-501-OM,ul,NULL,NULL
+CP-AP-502-OM,CP-AP-502-OM,ul,NULL,NULL
+CP-AP-503-OM,CP-AP-503-OM,ul,NULL,NULL
+CP-AP-504-OM,CP-AP-504-OM,ul,NULL,NULL
+CP-AP-505-OM,CP-AP-505-OM,ul,NULL,NULL
+CP-AP-506-OM,CP-AP-506-OM,ul,NULL,NULL
+CP-AP-507-OM,CP-AP-507-OM,ul,NULL,NULL
+CP-AP-508-OM,CP-AP-508-OM,ul,NULL,NULL
+CP-AP-701-OM,CP-AP-701-OM,ul,NULL,NULL
+CP-AP-702-OM,CP-AP-702-OM,ul,NULL,NULL
+CP-AP-703-OM,CP-AP-703-OM,ul,NULL,NULL
+CP-AP-704-OM,CP-AP-704-OM,ul,NULL,NULL
+CP-AP-705-OM,CP-AP-705-OM,ul,NULL,NULL
+CP-AP-706-OM,CP-AP-706-OM,ul,NULL,NULL
+CP-AP-707-OM,CP-AP-707-OM,ul,NULL,NULL
+CP-AP-708-OM,CP-AP-708-OM,ul,NULL,NULL
+CP-AP-709-OM,CP-AP-709-OM,ul,NULL,NULL
+CP-AP-710-OM,CP-AP-710-OM,ul,NULL,NULL
+CP-AP-711-OM,CP-AP-711-OM,ul,NULL,NULL
+CP-AP-712-OM,CP-AP-712-OM,ul,NULL,NULL
+CPBR-OM,CPBR-OM,ul,NULL,NULL
+CPCR-OM,CPCR-OM,ul,NULL,NULL
+CPHT-OM,CPHT-OM,ul,NULL,NULL
+CPLN-OM,CPLN-OM,ul,NULL,NULL
+CR,cRNA,g,4,NULL
+CR-OM1,CR-OM1,ul,NULL,NULL
+CR-OM2,CR-OM2,ul,NULL,NULL
+CR-OM3,CR-OM3,ul,NULL,NULL
+CR-OM4,CR-OM4,ul,NULL,NULL
+CT-RF,iAMP CT Detection Kit Reference Materials,unit,1487,NULL
+D200-32,"Nucleic Acid Extraction Kit (Magnetic Bead Method, Manual)",unit,NULL,NULL
+dATP,dATPs (100mM each),ul,8,NULL
+dCTP,dCTPs (100mM each),ul,10,NULL
+dGTP,dGTPs (100mM each),ul,11,NULL
+DMSO,DMSO,ul,NULL,NULL
+dNTP,dNTP,ul,210,NULL
+DRFP-RF,iAMP Drug Resistance Panel Reference Materials,unit,1488,NULL
+dTTP,dTTPs (100mM each),ul,9,NULL
+dUTP,dUTPs (100mM),ul,12,NULL
+E3889-100G,EGTA (100 mM),ul,16,NULL
+EG-OM,EG-OM,ul,NULL,NULL
+Enzyme,Enzyme,ul,NULL,NULL
+Film,Firm,unit,1435,NULL
+flu oligo,flu oligo,ul,NULL,6
+G3272,Guanidine hydrochloride (GUA) (1 M solution),ul,209,NULL
+G4F Tube-1 PC product,G4F Tube-1 PC product,ul,305,NULL
+G4F Tube-2 PC product,G4F Tube-2 PC product,ul,306,NULL
+G4F Tube-3 PC product,G4F Tube-3 PC product,ul,307,NULL
+G4F Tube-4 PC product,G4F Tube-4 PC product,ul,308,NULL
+G4F Tube-5 PC product (6/11),G4F Tube-5 PC product (6/11),ul,309,NULL
+G9391-500G,Bovine Gelatin (Gelatin from bovine skin),ul,15,NULL
+GAS-OM,GAS-OM,ul,NULL,NULL
+GAS-PC-OM,GAS-PC-OM,ul,NULL,NULL
+GBS PC template product,GBS PC template product,ul,681,NULL
+GBS-OM,GBS-OM,ul,NULL,NULL
+GBS-PC-OM,GBS-PC-OM,ul,NULL,NULL
+GBS-RF,iAMP GBS Detection Assay Reference Materials,unit,1489,NULL
+GC-OM,GC-OM,ul,NULL,NULL
+HA-OM,HA-OM,ul,NULL,NULL
+HA-PC-OM,HA-PC-OM,ul,NULL,NULL
+HBV-OM,HBV-OM,ul,NULL,NULL
+HBV-PCH-OM,HBV-PCH-OM,ul,NULL,NULL
+HBV-PCL-OM,HBV-PCL-OM,ul,NULL,NULL
+HCV-OM,HCV-OM,ul,NULL,NULL
+HCV-PCH-OM,HCV-PCH-OM,ul,NULL,NULL
+HCV-PCL-OM,HCV-PCL-OM,ul,NULL,NULL
+HE-OM,HE-OM,ul,NULL,NULL
+Hemo-RF,Human DNA Reference Standard,unit,1490,NULL
+High-Plate,High-Plate,ul,1459,NULL
+High-Strip,High-Strip,ul,1444,NULL
+HIV-OM,HIV-OM,ul,NULL,NULL
+HIV-PCH-OM,HIV-PCH-OM,ul,NULL,NULL
+HIV-PCL-OM,HIV-PCL-OM,ul,NULL,NULL
+HP-OM,HP-OM,ul,NULL,NULL
+HP-PC-OM,HP-PC-OM,ul,NULL,NULL
+HPVG4F-RF,HPV G4F Detection Assay Reference Materials,unit,1491,NULL
+HSV PC template product,HSV PC template product,ul,680,NULL
+HSV-RF,iAMP HSV Detection Kit  Reference Materials,unit,1492,NULL
+Human DNA,Human DNA,ul,NULL,NULL
+i - HPV 16,i - HPV 16 oligos,ul,NULL,30
+i - HPV 18,i - HPV 18 oligos,ul,NULL,31
+i - HPV 45,i - HPV 45 oligos,ul,NULL,32
+i - HPV F/Q(M4F),i - HPV F/Q(M4F) oligos,ul,NULL,35
+i - HPV F/Q(M5F),i - HPV F/Q(M5F) oligos,ul,NULL,37
+i - HPV G6 (M4F),i - HPV G6 (M4F) oligos,ul,NULL,34
+i - HPV G6 (M5F),i - HPV G6 (M5F) oligos,ul,NULL,36
+i - HPV G7,i - HPV G7 oligos,ul,NULL,29
+i - HPV G9,i - HPV G9 oligos,ul,NULL,28
+i - HPV IC,i - HPV IC oligos,ul,NULL,33
+i-BV primer mix,i-BV primer mix,ul,NULL,80
+i-CAN oligo mix,i-CAN oligo mix,ul,NULL,70
+i-CT primer mix,i-CT primer mix,ul,NULL,81
+i-G4F-31,i-G4F-31,ul,NULL,44
+i-G4F-33,i-G4F-33,ul,NULL,46
+i-G4F-35,i-G4F-35,ul,NULL,45
+i-G4F-39,i-G4F-39,ul,NULL,44
+i-G4F-45,i-G4F-45,ul,NULL,46
+i-G4F-51,i-G4F-51,ul,NULL,44
+i-G4F-52,i-G4F-52,ul,NULL,47
+i-G4F-53,i-G4F-53,ul,NULL,47
+i-G4F-56,i-G4F-56,ul,NULL,47
+i-G4F-58,i-G4F-58,ul,NULL,47
+i-G4F-59,i-G4F-59,ul,NULL,45
+i-G4F-66,i-G4F-66,ul,NULL,46
+i-G4F-68,i-G4F-68,ul,NULL,45
+i-GBS primer mix,i-GBS primer mix,ul,NULL,79
+i-HSV primer mix,i-HSV primer mix,ul,NULL,78
+i-iAMP-4STI CT-mix (no dye),i-iAMP-4STI CT-mix (no dye),ul,NULL,74
+i-iAMP-4STI Dye-Mix,i-iAMP-4STI Dye-Mix,ul,NULL,73
+i-iAMP-4STI MG-mix (no dye),i-iAMP-4STI MG-mix (no dye),ul,NULL,77
+i-iAMP-4STI NG-mix (no dye),i-iAMP-4STI NG-mix (no dye),ul,NULL,76
+i-iAMP-4STI TV-mix (no dye),i-iAMP-4STI TV-mix (no dye),ul,NULL,75
+i-isoP-hemo v2,i-isoP-hemo v2,ul,NULL,72
+i-isoP-NBFP14 primer mix,i-isoP-NBFP14 primer mix,ul,NULL,71
+i-MH primer mix,i-MH primer mix,ul,NULL,83
+i-UTI-OM-1,i-UTI-OM-1,ul,NULL,54
+i-UTI-OM-2,i-UTI-OM-2,ul,NULL,55
+i-UTI-OM-3,i-UTI-OM-3,ul,NULL,56
+i-UTI-OM-4,i-UTI-OM-4,ul,NULL,57
+i-UTIplus-OM-5(Alpha),i-UTIplus-OM-5(Alpha),ul,NULL,58
+i-UTIplus-OM-5(common),i-UTIplus-OM-5(common),ul,NULL,59
+i-UUUP primer mix,i-UUUP primer mix,ul,NULL,82
+iAMP-NBFP14 primer mix,iAMP-NBFP14 primer mix,ul,NULL,124
+iAMP-PS96,iAMP-PS96,ul,1436,NULL
+IC oligo,IC oligo,ul,NULL,5
+IC PC template product,IC PC template product,ul,NULL,NULL
+IC-OM,IC-OM,ul,NULL,NULL
+Incubator-110V,Incubator-110V,unit,1440,NULL
+Incubator-230V,Incubator-230V,unit,1441,NULL
+INFRSV-FG-RF,iAMP INF/RSV Detection Kit Full Genome Reference Materials,unit,1493,NULL
+INFRSV-RF,iAMP INF/RSV Detection Kit Reference Materials,unit,1494,NULL
+KP-OM,KP-OM,ul,NULL,NULL
+KP-PC-OM,KP-PC-OM,ul,NULL,NULL
+KR-OM,KR-OM,ul,NULL,NULL
+LI-OM,LI-OM,ul,NULL,NULL
+LI-PC-OM,LI-PC-OM,ul,NULL,NULL
+LN-OM1,LN-OM1,ul,NULL,NULL
+LN-OM2,LN-OM2,ul,NULL,NULL
+LN-OM3,LN-OM3,ul,NULL,NULL
+LN-OM4,LN-OM4,ul,NULL,NULL
+Low-Plate,Low-Plate,ul,1460,NULL
+Low-strips,Low-strips,ul,1437,NULL
+M 4/5 F PC product,M 4/5 F PC product,ul,211,NULL
+M0380L,WS RT enzyme,ul,18,NULL
+M0538L,WS-Bst 2.1,ul,17,NULL
+M4F-RF,HPV Detection Assay Reference Materials,unit,1495,NULL
+M5F-RF,HPV Detection Assay Reference Materials,unit,1496,NULL
+MAL-oligos,,ul,NULL,NULL
+MAL-PC-R,,ul,NULL,NULL
+MB,manual book,unit,NULL,NULL
+MegRack,MegRack,ul,1455,NULL
+MgCl2,MgCl3,ul,NULL,NULL
+MH PC template product,MH PC template product,ul,684,NULL
+MH-RF,iAMP MH Detection Assay Reference Materials,unit,1497,NULL
+Mineral oil,,ul,NULL,NULL
+Mini-Centrifuge,Mini-Centrifuge,unit,1461,NULL
+MP-OM,MP-OM,ul,NULL,NULL
+MP-PC-OM,MP-PC-OM,ul,NULL,NULL
+MV-OM,,ul,NULL,NULL
+MV-PC,,ul,NULL,NULL
+NaCl,NaCl,ul,111,NULL
+NaOH(2.4 M),NaOH(2.4 M),ul,212,NULL
+NF OM-1,NF OM-1,ul,111,NULL
+NF OM-2,NF OM-2,ul,112,NULL
+NF OM-3,NF OM-3,ul,113,NULL
+NF OM-4,NF OM-4,ul,114,NULL
+NF PC TEMPLATE,NF PC TEMPLATE,ul,821,NULL
+NF-RF,Atila Nail Fungus Reference Materials,unit,1498,NULL
+NIPT-BCT 100,,ul,NULL,NULL
+NIPT-OM1,NIPT-OM1,ul,NULL,NULL
+NIPT-OM10,NIPT-OM10,ul,NULL,NULL
+NIPT-OM11,NIPT-OM11,ul,NULL,NULL
+NIPT-OM12,NIPT-OM12,ul,NULL,NULL
+NIPT-OM13,NIPT-OM13,ul,NULL,NULL
+NIPT-OM14,NIPT-OM14,ul,NULL,NULL
+NIPT-OM15,NIPT-OM15,ul,NULL,NULL
+NIPT-OM16,NIPT-OM16,ul,NULL,NULL
+NIPT-OM2,NIPT-OM2,ul,NULL,NULL
+NIPT-OM3,NIPT-OM3,ul,NULL,NULL
+NIPT-OM4,NIPT-OM4,ul,NULL,NULL
+NIPT-OM5,NIPT-OM5,ul,NULL,NULL
+NIPT-OM6,NIPT-OM6,ul,NULL,NULL
+NIPT-OM7,NIPT-OM7,ul,NULL,NULL
+NIPT-OM8,NIPT-OM8,ul,NULL,NULL
+NIPT-OM9,NIPT-OM9,ul,NULL,NULL
+NIPT-REF,,ul,NULL,NULL
+NR-OM,NR-OM,ul,NULL,NULL
+oafBIP,oafBIP,ul,48,NULL
+OL100LP,Kit label,unit,NULL,NULL
+oraf oligo,oraf oligo,ul,NULL,4
+P-10,P-10,ul,1456,NULL
+P-100,P-100,ul,1450,NULL
+P-1000,"Pipettor: Autoclavable Single Channel Pipettor, 100-1000 ul",unit,1431,NULL
+P8-10,P8-10,ul,1451,NULL
+P8-100,P8-100,ul,1432,NULL
+Paddle,Paddle,ul,1454,NULL
+PGTA-100,,ul,NULL,NULL
+PI-OM,PI-OM,ul,NULL,NULL
+Plate Spinner,Plate Spinner,ul,1439,NULL
+Power96,Power96,ul,1463,NULL
+Purchase,,ul,NULL,NULL
+RE-OM,RE-OM,ul,NULL,NULL
+Reservoir,Reservoir,ul,1438,NULL
+RI,Vazyme RI,ul,7,NULL
+RPP-OM-2,,ul,130,NULL
+RPP-OM-3,,ul,131,NULL
+RPP-OM-4,,ul,132,NULL
+RPP-OM-5,,ul,133,NULL
+RPP-PC,,ul,1320,NULL
+RPP-RF1,iAMP  Respiratory Panel Reference Materials I,unit,1499,NULL
+RPP-RF2,iAMP  Respiratory Panel Reference Materials II,unit,1500,NULL
+RSV oligo,RSV oligo,ul,NULL,7
+S-22822W,Pouch bag,unit,1469,NULL
+SA-OM,SA-OM,ul,NULL,NULL
+SA-PC-OM,SA-PC-OM,ul,NULL,NULL
+SH-assay-reagent,,ul,NULL,NULL
+STA-OM,STA-OM,ul,NULL,NULL
+STA-PC-OM,STA-PC-OM,ul,NULL,NULL
+STR-OM,STR-OM,ul,NULL,NULL
+STR-PC-OM,STR-PC-OM,ul,NULL,NULL
+SWAB,SWAB,ul,1446,NULL
+SYBR Green II (10000x),SYBR Green II (10000x),ul,NULL,NULL
+SZ MMLV,SZ MMLV,ul,112,NULL
+SZ UDG,SZ UDG,ul,19,NULL
+T8787-250ML,Triton X-100(T8787-250ML),ul,2,NULL
+Taq polymerase,Taq polymerase,ul,NULL,NULL
+Tips-FIL-10,Tips-FIL-10,ul,1458,NULL
+Tips-FIL-1000,Tips-FIL-1000,ul,1457,NULL
+TIPS-FIL-200,TIPS-FIL-200,ul,1464,NULL
+TIPS-NON-10,TIPS-NON-10,ul,1448,NULL
+TIPS-NON-1000,TIPS-NON-1000,ul,1452,NULL
+TIPS-NON-200,TIPS-NON-200,ul,1447,NULL
+TP53-OM,TP53-OM,ul,NULL,NULL
+TTLW-KK-20,tube labels-2520/PK,ul,1470,NULL
+TUBE,TUBE,ul,1445,NULL
+Tween 20 (1%),Tween 20 (1%),ul,NULL,NULL
+UTI  Alpha PC product,UTI  Alpha PC product,ul,539,NULL
+UTI common PC product,UTI common PC product,ul,540,NULL
+UTI-DR-OM-1,UTI-DR-OM-1,ul,NULL,119
+UTI-DR-OM-2,UTI-DR-OM-2,ul,NULL,120
+UTI-DR-OM-3-V2,UTI-DR-OM-3-V2,ul,NULL,121
+UTI-DR-PC TEMPLATE,UTI-DR-PC TEMPLATE,ul,1501,NULL
+UTI-FG-RF-QL,iAMP UISolution Assay Full Genome Reference Materials (Qualitative),unit,1502,NULL
+UTI-FG-RF-SQ,iAMP UISolution Assay Full Genome Reference Materials (Semi-Quant),unit,1503,NULL
+UTI-RF-QL,iAMP UISolution Assay Qualitative  Reference Materials,unit,1504,NULL
+UTI-RF-SQ,iAMP UISolution Assay Semi Quantitative Reference Materials,unit,1505,NULL
+UTIplus-FG-RF-QL,iAMP UISolution Plus Assay Full Genome Reference Materials (Qualitative),unit,1506,NULL
+UTIplus-FG-RF-SQ,iAMP UISolution Plus Assay Full Genome Reference Materials (Semi-Quant),unit,1507,NULL
+UTIplus-RF-QL,iAMP UISolution Plus Assay Qualitative  Reference Materials,unit,1508,NULL
+UTIplus-RF-SQ,iAMP UISolution Plus Assay Semi Quantitative Reference Materials,unit,1509,NULL
+UUUP PC template product,UUUP PC template product,ul,683,NULL
+UUUP-RF,iAMP UUUP Detection Kit  Reference Materials,unit,1510,NULL
+VAG-RF,iAMP Vaginal Panel Reference Materials,unit,1511,NULL
+Vazyme ws BsT,Vazyme ws BsT,ul,23,NULL
+Vortex,Vortex,ul,1462,NULL
+WD-1-OM,WD-1-OM,ul,NULL,145
+WD-2-OM,WD-2-OM,ul,NULL,146
+WD-4-OM,WD-4-OM,ul,NULL,148
+WD-FG-RF-QL,iAMP Wound Panel Full Genome Reference Materials  (Qualitative),unit,1512,NULL
+WD-FG-RF-SQ,iAMP Wound Panel Full Genome Reference Materials (Semi-Quant),unit,1513,NULL
+WD-PC TEMPLATE,WD-PC TEMPLATE,ul,1430,NULL
+WO,,unit,NULL,NULL
+Y-OM1,Y-OM1,ul,NULL,NULL
+Y-OM2,Y-OM2,ul,NULL,NULL
+Y-OM3,Y-OM3,ul,NULL,NULL
