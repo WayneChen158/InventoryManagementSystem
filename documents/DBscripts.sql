@@ -22,6 +22,18 @@ CREATE TABLE raw_materials (
     PRIMARY KEY (material_id)
 );
 
+CREATE TABLE netsuite_materials (
+    netsuite_material_id INT NOT NULL AUTO_INCREMENT,
+    catalog_num VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    unit VARCHAR(50),
+    material_id INT,
+    component_id INT,
+    PRIMARY KEY (netsuite_material_id),
+    FOREIGN KEY (material_id) REFERENCES raw_materials (material_id),
+    FOREIGN KEY (component_id) REFERENCES components (component_id)
+);
+
 DROP TABLE requests;
 
 CREATE TABLE requests (
