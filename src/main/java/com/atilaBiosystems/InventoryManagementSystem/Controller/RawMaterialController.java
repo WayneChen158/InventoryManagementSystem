@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api")
@@ -173,7 +170,7 @@ public class RawMaterialController {
     }
 
     @GetMapping("/rawMaterials/gen-inventory-report")
-    public Map<String, Integer> genInventoryReport(){
+    public Map<NetSuiteMaterial, Integer> genInventoryReport(){
         Map<Component, Integer> componentInventory = new HashMap<>();
         // Back calculate inventory Items by saving in a temporary local list/dict
         List<ComponentRecord> inStockComponents = componentService.findByAmountInStockGreaterThan();
@@ -196,6 +193,17 @@ public class RawMaterialController {
                                 + amountPerAssay * amountInStock));
             }
         }
+
+        // Process all components to include intermediate components using a queue
+        Queue<Map.Entry<Component, Integer>> queue = new LinkedList<>(componentInventory.entrySet());
+
+        while (!queue.isEmpty()) {
+            Map.Entry<Component, Integer> entry = queue.poll();
+            Component component = entry.getKey();
+            Integer amount = entry.getValue();
+            addIntermediateComponents(componentInventory, component, amount, queue);
+        }
+
         // copy all raw materials in a dict
         List<RawMaterial> rawMaterials = rawMaterialService.findAll();
         Map<Integer, Integer> rawMaterialMap = new HashMap<>();
@@ -212,26 +220,46 @@ public class RawMaterialController {
             List<RecipeItem> recipeItems = component.getRecipeItems();
             for(RecipeItem ri: recipeItems){
                 Integer mId = ri.getMaterial().getMaterialId();
-                rawMaterialMap.put(mId, (int) (rawMaterialMap.get(mId) + amount * 1.2));
+                rawMaterialMap.put(mId, (int) (rawMaterialMap.get(mId) + ri.getAmountPerRxn() * amount * 120));
             }
         }
 
-        Map<String, Integer> inventoryReport = new HashMap<>();
+        Map<NetSuiteMaterial, Integer> inventoryReport = new TreeMap<>(
+                (o1, o2) -> o1.getNetSuiteMaterialId().compareTo(o2.getNetSuiteMaterialId())
+        );
 
         // Check NetSuiteMaterial items, if it foreign link to raw_material, save in the list directly
         //  If it foreign link to raw_material, calculate the maximum amount we can manufacture now
         List<NetSuiteMaterial> netSuiteMaterials = rawMaterialService.findAll_netSuite();
         for(NetSuiteMaterial nm: netSuiteMaterials){
             if (nm.getRawMaterial() == null && nm.getComponent() == null){
-                inventoryReport.put(nm.getCatalogNum(), -1);
+                inventoryReport.put(nm, -1);
             } else if(nm.getRawMaterial() != null) {
-                inventoryReport.put(nm.getCatalogNum(), rawMaterialMap.get(nm.getRawMaterial().getMaterialId()));
+                inventoryReport.put(nm, rawMaterialMap.get(nm.getRawMaterial().getMaterialId()));
             } else {
-                inventoryReport.put(nm.getCatalogNum(), componentService.getLargestScale(nm.getComponent()));
+                inventoryReport.put(nm, componentService.getLargestScale(nm.getComponent()));
             }
         }
 
         return inventoryReport;
+    }
+
+    public static void addIntermediateComponents(Map<Component, Integer> componentInventory, Component component, Integer amount, Queue<Map.Entry<Component, Integer>> queue) {
+        List<Prerequisite> prerequisites = component.getPrerequisites();
+        if (prerequisites == null || prerequisites.isEmpty()) {
+            return;
+        }
+
+        for (Prerequisite pre : prerequisites) {
+            Component intermediateComponent = pre.getIntermediateComponent();
+            int requiredAmount = (int) (amount * pre.getTestPerRxn());
+
+            int newAmount = componentInventory.getOrDefault(intermediateComponent, 0) + requiredAmount;
+            componentInventory.put(intermediateComponent, newAmount);
+
+            // Add the intermediate component to the queue for further processing
+            queue.offer(new AbstractMap.SimpleEntry<>(intermediateComponent, requiredAmount));
+        }
     }
 
     // GET /api/rawMaterials : get all the RawMaterials
