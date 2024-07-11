@@ -1,5 +1,7 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.CustomerDAO;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
@@ -10,29 +12,39 @@ public interface SellService {
 
     void sellCurrentInvoice(List<SellItemDAO> itemList);
 
-    List<Invoice> findAllInvoice();
-
     List<Invoice> findAllUnshippedInvoice();
 
     List<Invoice> findAllShippedInvoice();
 
-    List<InvoiceContent> checkInvoiceDetails(Invoice invoice);
+    Invoice findInvoiceById(Integer invoiceID);
+
+    List<InvoiceItemDAO> checkInvoiceDetails(Invoice invoice);
 
     List<Customer> findAllCustomers();
 
     Customer findCustomerById(Integer customerId);
 
-    void saveCustomer(Customer customer);
+    void createNewCustomer(CustomerDAO customerDAO);
 
-    List<Invoice> findCustomerOrderHistory(Customer customer);
+    void updateCustomerInfo(Customer customer, CustomerDAO customerDAO);
+
+    void deleteCustomer(Customer customer);
+
+    List<InvoiceDAO> findCustomerOrderHistory(Customer customer);
 
     void createInvoice(String invoiceNumber, Customer customer, List<InvoiceItemDAO> invoiceItems);
 
     void shipInvoice(Invoice invoice);
 
+    void updateInvoice(InvoiceDAO invoiceDAO);
+
     void deleteInvoice(Invoice invoice);
 
-    List<InvoiceContent> addInvoiceItems(Invoice invoice, List<InvoiceItemDAO> invoiceItems);
+    InvoiceContent findInvoiceContentById(Integer invoiceContentID);
+
+    void addInvoiceItems(Invoice invoice, InvoiceItemDAO item);
 
     void updateInvoiceContent(InvoiceContent invoiceContent, InvoiceItemDAO item);
+
+    void deleteInvoiceContent(InvoiceContent invoiceContent);
 }

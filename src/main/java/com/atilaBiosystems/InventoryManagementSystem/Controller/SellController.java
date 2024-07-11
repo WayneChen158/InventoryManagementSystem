@@ -1,5 +1,7 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.CustomerDAO;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
@@ -54,6 +56,53 @@ public class SellController {
         sellService.createInvoice(invoiceNumber,customer,invoiceItemDAOs);
     }
 
+    @PutMapping("/invoices-ship/{invoiceID}")
+    public void shipInvoice(
+            @PathVariable String invoiceID)
+    {
+        Invoice invoice = sellService.findInvoiceById(Integer.valueOf(invoiceID));
+        sellService.shipInvoice(invoice);
+    }
+
+    @PutMapping("/invoices-update")
+    public void updateInvoice(@RequestBody InvoiceDAO invoiceDAO){
+        sellService.updateInvoice(invoiceDAO);
+    }
+
+    @DeleteMapping("/invoice-delete/{invoiceID}")
+    public void deleteInvoice(@PathVariable String invoiceID){
+        Invoice invoice = sellService.findInvoiceById(Integer.valueOf(invoiceID));
+        sellService.deleteInvoice(invoice);
+    }
+
+    @GetMapping("/invoices-detail/{invoiceID}")
+    public List<InvoiceItemDAO> getInvoiceDetails(@PathVariable String invoiceID){
+        Invoice invoice = sellService.findInvoiceById(Integer.valueOf(invoiceID));
+        return sellService.checkInvoiceDetails(invoice);
+    }
+
+    @PostMapping("/Invoices-detail-add/{invoiceID}")
+    public void addInvoiceContent(
+            @PathVariable String invoiceID,
+            @RequestBody InvoiceItemDAO invoiceItemDAO){
+        Invoice invoice = sellService.findInvoiceById(Integer.valueOf(invoiceID));
+        sellService.addInvoiceItems(invoice, invoiceItemDAO);
+    }
+
+    @PutMapping("/Invoices-detail-update/{invoiceContentID}")
+    public void updateInvoiceContent(
+            @PathVariable String invoiceContentID,
+            @RequestBody InvoiceItemDAO invoiceItemDAO){
+        InvoiceContent invoiceContent = sellService.findInvoiceContentById(Integer.valueOf(invoiceContentID));
+        sellService.updateInvoiceContent(invoiceContent, invoiceItemDAO);
+    }
+
+    @DeleteMapping("/Invoices-detail-delete/{invoiceContentID}")
+    public void deleteInvoiceContent(@PathVariable String invoiceContentID){
+        InvoiceContent invoiceContent = sellService.findInvoiceContentById(Integer.valueOf(invoiceContentID));
+        sellService.deleteInvoiceContent(invoiceContent);
+    }
+
     @GetMapping("/customers")
     public List<Customer> findAllCustomers(){
         return sellService.findAllCustomers();
@@ -61,7 +110,29 @@ public class SellController {
 
     @PostMapping("/customer-create")
     public void createCustomer(
-            @RequestBody Customer customer){
-        sellService.saveCustomer(customer);
+            @RequestBody CustomerDAO customerDAO){
+        sellService.createNewCustomer(customerDAO);
+    }
+
+    @PutMapping("/customer-update/{customerID}")
+    public void updateCustomerInfo(
+            @PathVariable String customerID,
+            @RequestBody CustomerDAO customerDAO){
+        Customer customer = sellService.findCustomerById(Integer.valueOf(customerID));
+        sellService.updateCustomerInfo(customer, customerDAO);
+    }
+
+    @DeleteMapping("/customer-delete/{customerID}")
+    public void deleteCustomer(
+            @PathVariable String customerID){
+        Customer customer = sellService.findCustomerById(Integer.valueOf(customerID));
+        sellService.deleteCustomer(customer);
+    }
+
+    @GetMapping("/customer-order-history/{customerID}")
+    public List<InvoiceDAO> getOrderHistory(
+            @PathVariable String customerID){
+        Customer customer = sellService.findCustomerById(Integer.valueOf(customerID));
+        return sellService.findCustomerOrderHistory(customer);
     }
 }

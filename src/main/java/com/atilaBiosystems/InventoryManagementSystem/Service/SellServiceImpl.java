@@ -1,5 +1,7 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.CustomerDAO;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
@@ -47,17 +49,14 @@ public class SellServiceImpl implements SellService{
                 productRecord.setAmountInStock(item.getCurrentStock() - item.getSellQty());
             } else if (item.getCategory().equals("component")) {
                 ComponentRecord componentRecord = componentRecordRepository.findById(item.getRecordId()).orElse(null);
+                assert componentRecord != null;
                 componentRecord.setAmountInStock(item.getCurrentStock() - item.getSellQty());
             } else {
                 RawMaterial rawMaterial = rawMaterialsRepository.findById(item.getRecordId()).orElse(null);
+                assert rawMaterial != null;
                 rawMaterial.setAmountInStock(item.getCurrentStock() - item.getSellQty());
             }
         }
-    }
-
-    @Override
-    public List<Invoice> findAllInvoice() {
-        return invoiceRpository.findAll();
     }
 
     @Override
@@ -71,9 +70,41 @@ public class SellServiceImpl implements SellService{
     }
 
     @Override
-    public List<InvoiceContent> checkInvoiceDetails(Invoice invoice) {
+    public Invoice findInvoiceById(Integer invoiceID) {
+        return invoiceRpository.findById(invoiceID).orElse(null);
+    }
+
+    @Override
+    public List<InvoiceItemDAO> checkInvoiceDetails(Invoice invoice) {
         if (invoice == null) return new ArrayList<>();
-        return invoice.getInvoiceContents();
+        List<InvoiceItemDAO> res = new ArrayList<>();
+
+        for(InvoiceContent item: invoice.getInvoiceContents()){
+            InvoiceItemDAO curr = new InvoiceItemDAO();
+            if(item.getMaterialRecord() != null){
+                curr.setCategory("r");
+                RawMaterial material = item.getMaterialRecord();
+                curr.setUniqueID(material.getMaterialId());
+                curr.setSKU(material.getCatalogNumber());
+                curr.setDescription(material.getDescription());
+            } else if (item.getComponentRecord() != null){
+                curr.setCategory("c");
+                ComponentRecord componentRecord = item.getComponentRecord();
+                curr.setUniqueID(componentRecord.getComponentRecordId());
+                curr.setSKU(componentRecord.getComponentCatalog());
+                curr.setDescription(componentRecord.getLotNumber());
+            } else {
+                curr.setCategory("p");
+                ProductRecord productRecord = item.getProductRecord();
+                curr.setUniqueID(productRecord.getProductRecordId());
+                curr.setSKU(productRecord.getProductCatalog());
+                curr.setDescription(productRecord.getLotNumber());
+            }
+            curr.setAmount(item.getQty());
+            res.add(curr);
+        }
+
+        return res;
     }
 
     @Override
@@ -87,13 +118,51 @@ public class SellServiceImpl implements SellService{
     }
 
     @Override
-    public void saveCustomer(Customer customer) {
+    @Transactional
+    public void createNewCustomer(CustomerDAO customerDAO) {
+        Customer newCustomer = new Customer();
+        newCustomer.setCustomerName(customerDAO.getCustomerName());
+        newCustomer.setCompany(customerDAO.getCompany());
+        newCustomer.setPhoneNumber(customerDAO.getPhoneNumber());
+        newCustomer.setEmailAddress(customerDAO.getEmailAddress());
+        newCustomer.setShipAddress(customerDAO.getShippingAddress());
+
+        customerRepository.save(newCustomer);
+    }
+
+    @Override
+    @Transactional
+    public void updateCustomerInfo(Customer customer, CustomerDAO customerDAO) {
+        customer.setCustomerName(customerDAO.getCustomerName());
+        customer.setCompany(customerDAO.getCompany());
+        customer.setPhoneNumber(customerDAO.getPhoneNumber());
+        customer.setEmailAddress(customerDAO.getEmailAddress());
+        customer.setShipAddress(customerDAO.getShippingAddress());
+
         customerRepository.save(customer);
     }
 
     @Override
-    public List<Invoice> findCustomerOrderHistory(Customer customer) {
-        return customer.getInvoices();
+    @Transactional
+    public void deleteCustomer(Customer customer) {
+        customerRepository.delete(customer);
+    }
+
+    @Override
+    public List<InvoiceDAO> findCustomerOrderHistory(Customer customer) {
+        List<InvoiceDAO> res = new ArrayList<>();
+
+        for (Invoice invoice: customer.getInvoices()){
+            InvoiceDAO curr = new InvoiceDAO();
+            curr.setInvoiceID(invoice.getInvoiceId());
+            curr.setInvoiceNumber(invoice.getInvoiceNumber());
+            curr.setInvoiceDate(invoice.getInvoiceDate());
+            curr.setShipDate(invoice.getShipDate());
+
+            res.add(curr);
+        }
+
+        return res;
     }
 
     @Override
@@ -129,7 +198,6 @@ public class SellServiceImpl implements SellService{
         invoice.setInvoiceDate(new Date());
         invoice.setInvoiceContents(details);
         invoiceRpository.save(invoice);
-
     }
 
     @Override
@@ -181,36 +249,48 @@ public class SellServiceImpl implements SellService{
 
     @Override
     @Transactional
+    public void updateInvoice(InvoiceDAO invoiceDAO) {
+        Invoice invoice = invoiceRpository.findById(invoiceDAO.getInvoiceID()).orElse(new Invoice());
+
+        invoice.setInvoiceNumber(invoiceDAO.getInvoiceNumber());
+        invoice.setInvoiceDate(invoiceDAO.getInvoiceDate());
+        invoice.setShipDate(invoiceDAO.getShipDate());
+
+        invoiceRpository.save(invoice);
+    }
+
+    @Override
+    @Transactional
     public void deleteInvoice(Invoice invoice) {
         invoice.setStatus(3);
     }
 
     @Override
+    public InvoiceContent findInvoiceContentById(Integer invoiceContentID) {
+        return invoiceContentRepository.findById(invoiceContentID).orElse(new InvoiceContent());
+    }
+
+    @Override
     @Transactional
-    public List<InvoiceContent> addInvoiceItems(Invoice invoice, List<InvoiceItemDAO> invoiceItems) {
+    public void addInvoiceItems(Invoice invoice, InvoiceItemDAO item) {
 
-        List<InvoiceContent> res = new ArrayList<>();
-
-        for(InvoiceItemDAO item: invoiceItems){
-            InvoiceContent curr =new InvoiceContent(invoice);
-            if (item.getCategory().equals("r")){
-                RawMaterial rawMaterial = rawMaterialsRepository.findById(item.getUniqueID())
-                        .orElseThrow(() -> new NoSuchElementException("RawMaterial not found with ID: " + item.getUniqueID()));
-                curr.setMaterialRecord(rawMaterial);
-            } else if (item.getCategory().equals("c")){
-                ComponentRecord componentRecord = componentRecordRepository.findById(item.getUniqueID())
-                        .orElseThrow(() -> new NoSuchElementException("ComponentRecord not found with ID: " + item.getUniqueID()));
-                curr.setComponentRecord(componentRecord);
-            } else {
-                ProductRecord productRecord = productRecordRepository.findById(item.getUniqueID())
-                        .orElseThrow(() -> new NoSuchElementException("ProductRecord not found with ID: " + item.getUniqueID()));
-                curr.setProductRecord(productRecord);
-            }
-            curr.setQty(item.getAmount());
-            res.add(curr);
+        InvoiceContent curr =new InvoiceContent(invoice);
+        if (item.getCategory().equals("r")){
+            RawMaterial rawMaterial = rawMaterialsRepository.findById(item.getUniqueID())
+                    .orElseThrow(() -> new NoSuchElementException("RawMaterial not found with ID: " + item.getUniqueID()));
+            curr.setMaterialRecord(rawMaterial);
+        } else if (item.getCategory().equals("c")){
+            ComponentRecord componentRecord = componentRecordRepository.findById(item.getUniqueID())
+                    .orElseThrow(() -> new NoSuchElementException("ComponentRecord not found with ID: " + item.getUniqueID()));
+            curr.setComponentRecord(componentRecord);
+        } else {
+            ProductRecord productRecord = productRecordRepository.findById(item.getUniqueID())
+                    .orElseThrow(() -> new NoSuchElementException("ProductRecord not found with ID: " + item.getUniqueID()));
+            curr.setProductRecord(productRecord);
         }
+        curr.setQty(item.getAmount());
+        invoiceContentRepository.save(curr);
 
-        return res;
     }
 
     @Override
@@ -235,6 +315,12 @@ public class SellServiceImpl implements SellService{
         }
 
         invoiceContent.setQty(item.getAmount());
+    }
+
+    @Override
+    @Transactional
+    public void deleteInvoiceContent(InvoiceContent invoiceContent) {
+        invoiceContentRepository.delete(invoiceContent);
     }
 
 

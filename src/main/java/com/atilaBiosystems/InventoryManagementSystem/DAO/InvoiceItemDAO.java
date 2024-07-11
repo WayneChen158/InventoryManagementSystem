@@ -5,13 +5,19 @@ public class InvoiceItemDAO {
 
     private Integer uniqueID;
 
+    private String SKU;
+
+    private String description;
+
     private Integer amount;
 
     public InvoiceItemDAO(){}
 
-    public InvoiceItemDAO(String category, Integer uniqueID, Integer amount) {
+    public InvoiceItemDAO(String category, String SKU, Integer uniqueID, String description, Integer amount) {
         this.category = category;
+        this.SKU = SKU;
         this.uniqueID = uniqueID;
+        this.description = description;
         this.amount = amount;
     }
 
@@ -37,5 +43,21 @@ public class InvoiceItemDAO {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public String getSKU() {
+        return SKU;
+    }
+
+    public void setSKU(String SKU) {
+        this.SKU = SKU;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

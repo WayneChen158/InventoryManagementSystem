@@ -16,6 +16,10 @@ public class Customer {
     private int customerId;
     @Column(name = "customer_name")
     private String customerName;
+
+    @Column(name = "company")
+    private String company;
+
     @Column(name="phone_number")
     private String phoneNumber;
 
@@ -81,5 +85,13 @@ public class Customer {
 
     public void setInvoices(List<Invoice> invoices) {
         this.invoices = invoices;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }
