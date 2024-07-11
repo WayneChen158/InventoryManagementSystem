@@ -1,14 +1,13 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
+import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,4 +34,34 @@ public class SellController {
         }
     }
 
+    @GetMapping("/invoices-unshipped")
+    public List<Invoice> getUnshippedInvoices(){
+        return sellService.findAllUnshippedInvoice();
+    }
+
+    @GetMapping("/invoices-shipped")
+    public List<Invoice> getShippedInvoices(){
+        return sellService.findAllShippedInvoice();
+    }
+
+    @PostMapping("/invoices-create/{invoiceNumber}/{customerID}")
+    public void createInvoice(
+            @PathVariable String invoiceNumber,
+            @PathVariable String customerID,
+            @RequestBody List<InvoiceItemDAO> invoiceItemDAOs)
+    {
+        Customer customer = sellService.findCustomerById(Integer.valueOf(customerID));
+        sellService.createInvoice(invoiceNumber,customer,invoiceItemDAOs);
+    }
+
+    @GetMapping("/customers")
+    public List<Customer> findAllCustomers(){
+        return sellService.findAllCustomers();
+    }
+
+    @PostMapping("/customer-create")
+    public void createCustomer(
+            @RequestBody Customer customer){
+        sellService.saveCustomer(customer);
+    }
 }

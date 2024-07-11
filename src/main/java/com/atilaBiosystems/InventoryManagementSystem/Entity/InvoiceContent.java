@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -14,22 +15,27 @@ public class InvoiceContent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="content_id")
     private int contentId;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name = "invoice_id")
+
+    @ManyToOne
+    @JoinColumn(name = "invoice_id", referencedColumnName = "invoice_id")
     @JsonIgnore
     private Invoice invoice;
 
     @OneToOne
     @JoinColumn(name = "product_record_id")
+    @JsonIgnore
     private ProductRecord productRecord;
 
     @OneToOne
     @JoinColumn(name = "component_record_id")
+    @JsonIgnore
     private ComponentRecord componentRecord;
 
     @OneToOne
     @JoinColumn(name = "material_id")
+    @JsonIgnore
     private RawMaterial materialRecord;
+
     @Column(name = "qty")
     private Integer qty;
 

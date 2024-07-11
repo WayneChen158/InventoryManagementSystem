@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 
@@ -19,5 +20,19 @@ public interface SellService {
 
     List<Customer> findAllCustomers();
 
-    void createInvoice(String invoiceNumber, Customer customer, List<InvoiceContent> invoiceContents);
+    Customer findCustomerById(Integer customerId);
+
+    void saveCustomer(Customer customer);
+
+    List<Invoice> findCustomerOrderHistory(Customer customer);
+
+    void createInvoice(String invoiceNumber, Customer customer, List<InvoiceItemDAO> invoiceItems);
+
+    void shipInvoice(Invoice invoice);
+
+    void deleteInvoice(Invoice invoice);
+
+    List<InvoiceContent> addInvoiceItems(Invoice invoice, List<InvoiceItemDAO> invoiceItems);
+
+    void updateInvoiceContent(InvoiceContent invoiceContent, InvoiceItemDAO item);
 }

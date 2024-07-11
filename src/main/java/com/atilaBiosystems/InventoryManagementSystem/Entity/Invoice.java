@@ -18,19 +18,23 @@ public class Invoice {
     private String invoiceNumber;
     @Column(name="status") // status in 1,2,3 1 is created, 2 is shipped, 3 is deleted
     private int status;
+
     @ManyToOne
     @JoinColumn(name = "customer")
     @JsonIgnore
     private Customer customer;
+
     @Column(name="invoice_date")
     private Date invoiceDate;
+
     @Column(name="ship_date")
     private Date shipDate;
+
     @Column(name="tracking_number")
-    private Double trackingNumber;
+    private String trackingNumber;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "invoice")
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<InvoiceContent> invoiceContents;
 
     public Invoice(){}
@@ -88,11 +92,11 @@ public class Invoice {
         this.shipDate = shipDate;
     }
 
-    public Double getTrackingNumber() {
+    public String getTrackingNumber() {
         return trackingNumber;
     }
 
-    public void setTrackingNumber(Double trackingNumber) {
+    public void setTrackingNumber(String trackingNumber) {
         this.trackingNumber = trackingNumber;
     }
 

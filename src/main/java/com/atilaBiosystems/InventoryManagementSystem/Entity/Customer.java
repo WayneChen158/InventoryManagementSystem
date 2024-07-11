@@ -1,6 +1,10 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "customers")
@@ -20,6 +24,10 @@ public class Customer {
 
     @Column(name="ship_address")
     private String shipAddress;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "customer")
+    private List<Invoice> invoices;
 
     public Customer(){}
 
@@ -65,5 +73,13 @@ public class Customer {
 
     public void setShipAddress(String shipAddress) {
         this.shipAddress = shipAddress;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
     }
 }
