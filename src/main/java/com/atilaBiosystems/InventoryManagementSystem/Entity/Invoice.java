@@ -1,9 +1,11 @@
 package com.atilaBiosystems.InventoryManagementSystem.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -14,21 +16,26 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="invoice_id")
     private int invoiceId;
+
     @Column(name = "invoice_number")
     private String invoiceNumber;
+
+    @Column(name = "url")
+    private String url;
+
     @Column(name="status") // status in 1,2,3 1 is created, 2 is shipped, 3 is deleted
     private int status;
 
     @ManyToOne
     @JoinColumn(name = "customer")
-    @JsonIgnore
+    @JsonBackReference
     private Customer customer;
 
     @Column(name="invoice_date")
-    private Date invoiceDate;
+    private LocalDateTime invoiceDate;
 
     @Column(name="ship_date")
-    private Date shipDate;
+    private LocalDateTime shipDate;
 
     @Column(name="tracking_number")
     private String trackingNumber;
@@ -60,6 +67,14 @@ public class Invoice {
         this.invoiceNumber = invoiceNumber;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -76,19 +91,19 @@ public class Invoice {
         this.customer = customer;
     }
 
-    public Date getInvoiceDate() {
+    public LocalDateTime getInvoiceDate() {
         return invoiceDate;
     }
 
-    public void setInvoiceDate(Date invoiceDate) {
+    public void setInvoiceDate(LocalDateTime invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 
-    public Date getShipDate() {
+    public LocalDateTime getShipDate() {
         return shipDate;
     }
 
-    public void setShipDate(Date shipDate) {
+    public void setShipDate(LocalDateTime shipDate) {
         this.shipDate = shipDate;
     }
 

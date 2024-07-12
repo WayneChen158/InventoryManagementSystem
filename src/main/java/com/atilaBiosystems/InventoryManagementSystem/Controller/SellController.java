@@ -1,9 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
-import com.atilaBiosystems.InventoryManagementSystem.DAO.CustomerDAO;
-import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceDAO;
-import com.atilaBiosystems.InventoryManagementSystem.DAO.InvoiceItemDAO;
-import com.atilaBiosystems.InventoryManagementSystem.DAO.SellItemDAO;
+import com.atilaBiosystems.InventoryManagementSystem.DAO.*;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.Service.SellService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +43,13 @@ public class SellController {
         return sellService.findAllShippedInvoice();
     }
 
-    @PostMapping("/invoices-create/{invoiceNumber}/{customerID}")
+    @PostMapping("/invoices-create/{customerID}")
     public void createInvoice(
-            @PathVariable String invoiceNumber,
             @PathVariable String customerID,
-            @RequestBody List<InvoiceItemDAO> invoiceItemDAOs)
+            @RequestBody CreateInvoiceForm invoiceForm)
     {
         Customer customer = sellService.findCustomerById(Integer.valueOf(customerID));
-        sellService.createInvoice(invoiceNumber,customer,invoiceItemDAOs);
+        sellService.createInvoice(invoiceForm.getInvoiceDAO(),customer,invoiceForm.getInvoiceItemDAOs());
     }
 
     @PutMapping("/invoices-ship/{invoiceID}")
@@ -91,10 +87,8 @@ public class SellController {
 
     @PutMapping("/Invoices-detail-update/{invoiceContentID}")
     public void updateInvoiceContent(
-            @PathVariable String invoiceContentID,
             @RequestBody InvoiceItemDAO invoiceItemDAO){
-        InvoiceContent invoiceContent = sellService.findInvoiceContentById(Integer.valueOf(invoiceContentID));
-        sellService.updateInvoiceContent(invoiceContent, invoiceItemDAO);
+        sellService.updateInvoiceContent(invoiceItemDAO);
     }
 
     @DeleteMapping("/Invoices-detail-delete/{invoiceContentID}")

@@ -1,6 +1,8 @@
 package com.atilaBiosystems.InventoryManagementSystem.DAO;
 
 public class InvoiceItemDAO {
+    private Integer invoiceContentID;
+
     private String category;
 
     private Integer uniqueID;
@@ -13,12 +15,22 @@ public class InvoiceItemDAO {
 
     public InvoiceItemDAO(){}
 
-    public InvoiceItemDAO(String category, String SKU, Integer uniqueID, String description, Integer amount) {
+    public InvoiceItemDAO(Integer invoiceContentID, String category,
+                          String SKU, Integer uniqueID, String description, Integer amount) {
+        this.invoiceContentID = invoiceContentID;
         this.category = category;
         this.SKU = SKU;
         this.uniqueID = uniqueID;
         this.description = description;
         this.amount = amount;
+    }
+
+    public Integer getInvoiceContentID() {
+        return invoiceContentID;
+    }
+
+    public void setInvoiceContentID(Integer invoiceContentID) {
+        this.invoiceContentID = invoiceContentID;
     }
 
     public String getCategory() {

@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.DAO;
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 public class InvoiceDAO {
 
@@ -7,17 +8,25 @@ public class InvoiceDAO {
 
     private String invoiceNumber;
 
-    private Date invoiceDate;
+    private String url;
 
-    private Date shipDate;
+    private LocalDateTime invoiceDate;
+
+    private LocalDateTime shipDate;
+
+    private String trackingNumber;
 
     public InvoiceDAO(){}
 
-    public InvoiceDAO(Integer invoiceID, String invoiceNumber, Date invoiceDate, Date shipDate) {
+    public InvoiceDAO(Integer invoiceID, String invoiceNumber,
+                      String url, LocalDateTime invoiceDate, LocalDateTime shipDate,
+                      String trackingNumber) {
         this.invoiceID = invoiceID;
         this.invoiceNumber = invoiceNumber;
+        this.url = url;
         this.invoiceDate = invoiceDate;
         this.shipDate = shipDate;
+        this.trackingNumber = trackingNumber;
     }
 
     public Integer getInvoiceID() {
@@ -36,19 +45,35 @@ public class InvoiceDAO {
         this.invoiceNumber = invoiceNumber;
     }
 
-    public Date getInvoiceDate() {
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public LocalDateTime getInvoiceDate() {
         return invoiceDate;
     }
 
-    public void setInvoiceDate(Date invoiceDate) {
+    public void setInvoiceDate(LocalDateTime invoiceDate) {
         this.invoiceDate = invoiceDate;
     }
 
-    public Date getShipDate() {
+    public LocalDateTime getShipDate() {
         return shipDate;
     }
 
-    public void setShipDate(Date shipDate) {
+    public void setShipDate(LocalDateTime shipDate) {
         this.shipDate = shipDate;
+    }
+
+    public String getTrackingNumber() {
+        return trackingNumber;
+    }
+
+    public void setTrackingNumber(String trackingNumber) {
+        this.trackingNumber = trackingNumber;
     }
 }

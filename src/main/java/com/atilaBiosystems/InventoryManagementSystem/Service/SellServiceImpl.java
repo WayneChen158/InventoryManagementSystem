@@ -10,6 +10,7 @@ import com.atilaBiosystems.InventoryManagementSystem.Repository.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -101,6 +102,7 @@ public class SellServiceImpl implements SellService{
                 curr.setDescription(productRecord.getLotNumber());
             }
             curr.setAmount(item.getQty());
+            curr.setInvoiceContentID(item.getContentId());
             res.add(curr);
         }
 
@@ -167,8 +169,8 @@ public class SellServiceImpl implements SellService{
 
     @Override
     @Transactional
-    public void createInvoice(String invoiceNumber, Customer customer, List<InvoiceItemDAO> invoiceItems) {
-        Invoice invoice = new Invoice(invoiceNumber);
+    public void createInvoice(InvoiceDAO invoiceDAO, Customer customer, List<InvoiceItemDAO> invoiceItems) {
+        Invoice invoice = new Invoice(invoiceDAO.getInvoiceNumber());
         if (customer != null){
             invoice.setCustomer(customer);
         }
@@ -195,7 +197,14 @@ public class SellServiceImpl implements SellService{
             details.add(curr);
         }
         invoice.setStatus(1);
-        invoice.setInvoiceDate(new Date());
+
+        invoice.setUrl(invoiceDAO.getUrl());
+        if(invoiceDAO.getInvoiceDate() == null){
+            invoice.setInvoiceDate(invoiceDAO.getInvoiceDate());
+        } else {
+            invoice.setInvoiceDate(LocalDateTime.now());
+        }
+
         invoice.setInvoiceContents(details);
         invoiceRpository.save(invoice);
     }
@@ -244,6 +253,7 @@ public class SellServiceImpl implements SellService{
             }
         }
 
+        invoice.setShipDate(LocalDateTime.now());
         invoice.setStatus(2);
     }
 
@@ -253,8 +263,10 @@ public class SellServiceImpl implements SellService{
         Invoice invoice = invoiceRpository.findById(invoiceDAO.getInvoiceID()).orElse(new Invoice());
 
         invoice.setInvoiceNumber(invoiceDAO.getInvoiceNumber());
+        invoice.setUrl(invoiceDAO.getUrl());
         invoice.setInvoiceDate(invoiceDAO.getInvoiceDate());
         invoice.setShipDate(invoiceDAO.getShipDate());
+        invoice.setTrackingNumber(invoiceDAO.getTrackingNumber());
 
         invoiceRpository.save(invoice);
     }
@@ -295,7 +307,10 @@ public class SellServiceImpl implements SellService{
 
     @Override
     @Transactional
-    public void updateInvoiceContent(InvoiceContent invoiceContent, InvoiceItemDAO item) {
+    public void updateInvoiceContent(InvoiceItemDAO item) {
+        InvoiceContent invoiceContent = invoiceContentRepository.findById(item.getInvoiceContentID())
+                .orElse(new InvoiceContent());
+
         invoiceContent.setMaterialRecord(null);
         invoiceContent.setComponentRecord(null);
         invoiceContent.setProductRecord(null);

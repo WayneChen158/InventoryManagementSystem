@@ -32,7 +32,7 @@ public interface SellService {
 
     List<InvoiceDAO> findCustomerOrderHistory(Customer customer);
 
-    void createInvoice(String invoiceNumber, Customer customer, List<InvoiceItemDAO> invoiceItems);
+    void createInvoice(InvoiceDAO invoiceDAO, Customer customer, List<InvoiceItemDAO> invoiceItems);
 
     void shipInvoice(Invoice invoice);
 
@@ -44,7 +44,7 @@ public interface SellService {
 
     void addInvoiceItems(Invoice invoice, InvoiceItemDAO item);
 
-    void updateInvoiceContent(InvoiceContent invoiceContent, InvoiceItemDAO item);
+    void updateInvoiceContent(InvoiceItemDAO item);
 
     void deleteInvoiceContent(InvoiceContent invoiceContent);
 }
