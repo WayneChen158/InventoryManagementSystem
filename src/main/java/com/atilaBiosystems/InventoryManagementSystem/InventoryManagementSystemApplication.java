@@ -20,6 +20,7 @@ public class InventoryManagementSystemApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
 						.allowedOrigins("http://localhost:3030")
+						.allowedOrigins("http://192.168.1.188:3030")
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
 			}
 		};

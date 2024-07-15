@@ -199,7 +199,7 @@ public class SellServiceImpl implements SellService{
         invoice.setStatus(1);
 
         invoice.setUrl(invoiceDAO.getUrl());
-        if(invoiceDAO.getInvoiceDate() == null){
+        if(invoiceDAO.getInvoiceDate() != null){
             invoice.setInvoiceDate(invoiceDAO.getInvoiceDate());
         } else {
             invoice.setInvoiceDate(LocalDateTime.now());
