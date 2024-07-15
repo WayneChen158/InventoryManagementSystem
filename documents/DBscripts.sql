@@ -246,6 +246,7 @@ CREATE TABLE manufacture_record_details (
 CREATE TABLE invoices (
 	invoice_id INT NOT NULL AUTO_INCREMENT,
     invoice_number VARCHAR(100) NOT NULL,
+    url VARCHAR(255),
     status INT CHECK (status IN (1, 2, 3)),
     customer INT,
     invoice_date DATE,
@@ -258,9 +259,10 @@ CREATE TABLE invoices (
 CREATE TABLE customers (
 	customer_id INT NOT NULL AUTO_INCREMENT,
     customer_name VARCHAR(100) NOT NULL,
+    company VARCHAR(100),
     phone_number VARCHAR(100),
     email_address VARCHAR(100),
-    ship_address VARCHAR(255),
+    ship_address VARCHAR(5000),
     PRIMARY KEY (customer_id)
 );
 
