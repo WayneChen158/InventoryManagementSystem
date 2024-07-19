@@ -128,7 +128,7 @@ public class ProductServiceImpl implements ProductService{
             for (ComponentRecord componentRecord: component.getComponentRecords()){
                 if (componentRecord.getAmountInStock() >= currScale){
                     ManufactureRecordDetail currDetail = new ManufactureRecordDetail(componentRecord.getComponentName(),
-                            1.0, currScale, currManufactureRecord);
+                            amountPerAssay, currScale, currManufactureRecord);
                     currDetail.setComponentRecord(componentRecord);
                     details.add(currDetail);
                     manufactureRecordDetailRepository.save(currDetail);
@@ -141,7 +141,7 @@ public class ProductServiceImpl implements ProductService{
                     try{
                         if (Objects.equals(mr.getComponentRecord().getComponent().getComponentId(), component.getComponentId())){
                             ManufactureRecordDetail currDetail = new ManufactureRecordDetail(mr.getComponentRecord().getComponentName(),
-                                    1.0, currScale, currManufactureRecord);
+                                    amountPerAssay, currScale, currManufactureRecord);
                             currDetail.setComponentRecord(mr.getComponentRecord());
                             details.add(currDetail);
                             manufactureRecordDetailRepository.save(currDetail);

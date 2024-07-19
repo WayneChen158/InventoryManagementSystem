@@ -39,12 +39,17 @@ public class ManufactureRecordImpl implements ManufactureRecordService{
     @Transactional
     public void finishManufacture(Integer manufactureRecordId, Integer updateScale, String updateLotNumber) {
         ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
+        int usedAmountInTests = manufactureRecord.getScale();
 
         if (manufactureRecord != null) {
             for (ManufactureRecordDetail detail : manufactureRecord.getRecordDetails()) {
                 if (detail.getComponentRecord() != null) {
                     int beforeManufacture = detail.getComponentRecord().getAmountInStock();
-                    detail.getComponentRecord().setAmountInStock((int)(beforeManufacture - detail.getTotalVol()));
+                    if (manufactureRecord.getYieldUnit().equals("kit(s)")){
+                        detail.getComponentRecord().setAmountInStock((int) (beforeManufacture - detail.getTotalVol()));
+                    } else {
+                        detail.getComponentRecord().setAmountInStock(beforeManufacture - usedAmountInTests);
+                    }
                     continue;
                 }
                 if (detail.getRawMaterial() != null) {

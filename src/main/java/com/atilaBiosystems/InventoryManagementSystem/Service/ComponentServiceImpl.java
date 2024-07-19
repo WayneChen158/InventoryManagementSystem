@@ -150,6 +150,7 @@ public class ComponentServiceImpl implements ComponentService{
         for (Prerequisite pre: prerequisites){
             Component i_component = pre.getIntermediateComponent();
             Double vol = Double.valueOf(pre.getTestPerRxn());
+            Double volPerTest = Double.valueOf(pre.getVolPerRxn());
             List<ComponentRecord> crs = i_component.getComponentRecords();
             int amount = 0;
 
@@ -160,7 +161,7 @@ public class ComponentServiceImpl implements ComponentService{
             }
 
             ManufactureRecordDetail currTuple = new ManufactureRecordDetail(i_component.getComponentName(),
-                    vol, vol * scale, currManufactureRecord);
+                    vol, volPerTest * scale, currManufactureRecord);
             currTuple.setComponentRecord(cr);
             manufactureRecordDetailRepository.save(currTuple);
             details.add(currTuple);
@@ -221,31 +222,28 @@ public class ComponentServiceImpl implements ComponentService{
     public List<RawMaterial> finishManufacture(int manufactureRecordId, int updateScale) {
         ManufactureRecord manufactureRecord = manufactureRecordRepository.findById(manufactureRecordId).orElse(null);
         List<RawMaterial> rawMaterials = new ArrayList<>();
+        int usedAmountInTest = manufactureRecord.getScale();
 
-        if (manufactureRecord != null) {
-            for (ManufactureRecordDetail detail : manufactureRecord.getRecordDetails()) {
-                if (detail.getComponentRecord() != null) {
-                    int beforeManufacture = detail.getComponentRecord().getAmountInStock();
-                    detail.getComponentRecord().setAmountInStock((int)(beforeManufacture - detail.getTotalVol()));
-                    continue;
-                }
-                if (detail.getRawMaterial() != null) {
-                    RawMaterial currRawMateiral = detail.getRawMaterial();
-                    int beforeManufacture = currRawMateiral.getAmountInStock();
-                    currRawMateiral.setAmountInStock((int) (beforeManufacture - detail.getTotalVol()));
-                    rawMaterials.add(currRawMateiral);
-                }
+        for (ManufactureRecordDetail detail : manufactureRecord.getRecordDetails()) {
+            if (detail.getComponentRecord() != null) {
+                int beforeManufacture = detail.getComponentRecord().getAmountInStock();
+                detail.getComponentRecord().setAmountInStock(beforeManufacture - usedAmountInTest);
+                continue;
             }
-            manufactureRecord.setStatus(2);
-            if (manufactureRecord.getComponentRecord() != null){
-                manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
-            } else {
-                manufactureRecord.getProductRecord().setAmountInStock(updateScale);
+            if (detail.getRawMaterial() != null) {
+                RawMaterial currRawMateiral = detail.getRawMaterial();
+                int beforeManufacture = currRawMateiral.getAmountInStock();
+                currRawMateiral.setAmountInStock((int) (beforeManufacture - detail.getTotalVol()));
+                rawMaterials.add(currRawMateiral);
             }
-            return rawMaterials;
-        } else {
-            throw new EntityNotFoundException("ManufactureRecord not found");
         }
+        manufactureRecord.setStatus(2);
+        if (manufactureRecord.getComponentRecord() != null){
+            manufactureRecord.getComponentRecord().setAmountInStock(updateScale);
+        } else {
+            manufactureRecord.getProductRecord().setAmountInStock(updateScale);
+        }
+        return rawMaterials;
     }
 
 }
