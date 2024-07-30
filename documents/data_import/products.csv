@@ -1,37 +1,46 @@
-product_catalog,product_name,version_description
-iAMP-COVID19-100,COVID-EUA,EUA format
-COVID-v4,COVID-v4 (CE),V4 and CEv2.1
-iAMP-COVSANO-100-CE,COVID-SANO,FRE special
-iAMP-COVSANO-100,COVID-v6,v6 for US
-iAMP-COVFLURSV-100,iAMP COV/FLU/RSV Detection Kit ,
-iAMP-INFRSV-100,iAMP INF/RSV Detection Kit ,
-iAMP-COVFLU-100,iAMP COV2/INF Detection Kit ,
-iAMP-RSV-100,iAMP RSV Detection Kit ,
-MHPVF1618-100,AmpFire HPV Screening 16/18/HR,
-M5FHPV-100,ScreenFire HPV RS Kit,
-GHPVF-100,AmpFire HPV High Risk Genotyping,
-GHPVF*-100,AmpFire HPV High Risk Genotyping(6/11),
-iAMP-UTI-100,iAMP UISolution Assay,
-A-UTI-WD5-100,Atila UTIplus_WD5 (RUO),
-A-UTIplusS-100,Atila UTIplus_WD5 (RUO)-Alpha,
-iAMP-4STI-100,iAMP CT/NG/TV/MG Detection Kit ,
-iAMP-CT-100,iAMP CT Detection Kit ,
-iAMP-HSV-100,iAMP HSV 1/2 Detection Kit ,
-iAMP-BV-100,iAMP Bacterial Vaginosis Detection Kit ,
-iAMP-GBS-100,iAMP GBS Detection Kit,
-iAMP-UUUP-100,iAMP Ureaplasma Detection Kit,
-iAMP-CAN-100,iAMP Candidiasis Detection Kit ,
-iAMP-MH-100,iAMP MH Detection Kit ,
-ATWH-4STI-100,ATWH CT/NG/TV/MG Detection Kit ,
-ATWH-HSV-100,ATWH HSV 1/2 Detection Kit ,
-ATWH-BV-100,ATWH Bacterial Vaginosis Detection Kit ,
-ATWH-GBS-100,ATWH GBS Detection Kit,
-ATWH-UUUP-100,ATWH Ureaplasma Detection Kit,
-ATWH-CAN-100,ATWH Candidiasis Detection Kit ,
-ATWH-MH-100,ATWH MH Detection Kit ,
-iAMP-NF-100,iAMP Nail Fungus Detection Kit,
-iAMP-UTIDR-100,iAMP UTI-drug resistence Detection Kit,
-ATWH-IC-100,ATWH IC Detection Kit,
-iAMP-VAG-100,iAMP Vaginal Panel Detection Kit,
-iAMP-RPP-100,iAMP Respiratory Panel,
-iAMP-WD-100,iAMP Wound Panel,
+"product_catalog";"product_name";"version_description"
+"iAMP-COVID19-100";"COVID-EUA";"EUA format"
+"COVID-v4";"COVID-v4 (CE)";"V4 and CEv2.1"
+"iAMP-COVSANO-100-CE";"COVID-SANO";"FRE special"
+"iAMP-COVSANO-100";"COVID-v6";"v6 for US"
+"iAMP-COVFLURSV-100";"iAMP COV/FLU/RSV Detection Kit ";""
+"iAMP-INFRSV-100";"iAMP INF/RSV Detection Kit ";""
+"iAMP-COVFLU-100";"iAMP COV2/INF Detection Kit ";""
+"iAMP-RSV-100";"iAMP RSV Detection Kit ";""
+"MHPVF1618-100";"AmpFire HPV Screening 16/18/HR";""
+"M5FHPV-100";"ScreenFire HPV RS Kit";""
+"GHPVF-100";"AmpFire HPV High Risk Genotyping";""
+"GHPVF*-100";"AmpFire HPV High Risk Genotyping(6/11)";""
+"iAMP-UTI-100";"iAMP UISolution Assay";""
+"A-UTI-WD5-100";"Atila UTIplus_WD5 (RUO)";""
+"A-UTIplusS-100";"Atila UTIplus_WD5 (RUO)-Alpha";""
+"iAMP-4STI-100";"iAMP CT/NG/TV/MG Detection Kit ";""
+"iAMP-CT-100";"iAMP CT Detection Kit ";""
+"iAMP-HSV-100";"iAMP HSV 1/2 Detection Kit ";""
+"iAMP-BV-100";"iAMP Bacterial Vaginosis Detection Kit ";""
+"iAMP-GBS-100";"iAMP GBS Detection Kit";""
+"iAMP-UUUP-100";"iAMP Ureaplasma Detection Kit";""
+"iAMP-CAN-100";"iAMP Candidiasis Detection Kit ";""
+"iAMP-MH-100";"iAMP MH Detection Kit ";""
+"ATWH-4STI-100";"ATWH CT/NG/TV/MG Detection Kit ";""
+"ATWH-HSV-100";"ATWH HSV 1/2 Detection Kit ";""
+"ATWH-BV-100";"ATWH Bacterial Vaginosis Detection Kit ";""
+"ATWH-GBS-100";"ATWH GBS Detection Kit";""
+"ATWH-UUUP-100";"ATWH Ureaplasma Detection Kit";""
+"ATWH-CAN-100";"ATWH Candidiasis Detection Kit ";""
+"ATWH-MH-100";"ATWH MH Detection Kit ";""
+"At-NF-100";"iAMP Nail Fungus Detection Kit";""
+"iAMP-UTIDR-100";"iAMP UTI-drug resistence Detection Kit";""
+"ATWH-IC-100";"ATWH IC Detection Kit";""
+"iAMP-VAG-100";"iAMP Vaginal Panel Detection Kit";""
+"iAMP-RPP-100";"iAMP Respiratory Panel";""
+"iAMP-WD-100";"iAMP Wound Panel";""
+"iAMP-3STI-100";"iAMP CT/NG/TV Detection Assay";""
+"iAMP-DRFP-100";"iAMP Drug Resistence Full Panel";""
+"A200-32";"Necleic Acid Extraction Kit (Magnetic Bead Method, Manual)";""
+"B200-32";"Necleic Acid Extraction Kit (Magnetic Bead Method)";""
+"C200-32";"Necleic Acid Extraction Kit (Magnetic Bead Method)";""
+"D200-32";"Necleic Acid Extraction Kit (Magnetic Bead Method, Manual)";""
+"BioDome-UP-96-10";"Universal BioDome 96 well plates. (10 plates per pack)";""
+"BioDome-UP-384-10";"Universal BioDome 384 well plates. (10 plates per pack)";""
+"BioDome-UST-10";"Universal BioDome PCR strips with caps(120 strips per pack)";""
