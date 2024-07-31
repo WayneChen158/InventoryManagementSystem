@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Controller;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.ProductStockForm;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
 import com.atilaBiosystems.InventoryManagementSystem.ReturnObject.CustomComponentRecord;
@@ -30,6 +31,21 @@ public class ProductController {
     @GetMapping("/inStock")
     public List<ProductRecord> getAllInStockProducts() {
         return productService.findByAmountInStockGreaterThan();
+    }
+
+    @GetMapping("/list")
+    public List<ProductStockForm> getProductList(){
+        return productService.getProductList();
+    }
+
+    @GetMapping("/productRecords/{productId}")
+    public List<ProductRecord> getProductRecordList(
+            @PathVariable int productId){
+        List<ProductRecord> res = new ArrayList<>();
+        for (ProductRecord pr: productService.findById(productId).getProductRecords()){
+            if (pr.getAmountInStock() > 0) res.add(pr);
+        }
+        return res;
     }
 
     @GetMapping("/components/{productId}")

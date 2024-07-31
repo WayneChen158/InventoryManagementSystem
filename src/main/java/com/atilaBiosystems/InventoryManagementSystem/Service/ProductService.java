@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.ProductStockForm;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ComponentRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.ManufactureRecord;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.Product;
@@ -26,5 +27,7 @@ public interface ProductService {
     List<ProductRecord> findByAmountInStockGreaterThan();
 
     void updateStock(Integer productRecordId, Integer updateScale);
+
+    List<ProductStockForm> getProductList();
 
 }

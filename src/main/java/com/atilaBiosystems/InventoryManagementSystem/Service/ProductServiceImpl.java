@@ -1,5 +1,6 @@
 package com.atilaBiosystems.InventoryManagementSystem.Service;
 
+import com.atilaBiosystems.InventoryManagementSystem.DAO.ProductStockForm;
 import com.atilaBiosystems.InventoryManagementSystem.Entity.*;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.InvalidProductIdException;
 import com.atilaBiosystems.InventoryManagementSystem.Exception.MissingComponentException;
@@ -172,5 +173,25 @@ public class ProductServiceImpl implements ProductService{
     public void updateStock(Integer productRecordId, Integer updateScale) {
         ProductRecord productRecord = productRecordRepository.findById(productRecordId).orElse(null);
         productRecord.setAmountInStock(updateScale);
+    }
+
+    @Override
+    public List<ProductStockForm> getProductList() {
+        List<ProductStockForm> res = new ArrayList<>();
+
+        List<Product> productList = productRepository.findAll();
+
+        for(Product product: productList){
+            int amountInStock = 0;
+            for (ProductRecord pr: product.getProductRecords()){
+                amountInStock += pr.getAmountInStock();
+            }
+            ProductStockForm curr = new ProductStockForm(product.getProductId(),
+                    product.getProductCatalog(), product.getProductName(), amountInStock);
+
+            res.add(curr);
+        }
+
+        return res;
     }
 }
